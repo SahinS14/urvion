@@ -1,0 +1,97 @@
+{
+  "files": [
+    "#n",
+    "assets/images/Rajesh Toyota_logo.png",
+    "assets/images/Upflairs.png",
+    "assets/images/akanksha.png",
+    "assets/images/anand.png",
+    "assets/images/angeera_aircon.jpg",
+    "assets/images/balaji_beverages.jpeg",
+    "assets/images/bhaj.jpeg",
+    "assets/images/codeyart.jpg",
+    "assets/images/codeyart.png",
+    "assets/images/coplur.png",
+    "assets/images/dosa_anna.jpeg",
+    "assets/images/echona-26.png",
+    "assets/images/fast_pizza.jpg",
+    "assets/images/grras.jpg",
+    "assets/images/hero.png",
+    "assets/images/influence_nexus.png",
+    "assets/images/kathmandu_cartel.jpg",
+    "assets/images/mansi.png",
+    "assets/images/monika.jpg",
+    "assets/images/mrq_bus.jpg",
+    "assets/images/nohara_solargy.jpg",
+    "assets/images/noopur.jpeg",
+    "assets/images/pointer-cursor-48.png",
+    "assets/images/pointer-cursor-64.png",
+    "assets/images/pointer-cursor-80.png",
+    "assets/images/pramil.png",
+    "assets/images/praveenagarwal.jpg",
+    "assets/images/s2.png",
+    "assets/images/sai_chaap.jpeg",
+    "assets/images/sanjog.png",
+    "assets/images/separtor2.png",
+    "assets/images/shiv.png",
+    "assets/images/stall.jpeg",
+    "assets/images/su.jpeg",
+    "assets/images/unilox.jpg",
+    "assets/images/vijaysharma.jpg",
+    "assets/images/waffleholic.jpeg",
+    "assets/videos/338280.mp4",
+    "assets/videos/preloader.mp4",
+    "crew.html",
+    "flashback.html",
+    "index.html",
+    "rulebook.pdf",
+    "sponsor.html",
+    "sponsors.html",
+    "timeline.pdf"
+  ],
+  "failures": [
+    [
+      "assets/images/mrq_bus.jpg",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/assets/images/mrq_bus.jpg']' returned non-zero exit status 56."
+    ],
+    [
+      "assets/images/codeyart.jpg",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/assets/images/codeyart.jpg']' returned non-zero exit status 56."
+    ],
+    [
+      "assets/images/mrq_bus.jpg",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/assets/images/mrq_bus.jpg']' returned non-zero exit status 56."
+    ],
+    [
+      "#n",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/%23n']' returned non-zero exit status 56."
+    ],
+    [
+      "assets/images/mrq_bus.jpg",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/assets/images/mrq_bus.jpg']' returned non-zero exit status 56."
+    ],
+    [
+      "assets/images/codeyart.jpg",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/assets/images/codeyart.jpg']' returned non-zero exit status 56."
+    ],
+    [
+      "assets/images/mrq_bus.jpg",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/assets/images/mrq_bus.jpg']' returned non-zero exit status 56."
+    ],
+    [
+      "sponsor.html",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/sponsor.html']' returned non-zero exit status 56."
+    ],
+    [
+      "sponsor.html",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/sponsor.html']' returned non-zero exit status 56."
+    ],
+    [
+      "sponsor.html",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/sponsor.html']' returned non-zero exit status 56."
+    ],
+    [
+      "sponsor.html",
+      "Command '['curl', '-fLsS', '--max-time', '90', 'https://anandice.ac.in/echona2026/sponsor.html']' returned non-zero exit status 56."
+    ]
+  ]
+}

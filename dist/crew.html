@@ -1,0 +1,3171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pirate Universe — Leaders Team</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&amp;family=Pirata+One&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            corePlugins: {
+                preflight: false,
+            }
+        }
+    </script>
+
+    <style>
+        @media (min-width: 768px) {
+            html,
+            body,
+            button,
+            a,
+            input,
+            select,
+            textarea,
+            [role="button"],
+            .cursor-pointer,
+            [onclick],
+            label {
+                cursor: url('assets/images/pointer-cursor-80.png') 40 40, url('assets/images/pointer-cursor-80.png') 35 35, url('assets/images/pointer-cursor-64.png') 32 32, url('assets/images/pointer-cursor-48.png') 24 24, auto !important;
+            }
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* =========================================================
+   PIRATE UNIVERSE — TEACHER TEAM
+   Single HTML File
+========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* HARDWARE ACCELERATION TO PREVENT FLICKERING */
+            --hw-accel: translateZ(0);
+        }
+
+        .moon,
+        .star,
+        .orbit,
+        .bubble,
+        .ship,
+        .card,
+        .card::before,
+        .card::after,
+        .corner,
+        .spark {
+            will-change: transform, opacity, filter;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        :root {
+            --espresso: #21130d;
+            --dark-brown: #352017;
+            --walnut: #563827;
+            --brown: #765039;
+            --cream: #f4ead5;
+            --ivory: #fff8e9;
+            --gold: #d6a84d;
+            --bright-gold: #ffe29a;
+            --shadow: #120a06;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--ivory);
+            font-family: Georgia, "Times New Roman", serif;
+
+            background:
+                radial-gradient(circle at 50% 45%, #6b4730 0%, transparent 25%),
+                radial-gradient(circle at 15% 20%, #4b2c1d 0%, transparent 30%),
+                radial-gradient(circle at 85% 75%, #4a2b1c 0%, transparent 30%),
+                linear-gradient(135deg, #160b07, #332016 45%, #170b07);
+        }
+
+        /* =========================================================
+   COSMIC PIRATE BACKGROUND
+========================================================= */
+
+        .universe {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .moon {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background:
+                radial-gradient(circle at 35% 30%,
+                    #fff7dc 0%,
+                    #d8bd79 35%,
+                    #806038 70%,
+                    #392416 100%);
+
+            box-shadow:
+                0 0 40px rgba(255, 218, 128, .22),
+                0 0 120px rgba(214, 168, 77, .15);
+
+            opacity: .22;
+            animation: moonFloat 12s ease-in-out infinite;
+        }
+
+        @keyframes moonFloat {
+
+            0%,
+            100% {
+                transform: translate(-50%, 0) scale(1)
+            }
+
+            50% {
+                transform: translate(-50%, 20px) scale(1.04)
+            }
+        }
+
+        /* Stars */
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #ffe5a3;
+            box-shadow: 0 0 12px #d6a84d;
+            animation: starBlink 3s ease-in-out infinite;
+        }
+
+        @keyframes starBlink {
+
+            0%,
+            100% {
+                opacity: .15;
+                transform: scale(.7)
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5)
+            }
+        }
+
+        /* Orbital rings */
+
+        .orbit {
+            position: absolute;
+            left: 50%;
+            top: 48%;
+            width: 1500px;
+            height: 620px;
+            transform: translate(-50%, -50%) rotate(-8deg);
+            border: 1px solid rgba(214, 168, 77, .25);
+            border-radius: 50%;
+            animation: orbit 25s linear infinite;
+        }
+
+        .orbit.two {
+            width: 1200px;
+            height: 800px;
+            transform: translate(-50%, -50%) rotate(24deg);
+            border-style: dashed;
+            opacity: .35;
+            animation-duration: 35s;
+        }
+
+        @keyframes orbit {
+            to {
+                transform: translate(-50%, -50%) rotate(352deg);
+            }
+        }
+
+        /* =========================================================
+   GOLDEN BUBBLES
+========================================================= */
+
+        .bubbles {
+            position: absolute;
+            inset: 0;
+        }
+
+        .bubble {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle at 30% 25%,
+                    #fff8cf 0 8%,
+                    #ffe28a 18%,
+                    #d6a84d 50%,
+                    rgba(214, 168, 77, .05) 72%);
+
+            box-shadow:
+                0 0 10px rgba(255, 218, 128, .8),
+                0 0 25px rgba(214, 168, 77, .3);
+
+            animation:
+                bubbleMove var(--time) linear infinite,
+                bubbleSpin 4s ease-in-out infinite;
+        }
+
+        @keyframes bubbleMove {
+            from {
+                transform: translate3d(0, 110vh, 0) scale(.5);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: .9
+            }
+
+            85% {
+                opacity: .8
+            }
+
+            to {
+                transform: translate3d(var(--move), -20vh, 0) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bubbleSpin {
+            50% {
+                opacity: 1
+            }
+        }
+
+        /* =========================================================
+   SHIPS
+========================================================= */
+
+        .ship {
+            position: absolute;
+            font-size: 65px;
+            filter:
+                drop-shadow(0 0 10px rgba(214, 168, 77, .35));
+            opacity: .45;
+            animation: shipMove 30s linear infinite;
+        }
+
+        .ship.one {
+            top: 25%;
+            left: -120px;
+        }
+
+        .ship.two {
+            top: 72%;
+            left: -160px;
+            font-size: 48px;
+            animation-duration: 38s;
+            animation-delay: 8s;
+        }
+
+        @keyframes shipMove {
+            0% {
+                transform: translateX(-150px) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateX(55vw) translateY(25px) rotate(3deg);
+            }
+
+            100% {
+                transform: translateX(110vw) translateY(-10px) rotate(-2deg);
+            }
+        }
+
+        /* =========================================================
+   MAIN
+========================================================= */
+
+        .main {
+            position: relative;
+            z-index: 5;
+            width: min(1500px, 94%);
+            margin: auto;
+            padding: 130px 0 100px;
+        }
+
+        /* Header */
+
+        .heading {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .heading .mini {
+            color: #d6a84d;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        .heading h1 {
+            font-size: clamp(45px, 6vw, 85px);
+            color: var(--cream);
+
+            text-shadow:
+                0 3px 0 #3b2115,
+                0 0 25px rgba(214, 168, 77, .3);
+        }
+
+        .heading h1 span {
+            color: #d6a84d;
+        }
+
+        .heading p {
+            margin-top: 18px;
+            color: #dbc6a4;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        /* =========================================================
+   TEAM GRID
+========================================================= */
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        /* =========================================================
+   PIRATE CARD
+========================================================= */
+
+        .card {
+            position: relative;
+            min-height: 550px;
+            padding: 25px;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(244, 234, 213, .98),
+                    rgba(217, 190, 143, .98) 55%,
+                    rgba(160, 117, 72, .98));
+
+            color: #2a170e;
+
+            /* irregular pirate parchment shape */
+            border-radius:
+                75px 25px 85px 32px / 35px 80px 30px 90px;
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, .65),
+                inset 0 0 30px rgba(79, 43, 22, .35);
+
+            transform: translateY(0);
+            transition: .6s ease;
+
+            isolation: isolate;
+        }
+
+        /* Outer golden glow */
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: -5px;
+
+            border-radius:
+                80px 30px 90px 37px / 40px 85px 35px 95px;
+
+            background:
+                conic-gradient(from 0deg,
+                    transparent 0deg,
+                    #8d672c 35deg,
+                    #ffe29a 70deg,
+                    transparent 105deg,
+                    transparent 180deg,
+                    #d6a84d 235deg,
+                    #fff0b7 275deg,
+                    transparent 315deg);
+
+            z-index: -2;
+
+            animation: borderRotate 7s linear infinite;
+        }
+
+        /* Dark outer shadow */
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: -14px;
+
+            border-radius:
+                90px 40px 100px 45px / 50px 95px 45px 105px;
+
+            border: 2px solid rgba(214, 168, 77, .22);
+
+            box-shadow:
+                0 0 25px rgba(214, 168, 77, .18),
+                inset 0 0 25px rgba(214, 168, 77, .12);
+
+            z-index: -3;
+
+            animation: borderPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes borderRotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes borderPulse {
+
+            0%,
+            100% {
+                opacity: .45;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-18px) rotate(.5deg);
+            box-shadow:
+                0 35px 80px rgba(0, 0, 0, .75),
+                0 0 45px rgba(214, 168, 77, .25);
+        }
+
+        /* =========================================================
+   ROPE BORDER
+========================================================= */
+
+        .rope {
+            position: absolute;
+            inset: 11px;
+
+            border:
+                4px dashed rgba(82, 48, 28, .72);
+
+            border-radius:
+                70px 22px 80px 28px / 30px 75px 28px 85px;
+
+            pointer-events: none;
+        }
+
+        .rope::before,
+        .rope::after {
+            content: "";
+            position: absolute;
+            inset: 6px;
+
+            border: 1px solid rgba(255, 242, 192, .8);
+
+            border-radius: inherit;
+        }
+
+        /* =========================================================
+   PIRATE CORNERS
+========================================================= */
+
+        .corner {
+            position: absolute;
+            z-index: 8;
+            color: #a97827;
+
+            font-size: 38px;
+
+            text-shadow:
+                0 2px 2px #5a351e,
+                0 0 15px rgba(214, 168, 77, .6);
+
+            animation: cornerGlow 2.5s ease-in-out infinite;
+        }
+
+        .corner.tl {
+            top: 10px;
+            left: 18px
+        }
+
+        .corner.tr {
+            top: 10px;
+            right: 18px
+        }
+
+        .corner.bl {
+            bottom: 10px;
+            left: 18px
+        }
+
+        .corner.br {
+            bottom: 10px;
+            right: 18px
+        }
+
+        @keyframes cornerGlow {
+
+            0%,
+            100% {
+                opacity: .7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* =========================================================
+   PHOTO AREA
+========================================================= */
+
+        .photo-frame {
+            position: relative;
+
+            width: 100%;
+            height: 380px;
+
+            margin: 45px auto 28px;
+
+            padding: 13px;
+
+            background:
+                linear-gradient(135deg,
+                    #6d452b,
+                    #e1bd6a,
+                    #704528,
+                    #f1d58a);
+
+            border-radius:
+                45px 18px 50px 20px;
+
+            box-shadow:
+                0 15px 30px rgba(44, 22, 10, .5),
+                inset 0 0 12px rgba(255, 240, 180, .7);
+
+            overflow: hidden;
+        }
+
+        /* Photo shine removed */
+
+        .photo-frame::before {
+            display: none;
+        }
+
+        /* Actual photo */
+
+        .photo {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(circle at 50% 30%,
+                    #fff4d4,
+                    #c9a774 55%,
+                    #765039);
+
+            border-radius:
+                34px 12px 38px 15px;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Placeholder */
+
+        .photo-placeholder {
+            font-size: 85px;
+            opacity: 1;
+        }
+
+        /* =========================================================
+   TEXT
+========================================================= */
+
+        .role {
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #80602f;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .name {
+            text-align: center;
+            font-size: 29px;
+            color: #3b2114;
+            margin-bottom: 13px;
+
+            text-shadow:
+                0 1px 0 #fff4d2;
+        }
+
+        .line {
+            width: 65%;
+            height: 2px;
+            margin: auto;
+
+            background:
+                linear-gradient(90deg,
+                    transparent,
+                    #9d722f,
+                    #f4d37b,
+                    #9d722f,
+                    transparent);
+        }
+
+        .description {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #5b3a25;
+            margin: 20px 12px 0;
+        }
+
+        /* =========================================================
+   FLOATING BORDER PARTICLES
+========================================================= */
+
+        .spark {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+
+            background: #ffe8a5;
+
+            box-shadow:
+                0 0 8px #d6a84d,
+                0 0 18px #d6a84d;
+
+            animation: sparkFloat 4s ease-in-out infinite;
+        }
+
+        .spark.s1 {
+            left: 7%;
+            top: 25%
+        }
+
+        .spark.s2 {
+            right: 8%;
+            top: 42%;
+            animation-delay: 1s
+        }
+
+        .spark.s3 {
+            left: 15%;
+            bottom: 18%;
+            animation-delay: 2s
+        }
+
+        .spark.s4 {
+            right: 14%;
+            bottom: 30%;
+            animation-delay: 3s
+        }
+
+        @keyframes sparkFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(.7);
+                opacity: .3;
+            }
+
+            50% {
+                transform: translateY(-18px) scale(1.5);
+                opacity: 1;
+            }
+        }
+
+        /* =========================================================
+   RESPONSIVE
+========================================================= */
+
+        @media(max-width:1050px) {
+
+            .team {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card {
+                min-height: 720px;
+            }
+
+            .photo-frame {
+                height: 390px;
+            }
+        }
+
+        @media(max-width:700px) {
+
+            .main {
+                width: 90%;
+                padding-top: 110px;
+            }
+
+            .heading {
+                margin-bottom: 45px;
+            }
+
+            .heading h1 {
+                font-size: 48px;
+            }
+
+            .heading p {
+                font-size: 12px;
+                line-height: 1.7;
+            }
+
+            .team {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .card {
+                min-height: 690px;
+                padding: 22px;
+            }
+
+            .photo-frame {
+                height: 400px;
+            }
+
+            .moon {
+                width: 250px;
+                height: 250px;
+            }
+
+            .orbit {
+                width: 900px;
+                height: 500px;
+            }
+        }
+
+        @media(max-width:430px) {
+
+            .card {
+                min-height: 650px;
+            }
+
+            .photo-frame {
+                height: 350px;
+            }
+
+            .name {
+                font-size: 25px;
+            }
+
+            .corner {
+                font-size: 30px;
+            }
+        }
+
+        /* =========================================================
+   OPTIMIZED IMAGE RULES
+   ========================================================= */
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+
+        /* =========================================================
+   PERFORMANCE OPTIMIZATION
+   Keeps the pirate look but reduces expensive repaints.
+   ========================================================= */
+
+        /* Let the browser isolate only the animated layers. */
+        .bubble,
+        .ship,
+        .star,
+        .spark,
+        .moon,
+        .orbit,
+        .card::before,
+        .card::after {
+            will-change: transform, opacity;
+        }
+
+        /* The orbit does not need continuous rotation. */
+        .orbit {
+            animation: none;
+            opacity: .7;
+        }
+
+        .orbit.two {
+            animation: none;
+            opacity: .22;
+        }
+
+        /* Fewer expensive full-card repaints. */
+        .card::before {
+            animation: borderShimmer 8s ease-in-out infinite;
+            opacity: .8;
+        }
+
+        .card::after {
+            animation: borderPulse 5s ease-in-out infinite;
+        }
+
+        /* Replace 360° border rotation with a light shimmer. */
+        @keyframes borderShimmer {
+
+            0%,
+            100% {
+                transform: scale(.995);
+                opacity: .65
+            }
+
+            50% {
+                transform: scale(1.005);
+                opacity: 1
+            }
+        }
+
+        /* Keep bubbles moving, but avoid unnecessary filtering. */
+        .bubble {
+            filter: none;
+        }
+
+        /* Reduce heavy hover repaint. */
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Respect users/devices that request reduced motion. */
+        @media (prefers-reduced-motion: reduce) {
+
+            .moon,
+            .star,
+            .bubble,
+            .ship,
+            .orbit,
+            .card::before,
+            .card::after,
+            .photo-frame::before,
+            .corner,
+            .spark {
+                animation: none !important;
+            }
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3b2114, #1a0f0a);
+            color: #d1b88e;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border: 2px solid #6b4d32;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(255, 240, 180, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #4a2b18, #2a1811);
+            color: #f1d58a;
+            border-color: #8c6a45;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), inset 0 0 8px rgba(255, 240, 180, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .back-btn {
+                top: 15px;
+                left: 15px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+
+        /* =========================================================
+   CATEGORY
+   ========================================================= */
+
+        .category-section {
+            max-width: 1250px;
+            margin: 0 auto 65px;
+        }
+
+        .category-title {
+            position: relative;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 35px;
+            color: #e0b45b;
+            margin-bottom: 22px;
+            padding-bottom: 10px;
+        }
+
+        .category-title::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 7px;
+            margin-top: 10px;
+
+            border-top: 1px solid rgba(210, 166, 77, .65);
+            border-bottom: 1px solid rgba(210, 166, 77, .28);
+
+            border-radius: 50%;
+            opacity: .75;
+        }
+
+        .category-subtitle {
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffe29a;
+            margin-top: -10px;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =========================================================
+   CURLY EVENT BOX
+   ========================================================= */
+
+        .event-box {
+            width: 100%;
+            min-height: 115px;
+
+            margin-bottom: 28px;
+
+            padding: 31px 42px;
+
+            position: relative;
+            overflow: visible;
+            isolation: isolate;
+
+            background:
+                radial-gradient(circle at 50% 50%,
+                    rgba(153, 103, 35, .12),
+                    transparent 65%),
+                linear-gradient(110deg,
+                    rgba(74, 43, 17, .97),
+                    rgba(45, 24, 9, .98));
+
+            border: none;
+
+            box-shadow:
+                inset 0 0 20px rgba(0, 0, 0, .25),
+                0 6px 18px rgba(0, 0, 0, .35);
+
+            transition:
+                transform .3s ease,
+                filter .3s ease,
+                box-shadow .3s ease;
+        }
+
+
+        /* =========================================================
+   OUTER CURLY FRAME
+   ========================================================= */
+
+        .event-box::before {
+            content: "";
+
+            position: absolute;
+
+            inset: -7px;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            border: 2px solid #b88938;
+
+            border-radius:
+                28px 9px 28px 9px / 9px 28px 9px 28px;
+
+            box-shadow:
+                0 0 0 2px rgba(54, 29, 9, .90),
+                0 0 0 4px rgba(184, 137, 56, .32),
+                0 0 12px rgba(218, 174, 77, .12);
+        }
+
+
+        /* =========================================================
+   INNER CURLY FRAME
+   ========================================================= */
+
+        .event-box::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 6px;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            border: 1px solid rgba(235, 195, 103, .45);
+
+            border-radius:
+                19px 6px 19px 6px / 6px 19px 6px 19px;
+
+            box-shadow:
+                inset 0 0 10px rgba(221, 174, 73, .10);
+        }
+
+
+        /* =========================================================
+   TEXT ABOVE FRAME
+   ========================================================= */
+
+        .event-box>* {
+            position: relative;
+            z-index: 3;
+        }
+
+
+        /* =========================================================
+   ORNAMENTAL CURLS
+   ========================================================= */
+
+        .event-name::before {
+            content: "❧";
+
+            position: absolute;
+
+            left: -29px;
+            top: -12px;
+
+            font-family: Georgia, serif;
+
+            font-size: 24px;
+
+            color: #d4a94f;
+
+            opacity: .85;
+
+            transform: rotate(-18deg);
+
+            text-shadow:
+                0 0 5px rgba(225, 179, 76, .25);
+        }
+
+
+        .coordinators::after {
+            content: "❧";
+
+            position: absolute;
+
+            right: -25px;
+            bottom: -10px;
+
+            font-family: Georgia, serif;
+
+            font-size: 22px;
+
+            color: #d4a94f;
+
+            opacity: .75;
+
+            transform: rotate(165deg);
+
+            text-shadow:
+                0 0 5px rgba(225, 179, 76, .25);
+        }
+
+
+        /* =========================================================
+   EVENT TEXT
+   ========================================================= */
+
+        .event-name {
+            font-family: 'Cinzel', serif;
+
+            font-size: 19px;
+
+            font-weight: 800;
+
+            color: #e9bd62;
+
+            letter-spacing: .5px;
+
+            margin-bottom: 12px;
+        }
+
+        .coordinators {
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #d8c18e;
+
+            line-height: 1.6;
+
+            position: relative;
+        }
+
+
+        /* =========================================================
+   HOVER GLOW
+   ========================================================= */
+
+        .event-box:hover {
+
+            transform: translateX(6px);
+
+            filter: brightness(1.08);
+
+            box-shadow:
+                inset 0 0 20px rgba(224, 180, 82, .10),
+                0 7px 20px rgba(0, 0, 0, .38),
+                0 0 20px rgba(224, 180, 82, .25);
+        }
+
+        .event-box:hover::before {
+
+            border-color: #ffe08a;
+
+            box-shadow:
+                0 0 0 2px rgba(72, 39, 11, .85),
+                0 0 0 4px rgba(220, 170, 70, .40),
+                0 0 18px rgba(255, 215, 100, .30);
+        }
+
+
+        /* =========================================================
+   GOLDEN SPRINKLES
+   ========================================================= */
+
+        .golden-sprinkles {
+            position: fixed;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: 25;
+        }
+
+        .golden-sprinkles i {
+            position: absolute;
+
+            top: -12px;
+            left: var(--x);
+
+            width: var(--w);
+            height: var(--h);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle at 35% 30%,
+                    #fff7c9 0 12%,
+                    #f7d56e 30%,
+                    #d49b2d 62%,
+                    rgba(212, 155, 45, 0) 78%);
+
+            box-shadow:
+                0 0 5px rgba(255, 220, 112, .65);
+
+            opacity: 0;
+
+            animation:
+                goldenSprinkle var(--t) linear var(--d) infinite;
+
+            will-change: transform, opacity;
+        }
+
+
+        /* PARTICLE POSITIONS */
+
+        .golden-sprinkles i:nth-child(1) {
+            --x: 2%;
+            --w: 4px;
+            --h: 9px;
+            --t: 9s;
+            --d: 0s
+        }
+
+        .golden-sprinkles i:nth-child(2) {
+            --x: 6%;
+            --w: 3px;
+            --h: 3px;
+            --t: 13s;
+            --d: 2s
+        }
+
+        .golden-sprinkles i:nth-child(3) {
+            --x: 10%;
+            --w: 5px;
+            --h: 8px;
+            --t: 11s;
+            --d: 4s
+        }
+
+        .golden-sprinkles i:nth-child(4) {
+            --x: 15%;
+            --w: 3px;
+            --h: 6px;
+            --t: 15s;
+            --d: 1s
+        }
+
+        .golden-sprinkles i:nth-child(5) {
+            --x: 20%;
+            --w: 6px;
+            --h: 6px;
+            --t: 10s;
+            --d: 6s
+        }
+
+        .golden-sprinkles i:nth-child(6) {
+            --x: 25%;
+            --w: 3px;
+            --h: 10px;
+            --t: 14s;
+            --d: 3s
+        }
+
+        .golden-sprinkles i:nth-child(7) {
+            --x: 30%;
+            --w: 4px;
+            --h: 4px;
+            --t: 12s;
+            --d: 7s
+        }
+
+        .golden-sprinkles i:nth-child(8) {
+            --x: 35%;
+            --w: 5px;
+            --h: 9px;
+            --t: 16s;
+            --d: 1s
+        }
+
+        .golden-sprinkles i:nth-child(9) {
+            --x: 40%;
+            --w: 3px;
+            --h: 5px;
+            --t: 10s;
+            --d: 5s
+        }
+
+        .golden-sprinkles i:nth-child(10) {
+            --x: 45%;
+            --w: 6px;
+            --h: 6px;
+            --t: 13s;
+            --d: 8s
+        }
+
+        .golden-sprinkles i:nth-child(11) {
+            --x: 50%;
+            --w: 4px;
+            --h: 9px;
+            --t: 11s;
+            --d: 2s
+        }
+
+        .golden-sprinkles i:nth-child(12) {
+            --x: 55%;
+            --w: 3px;
+            --h: 4px;
+            --t: 15s;
+            --d: 4s
+        }
+
+        .golden-sprinkles i:nth-child(13) {
+            --x: 60%;
+            --w: 5px;
+            --h: 7px;
+            --t: 9s;
+            --d: 6s
+        }
+
+        .golden-sprinkles i:nth-child(14) {
+            --x: 65%;
+            --w: 3px;
+            --h: 10px;
+            --t: 14s;
+            --d: 0s
+        }
+
+        .golden-sprinkles i:nth-child(15) {
+            --x: 70%;
+            --w: 6px;
+            --h: 5px;
+            --t: 12s;
+            --d: 7s
+        }
+
+        .golden-sprinkles i:nth-child(16) {
+            --x: 75%;
+            --w: 4px;
+            --h: 8px;
+            --t: 16s;
+            --d: 3s
+        }
+
+        .golden-sprinkles i:nth-child(17) {
+            --x: 80%;
+            --w: 3px;
+            --h: 5px;
+            --t: 10s;
+            --d: 5s
+        }
+
+        .golden-sprinkles i:nth-child(18) {
+            --x: 85%;
+            --w: 5px;
+            --h: 9px;
+            --t: 13s;
+            --d: 1s
+        }
+
+        .golden-sprinkles i:nth-child(19) {
+            --x: 90%;
+            --w: 4px;
+            --h: 4px;
+            --t: 15s;
+            --d: 8s
+        }
+
+        .golden-sprinkles i:nth-child(20) {
+            --x: 95%;
+            --w: 6px;
+            --h: 7px;
+            --t: 11s;
+            --d: 4s
+        }
+
+        .golden-sprinkles i:nth-child(21) {
+            --x: 8%;
+            --w: 3px;
+            --h: 10px;
+            --t: 14s;
+            --d: 2s
+        }
+
+        .golden-sprinkles i:nth-child(22) {
+            --x: 28%;
+            --w: 5px;
+            --h: 5px;
+            --t: 9s;
+            --d: 6s
+        }
+
+        .golden-sprinkles i:nth-child(23) {
+            --x: 48%;
+            --w: 4px;
+            --h: 8px;
+            --t: 16s;
+            --d: 0s
+        }
+
+        .golden-sprinkles i:nth-child(24) {
+            --x: 68%;
+            --w: 3px;
+            --h: 4px;
+            --t: 12s;
+            --d: 7s
+        }
+
+        .golden-sprinkles i:nth-child(25) {
+            --x: 88%;
+            --w: 6px;
+            --h: 9px;
+            --t: 13s;
+            --d: 3s
+        }
+
+
+        @keyframes goldenSprinkle {
+
+            0% {
+                transform: translate3d(0, -20px, 0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: .75;
+            }
+
+            35% {
+                transform: translate3d(15px, 35vh, 0);
+                opacity: .60;
+            }
+
+            65% {
+                transform: translate3d(-18px, 70vh, 0);
+                opacity: .65;
+            }
+
+            85% {
+                opacity: .40;
+            }
+
+            100% {
+                transform: translate3d(20px, 112vh, 0);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================================
+   GOLDEN BUBBLES
+   ========================================================= */
+
+        .golden-bubbles {
+            position: fixed;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: 20;
+        }
+
+        .golden-bubbles span {
+            position: absolute;
+
+            bottom: -45px;
+
+            width: var(--size, 18px);
+            height: var(--size, 18px);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle at 30% 25%,
+                    rgba(255, 248, 204, .98) 0 8%,
+                    rgba(246, 205, 94, .82) 20%,
+                    rgba(181, 123, 29, .30) 58%,
+                    transparent 72%);
+
+            border: 1px solid rgba(255, 218, 111, .72);
+
+            box-shadow:
+                0 0 8px rgba(245, 194, 61, .45);
+
+            opacity: 0;
+
+            animation:
+                goldBubble var(--duration, 12s) linear infinite;
+
+            will-change: transform, opacity;
+        }
+
+
+        .golden-bubbles span:nth-child(1) {
+            left: 4%;
+            --size: 15px;
+            --duration: 11s;
+            animation-delay: 0s;
+        }
+
+        .golden-bubbles span:nth-child(2) {
+            left: 15%;
+            --size: 25px;
+            --duration: 15s;
+            animation-delay: 2s;
+        }
+
+        .golden-bubbles span:nth-child(3) {
+            left: 27%;
+            --size: 12px;
+            --duration: 10s;
+            animation-delay: 5s;
+        }
+
+        .golden-bubbles span:nth-child(4) {
+            left: 39%;
+            --size: 20px;
+            --duration: 14s;
+            animation-delay: 1s;
+        }
+
+        .golden-bubbles span:nth-child(5) {
+            left: 50%;
+            --size: 10px;
+            --duration: 12s;
+            animation-delay: 7s;
+        }
+
+        .golden-bubbles span:nth-child(6) {
+            left: 61%;
+            --size: 27px;
+            --duration: 16s;
+            animation-delay: 3s;
+        }
+
+        .golden-bubbles span:nth-child(7) {
+            left: 72%;
+            --size: 14px;
+            --duration: 11s;
+            animation-delay: 6s;
+        }
+
+        .golden-bubbles span:nth-child(8) {
+            left: 82%;
+            --size: 22px;
+            --duration: 13s;
+            animation-delay: 2s;
+        }
+
+        .golden-bubbles span:nth-child(9) {
+            left: 91%;
+            --size: 11px;
+            --duration: 10s;
+            animation-delay: 8s;
+        }
+
+        .golden-bubbles span:nth-child(10) {
+            left: 97%;
+            --size: 24px;
+            --duration: 15s;
+            animation-delay: 4s;
+        }
+
+
+        @keyframes goldBubble {
+
+            0% {
+                transform: translate3d(0, 0, 0) scale(.55);
+                opacity: 0;
+            }
+
+            12% {
+                opacity: .65;
+            }
+
+            50% {
+                transform: translate3d(30px, -52vh, 0) scale(1);
+                opacity: .55;
+            }
+
+            78% {
+                opacity: .35;
+            }
+
+            100% {
+                transform: translate3d(-25px, -112vh, 0) scale(1.20);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================================
+   MOBILE
+   ========================================================= */
+
+        @media(max-width:700px) {
+
+            .coordinator-page {
+                padding: 55px 5% 70px;
+            }
+
+            .main-title {
+                margin-bottom: 50px;
+            }
+
+            .main-title h1 {
+                font-size: 45px;
+            }
+
+            .category-title {
+                font-size: 29px;
+            }
+
+            .event-box {
+                padding: 26px 30px;
+                margin-bottom: 25px;
+            }
+
+            .event-name {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            .coordinators {
+                font-size: 12px;
+            }
+
+            .event-name::before {
+                left: -22px;
+                font-size: 19px;
+            }
+
+            .coordinators::after {
+                right: -18px;
+                font-size: 18px;
+            }
+
+            .golden-sprinkles i:nth-child(n+16) {
+                display: none;
+            }
+
+            .golden-bubbles span:nth-child(n+7) {
+                display: none;
+            }
+        }
+
+
+        /* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+        @media(max-width:480px) {
+
+            .coordinator-page {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .main-title h1 {
+                font-size: 39px;
+            }
+
+            .category-title {
+                font-size: 26px;
+            }
+
+            .event-box {
+                padding: 24px 25px;
+                margin-bottom: 23px;
+            }
+
+            .event-name {
+                font-size: 15px;
+            }
+
+            .coordinators {
+                font-size: 11.5px;
+            }
+
+            .event-name::before {
+                left: -18px;
+                top: -9px;
+                font-size: 17px;
+            }
+
+            .coordinators::after {
+                right: -14px;
+                bottom: -7px;
+                font-size: 16px;
+            }
+
+            .golden-sprinkles i:nth-child(n+11) {
+                display: none;
+            }
+
+            .golden-bubbles span:nth-child(n+5) {
+                display: none;
+            }
+        }
+
+
+        /* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+        @media(prefers-reduced-motion:reduce) {
+
+            .golden-bubbles span,
+            .golden-sprinkles i,
+            .event-box {
+                animation: none !important;
+                transition: none !important;
+            }
+
+        }
+
+
+        /* =========================================================
+   HEADING
+   ========================================================= */
+
+        .main-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .main-title h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(48px, 6vw, 80px);
+            color: #e4b95f;
+            letter-spacing: 2px;
+
+            text-shadow:
+                3px 3px 0 #291205,
+                0 0 12px rgba(224, 180, 82, .12);
+        }
+
+        .title-line {
+            width: 230px;
+            height: 2px;
+            background: #a8782f;
+            margin: 22px auto 0;
+        }
+
+        /* =========================================================
+           DETAILS.HTML MATCHING FOOTER
+           ========================================================= */
+        .details-footer {
+            margin-top: 55px;
+            text-align: center;
+            font-size: 12px;
+            color: #a89582;
+            border-top: 1px solid rgba(142, 104, 62, 0.4);
+            padding-top: 24px;
+            padding-bottom: 24px;
+            font-family: Arial, sans-serif;
+            position: relative;
+            z-index: 10;
+        }
+
+        .details-footer p {
+            margin: 4px 0;
+            line-height: 1.5;
+        }
+
+        .details-footer strong {
+            color: #d8c18e;
+            font-weight: 700;
+        }
+
+        .details-footer em {
+            font-style: italic;
+            color: #a89582;
+        }
+
+        .details-footer .fest-copy {
+            color: #8e683e;
+            margin-top: 8px;
+        }
+
+        .details-footer .social-icons-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .details-footer .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background: linear-gradient(180deg, #3a2213 0%, #1f1008 100%);
+            border: 1px solid rgba(142, 104, 62, 0.6);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #f2be71;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .details-footer .social-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .details-footer .social-btn:hover {
+            color: #ffe082;
+            border-color: #ffe082;
+            box-shadow: 0 0 15px rgba(255, 224, 130, 0.45);
+            transform: scale(1.1);
+        }
+
+        .details-footer .social-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* =========================================================
+           DETAILS.HTML MATCHING NAV & ANIMATIONS
+           ========================================================= */
+        @keyframes boatSway {
+            0%, 100% {
+                transform: translate3d(0, 0, 0) rotate(-1.5deg);
+            }
+            50% {
+                transform: translate3d(0, -11px, 0) rotate(2.5deg);
+            }
+        }
+
+        @keyframes compassSpin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes goldPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 16px rgba(212, 158, 30, 0.5);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 6px 24px rgba(255, 224, 130, 0.7);
+            }
+        }
+
+        .animate-boat-sway {
+            animation: boatSway 6s ease-in-out infinite;
+        }
+
+        .animate-compass-spin {
+            animation: compassSpin 40s linear infinite;
+        }
+
+        .animate-gold-pulse {
+            animation: goldPulse 3s ease-in-out infinite;
+        }
+
+        .parchment-card {
+            background-color: #f1dfc3;
+            border: 1px solid #a88358;
+            box-shadow: 0 10px 24px -4px rgba(43, 27, 14, 0.28), 0 4px 8px -2px rgba(43, 27, 14, 0.16);
+            color: #231508;
+            position: relative;
+        }
+
+        .wax-seal {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #b91c1c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fca5a5;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            display: none !important;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+    <body>
+
+    <!-- TOP NAVIGATION (Exact as details.html) -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-[#5A4632]/95 backdrop-blur-md shadow-[0_4px_22px_rgba(10,5,2,0.7)] border-b border-[#d49e1e]/60">
+        <div class="w-full px-4 sm:px-6 lg:px-10 py-3 flex items-center justify-between gap-4">
+            <a class="relative flex items-center gap-2.5 sm:gap-3 shrink-0 group" href="index.html">
+                <!-- Glowing Light Behind Anand Logo -->
+                <div
+                    class="absolute inset-0 m-auto w-3/4 h-3/4 rounded-full bg-gradient-to-r from-[#ffe082] via-[#d49e1e] to-[#f59e0b] opacity-75 blur-md group-hover:blur-lg group-hover:scale-125 group-hover:opacity-100 transition-all duration-300 pointer-events-none animate-pulse">
+                </div>
+                <!-- Mobile Logo (anand.png) -->
+                <img src="assets/images/anand.png" alt="Anand Logo"
+                    class="block sm:hidden relative z-10 h-20 w-auto max-w-[200px] object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(255,224,130,0.9)]">
+                <!-- Desktop Logo (anand.png) -->
+                <img src="assets/images/anand.png" alt="Anand Logo"
+                    class="hidden sm:block relative z-10 h-20 w-auto max-w-[250px] object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(255,224,130,0.9)]">
+            </a>
+            <nav class="hidden lg:flex items-center gap-6 px-7 py-2">
+                <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide" href="index.html#">
+                    <span class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Deck</span></a>
+                <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
+                    href="index.html#echona-about"><span class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>About</span></a>
+                <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
+                    href="index.html#headliners-section"><span
+                        class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>VIPs</span></a>
+                <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
+                    href="index.html#treasure-map-section"><span
+                        class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Events</span></a>
+             <!--   <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
+                    href="sponsors.html"><span
+                        class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Sponsors</span></a>-->
+                <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
+                    href="index.html#voyage-route-timeline"><span
+                        class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Voyage</span></a>
+                <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
+                    href="flashback.html"><span
+                        class="material-symbols-outlined text-[20px] text-[#E8D7B5]">history_edu</span><span>Flashback</span></a>
+                <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
+                    href="index.html#echona-guidelines"><span
+                        class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Guidelines</span></a>
+                <a class="text-base text-[#f2be71] font-bold flex items-center gap-1.5 tracking-wide drop-shadow-[0_0_8px_rgba(255,224,130,0.6)]"
+                    href="crew.html"><span class="material-symbols-outlined text-[20px] text-[#f2be71]"></span><span>Crew</span></a>
+                <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
+                    href="index.html#the-crew-section"><span
+                        class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span class="the-crew-section">Contact Us</span></a>
+            </nav>
+
+            <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                <!-- Mariner's Compass Icon Button -->
+                <a href="index.html" aria-label="Return to Grand Voyage Deck"
+                    title="Return to Grand Voyage Deck"
+                    class="relative group flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-full bg-gradient-to-b from-[#341d10] via-[#25150c] to-[#180e09] text-[#f2be71] border-2 border-[#d49e1e] hover:border-[#ffe082] shadow-[0_2px_14px_rgba(212,158,30,0.6)] active:scale-95 transition-all cursor-pointer shrink-0">
+                    <div class="w-6 h-6 sm:w-7 sm:h-7 relative flex items-center justify-center shrink-0">
+                        <svg class="w-full h-full animate-compass-spin" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="47" fill="#1c0f09" stroke="#d49e1e" stroke-width="3"></circle>
+                            <circle cx="50" cy="50" r="42" fill="none" stroke="#8e683e" stroke-width="1.5"
+                                stroke-dasharray="2 3">
+                            </circle>
+                            <circle cx="50" cy="50" r="34" fill="#2a170d" stroke="#d49e1e" stroke-width="1"></circle>
+                            <g stroke="#d49e1e" stroke-width="1.5">
+                                <line x1="50" y1="8" x2="50" y2="16"></line>
+                                <line x1="50" y1="84" x2="50" y2="92"></line>
+                                <line x1="8" y1="50" x2="16" y2="50"></line>
+                                <line x1="84" y1="50" x2="92" y2="50"></line>
+                                <line x1="21" y1="21" x2="27" y2="27"></line>
+                                <line x1="73" y1="73" x2="79" y2="79"></line>
+                                <line x1="79" y1="21" x2="73" y2="27"></line>
+                                <line x1="21" y1="79" x2="27" y2="73"></line>
+                            </g>
+                            <text x="50" y="26" font-size="9" font-weight="bold" fill="#f2be71" text-anchor="middle"
+                                font-family="serif">N</text>
+                            <text x="50" y="80" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle"
+                                font-family="serif">S</text>
+                            <text x="78" y="53" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle"
+                                font-family="serif">E</text>
+                            <text x="22" y="53" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle"
+                                font-family="serif">W</text>
+                        </svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 absolute inset-0 m-auto animate-boat-sway pointer-events-none drop-shadow-[0_0_8px_#fde047]"
+                            viewBox="0 0 60 60">
+                            <polygon points="30,6 36,30 30,26 24,30" fill="#b91c1c" stroke="#fca5a5" stroke-width="0.5">
+                            </polygon>
+                            <polygon points="30,54 36,30 30,26 24,30" fill="#3a2410" stroke="#90bbeb"
+                                stroke-width="0.5"></polygon>
+                            <circle cx="30" cy="30" r="4" fill="#d49e1e" stroke="#ffe082" stroke-width="1.5"></circle>
+                        </svg>
+                    </div>
+                    <span class="absolute -top-1 -right-1 flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fde047] opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-[#eab308]"></span>
+                    </span>
+                </a>
+                <button id="mobile-nav-toggle" aria-label="Open Captain's Logbook &amp; Navigation Map"
+                    aria-expanded="false"
+                    class="lg:hidden relative group flex items-center justify-center active:scale-95 transition-all cursor-pointer shrink-0"
+                    onclick="toggleMobileNav()">
+                    <div
+                        class="w-14 h-9 rounded-full bg-gradient-to-b from-[#341d10] via-[#25150c] to-[#180e09] border-2 border-[#d49e1e] hover:border-[#ffe082] shadow-[0_2px_12px_rgba(212,158,30,0.5)] flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-300">
+                        <span class="material-symbols-outlined text-[20px] text-[#f2be71]"
+                            id="mobile-nav-toggle-icon">menu</span>
+                    </div>
+                    <span class="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fde047] opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#eab308]"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION DRAWER (Exact as details.html) -->
+    <div id="mobile-nav-drawer"
+        class="fixed inset-0 z-[9999] pointer-events-none opacity-0 transition-opacity duration-300">
+        <div id="mobile-nav-backdrop" class="absolute inset-0 bg-[#0c0604]/85 backdrop-blur-sm cursor-pointer"
+            onclick="closeMobileNav()"></div>
+        <div class="absolute top-0 right-0 w-full max-w-sm h-full bg-[#1c0f09]/95 border-l-4 border-l-[#8e683e] border-b-2 border-[#d49e1e] shadow-[0_0_40px_rgba(0,0,0,0.9)] p-5 flex flex-col justify-between overflow-y-auto transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-none parchment-card text-[#231508]"
+            id="mobile-nav-panel"><span
+                class="material-symbols-outlined absolute top-3 left-3 text-[#8e683e] text-[20px] opacity-60 pointer-events-none">anchor</span><span
+                class="material-symbols-outlined absolute bottom-3 left-3 text-[#8e683e] text-[20px] opacity-60 pointer-events-none">anchor</span>
+            <div class="relative z-10 flex-1 flex flex-col">
+                <div class="flex items-center justify-between pb-4 border-b-2 border-[#8e683e]/60">
+                    <div class="flex items-center gap-2.5">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#fcf8ee] border-2 border-[#8e683e] shadow-md flex items-center justify-center text-[#7b5800] animate-boat-sway">
+                            <span class="material-symbols-outlined text-[24px] text-[#7b5800]">sailing</span>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-1.5"><span
+                                    class="font-serif text-base font-extrabold text-[#3a2410] tracking-wider">CAPTAIN'S
+                                    LOG</span><span class="text-xs">☠️</span></div><span
+                                class="text-[10px] text-[#7b5800] font-extrabold uppercase tracking-widest block">Navigational
+                                Chart</span>
+                        </div>
+                    </div><button aria-label="Close Chart Log"
+                        class="wax-seal hover:scale-110 active:scale-95 transition-transform shadow-md cursor-pointer border-2 border-[#fca5a5]"
+                        onclick="closeMobileNav()"><span
+                            class="material-symbols-outlined text-[16px] text-white">close</span></button>
+                </div>
+                <div
+                    class="mt-4 p-2.5 rounded-lg bg-[#fcf8ee] border border-[#cfbfa7] shadow-inner flex items-center justify-between text-xs">
+                    <div class="flex items-center gap-1.5 font-bold text-[#3a2410]"><span
+                            class="material-symbols-outlined text-[16px] text-[#d49e1e]">explore</span><span
+                            class="">Voyage Checkpoint:</span></div><span
+                        class="px-2 py-0.5 rounded bg-[#ede1cc] text-[#7b5800] text-[10px] font-extrabold uppercase border border-[#cfbfa7]">Oct
+                        30-31 • Jaipur</span>
+                </div>
+                <div class="mt-4 space-y-2.5">
+                    <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
+                        href="index.html#" onclick="closeMobileNav()">
+                        <div class="flex items-center gap-2.5"><span
+                                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">anchor</span><span
+                                class="font-serif text-sm font-bold text-[#3a2410]">Deck</span></div><span
+                            class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
+                        href="index.html#echona-about" onclick="closeMobileNav()">
+                        <div class="flex items-center gap-2.5"><span
+                                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">info</span><span
+                                class="font-serif text-sm font-bold text-[#3a2410]">About</span></div><span
+                            class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
+                        href="index.html#headliners-section" onclick="closeMobileNav()">
+                        <div class="flex items-center gap-2.5"><span
+                                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">stars</span><span
+                                class="font-serif text-sm font-bold text-[#3a2410]">VIPs</span></div><span
+                            class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
+                        href="index.html#treasure-map-section" onclick="closeMobileNav()">
+                        <div class="flex items-center gap-2.5"><span
+                                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">event</span><span
+                                class="font-serif text-sm font-bold text-[#3a2410]">Events</span></div><span
+                            class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
+                        href="sponsors.html" onclick="closeMobileNav()">
+                        <div class="flex items-center gap-2.5"><span
+                                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">handshake</span><span
+                                class="font-serif text-sm font-bold text-[#3a2410]">Sponsors</span></div><span
+                            class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
+                        href="index.html#voyage-route-timeline" onclick="closeMobileNav()">
+                        <div class="flex items-center gap-2.5"><span
+                                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">map</span><span
+                                class="font-serif text-sm font-bold text-[#3a2410]">Voyage</span></div><span
+                            class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
+                        href="flashback.html" onclick="closeMobileNav()">
+                        <div class="flex items-center gap-2.5"><span
+                                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">history_edu</span><span
+                                class="font-serif text-sm font-bold text-[#3a2410]">Flashback</span></div><span
+                            class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
+                        href="index.html#echona-guidelines" onclick="closeMobileNav()">
+                        <div class="flex items-center gap-2.5"><span
+                                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">menu_book</span><span
+                                class="font-serif text-sm font-bold text-[#3a2410]">Guidelines</span></div><span
+                            class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#ede1cc] text-[#7b5800] border-2 border-[#d49e1e] font-bold text-xs shadow-sm transition-all"
+                        href="crew.html" onclick="closeMobileNav()">
+                        <div class="flex items-center gap-2.5"><span
+                                class="material-symbols-outlined text-[#7b5800] text-[20px]">groups</span><span
+                                class="font-serif text-sm font-bold text-[#3a2410]">Crew</span></div><span
+                            class="material-symbols-outlined text-[16px] text-[#7b5800]">check</span>
+                    </a>
+                    <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
+                        href="index.html#the-crew-section" onclick="closeMobileNav()">
+                        <div class="flex items-center gap-2.5"><span
+                                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">contact_support</span><span
+                                class="font-serif text-sm font-bold text-[#3a2410]">Contact Us</span></div><span
+                            class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="mt-auto pt-4 border-t-2 border-[#8e683e]/50 space-y-2.5">
+                    <a class="flex items-center justify-center gap-2 w-full py-5 bg-[#fcf8ee] text-[#3a2410] rounded-xl border-2 border-[#8e683e] font-extrabold text-xs uppercase tracking-wider hover:border-[#3a2410] hover:bg-[#ede1cc] shadow-sm transition-all"
+                        href="https://forms.eduqfix.com/echonaevent/add?formType=5706833377524017" target="_blank"
+                        onclick="closeMobileNav()"><span
+                            class="material-symbols-outlined text-[18px] text-[#3a2410]">how_to_reg</span><span
+                            class="">REGISTER EXPEDITION NOW</span></a>
+                    <a class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-[#d49e1e] via-[#e5ab2a] to-[#b37e0d] text-[#160d08] font-black text-xs uppercase tracking-wider shadow-[0_4px_16px_rgba(212,158,30,0.5)] border border-[#ffe082] hover:scale-105 transition-all animate-gold-pulse"
+                        href="https://forms.eduqfix.com/echonaevent/add?formType=5706833377524017" target="_blank"
+                        onclick="closeMobileNav()"><span
+                            class="material-symbols-outlined text-[18px]">confirmation_number</span><span
+                            class="">CLAIM VOYAGE ENTRY</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="universe">
+
+            <div class="moon"></div>
+
+            <div class="orbit"></div>
+            <div class="orbit two"></div>
+
+            <div class="ship one">⛵</div>
+            <div class="ship two">⛵</div>
+
+            <div class="bubbles">
+
+                <span class="bubble" style="left:5%;--move:80px;--time:16s;"></span>
+
+                <span class="bubble" style="left:14%;--move:-60px;--time:19s;"></span>
+
+                <span class="bubble" style="left:26%;--move:110px;--time:15s;"></span>
+
+                <span class="bubble" style="left:38%;--move:-80px;--time:20s;"></span>
+
+                <span class="bubble" style="left:52%;--move:100px;--time:17s;"></span>
+
+                <span class="bubble" style="left:65%;--move:-100px;--time:21s;"></span>
+
+                <span class="bubble" style="left:78%;--move:80px;--time:18s;"></span>
+
+                <span class="bubble" style="left:90%;--move:-70px;--time:16s;"></span>
+
+            </div>
+
+            <!-- Stars -->
+
+            <span class="star" style="left:8%;top:18%;"></span>
+            <span class="star" style="left:17%;top:48%;animation-delay:1s"></span>
+            <span class="star" style="left:27%;top:13%;animation-delay:2s"></span>
+            <span class="star" style="left:39%;top:30%;animation-delay:.5s"></span>
+            <span class="star" style="left:61%;top:17%;animation-delay:1.4s"></span>
+            <span class="star" style="left:73%;top:42%;animation-delay:2.5s"></span>
+            <span class="star" style="left:86%;top:20%;animation-delay:1s"></span>
+            <span class="star" style="left:94%;top:64%;animation-delay:3s"></span>
+
+        </div>
+
+
+<!-- ======================================================
+     MAIN CONTENT
+     ====================================================== -->
+
+        <main class="main">
+            <!-- Back Button -->
+            <a href="index.html" class="back-btn">⬅ Back to Home</a>
+
+            <header class="heading">
+
+                <div class="mini">
+                    ✦ The Pirate Universe ✦
+                </div>
+
+                <h1>
+                    Our<span> Leaders </span>
+                </h1>
+
+                <p>
+                    The navigators who guide our journey beyond the horizon
+                </p>
+
+            </header>
+
+
+    <!-- ==================================================
+         Leader TEAM
+    ================================================== -->
+
+            <section class="team">
+                 <!-- ================= Hon'ble VC Ma'am ================= -->
+
+                <article class="card">
+
+                    <div class="rope"></div>
+
+                    <div class="corner tl">⚓</div>
+                    <div class="corner tr">✦</div>
+                    <div class="corner bl">✦</div>
+                    <div class="corner br">⚓</div>
+
+                    <div class="spark s1"></div>
+                    <div class="spark s2"></div>
+                    <div class="spark s3"></div>
+                    <div class="spark s4"></div>
+
+                    <div class="photo-frame">
+
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <img src="assets/images/monika.jpg" alt="Hon'ble Monika Mittal Agarwal"
+                                    style="width:100%; height:100%; object-fit:contain; display:block;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="role">
+                        🏴‍☠️ The Pirate Queen 
+                    </div>
+
+                    <h2 class="name">
+                        Ms Monika Mittal Agarwal
+                    </h2>
+
+                    <div class="line"></div>
+
+                    <p class="description">
+                        Leads the entire fest, takes final decisions, coordinates all departments.
+                    </p>
+
+                </article>
+
+
+                <!-- ================= Respected Principal Sir ================= -->
+
+                <article class="card">
+
+                    <div class="rope"></div>
+
+                    <div class="corner tl">✦</div>
+                    <div class="corner tr">⚓</div>
+                    <div class="corner bl">⚓</div>
+                    <div class="corner br">✦</div>
+
+                    <div class="spark s1"></div>
+                    <div class="spark s2"></div>
+                    <div class="spark s3"></div>
+                    <div class="spark s4"></div>
+
+                    <div class="photo-frame">
+
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <img src="assets/images/vijaysharma.jpg" alt="Respected Principal Sir"
+                                    style="width:100%; height:100%; object-fit:contain; display:block;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="role">
+                        ⚓ The Quartermaster
+                    </div>
+
+                    <h2 class="name">Prof. Dr. Vijay Kumar Sharma
+                    </h2>
+
+                    <div class="line"></div>
+
+                    <p class="description">
+                        Manages teams, schedules, logistics, discipline and on-ground execution.
+                    </p>
+
+                </article>
+
+
+                <!-- ================= Respected Vice Principal Sir ================= -->
+
+                <article class="card">
+
+                    <div class="rope"></div>
+
+                    <div class="corner tl">⚓</div>
+                    <div class="corner tr">✦</div>
+                    <div class="corner bl">✦</div>
+                    <div class="corner br">⚓</div>
+
+                    <div class="spark s1"></div>
+                    <div class="spark s2"></div>
+                    <div class="spark s3"></div>
+                    <div class="spark s4"></div>
+
+                    <div class="photo-frame">
+
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <img src="assets/images/praveenagarwal.jpg" alt="Respected Vice Principal Sir"
+                                    style="width:100%; height:100%; object-fit:contain; display:block;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="role">
+                        🗺️ Master Navigator
+                    </div>
+
+                    <h2 class="name">
+                        Prof. Dr. Praveen Agarwal
+                    </h2>
+
+                    <div class="line"></div>
+
+                    <p class="description">
+                        Handles partnerships and the overall creative direction.
+                    </p>
+
+                </article>
+            </section>
+            <br/>
+            <br/>
+            <header class="heading">
+
+                <!--<div class="mini">
+                    ✦ The Pirate Universe ✦
+                </div>
+                -->
+                <h1>
+                    Our <span>Captains</span>
+                </h1>
+
+                <p>
+                    One ship. One crew. One mission. We sail where no fest has sailed before.
+                </p>
+
+            </header>
+          
+          <section class="team">
+                <!-- ================= TEACHER 1 ================= -->
+
+                <article class="card">
+
+                    <div class="rope"></div>
+
+                    <div class="corner tl">⚓</div>
+                    <div class="corner tr">✦</div>
+                    <div class="corner bl">✦</div>
+                    <div class="corner br">⚓</div>
+
+                    <div class="spark s1"></div>
+                    <div class="spark s2"></div>
+                    <div class="spark s3"></div>
+                    <div class="spark s4"></div>
+
+                    <div class="photo-frame">
+
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <img src="assets/images/pramil.png" alt="Pramil Sinha"
+                                    style="width:100%; height:100%; object-fit:contain; display:block;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="role">
+                        Captain
+                    </div>
+
+                    <h2 class="name">
+                        Pramil Sinha
+                    </h2>
+
+                    <div class="line"></div>
+
+                    <p class="description">
+                        The captain who guides the crew,
+                        shares knowledge and keeps the journey
+                        moving toward new horizons.
+                    </p>
+
+                </article>
+
+
+                <!-- ================= TEACHER 2 ================= -->
+
+                <article class="card">
+
+                    <div class="rope"></div>
+
+                    <div class="corner tl">✦</div>
+                    <div class="corner tr">⚓</div>
+                    <div class="corner bl">⚓</div>
+                    <div class="corner br">✦</div>
+
+                    <div class="spark s1"></div>
+                    <div class="spark s2"></div>
+                    <div class="spark s3"></div>
+                    <div class="spark s4"></div>
+
+                    <div class="photo-frame">
+
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <img src="assets/images/shiv.png" alt="Shiv Kumar"
+                                    style="width:100%; height:100%; object-fit:contain; display:block;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="role">
+                        Navigator
+                    </div>
+
+                    <h2 class="name">Shiv Kumar
+                    </h2>
+
+                    <div class="line"></div>
+
+                    <p class="description">
+                        The navigator who helps the crew
+                        discover the right path and turn
+                        every challenge into a new adventure.
+                    </p>
+
+                </article>
+
+
+                <!-- ================= TEACHER 3 ================= -->
+
+                <article class="card">
+
+                    <div class="rope"></div>
+
+                    <div class="corner tl">⚓</div>
+                    <div class="corner tr">✦</div>
+                    <div class="corner bl">✦</div>
+                    <div class="corner br">⚓</div>
+
+                    <div class="spark s1"></div>
+                    <div class="spark s2"></div>
+                    <div class="spark s3"></div>
+                    <div class="spark s4"></div>
+
+                    <div class="photo-frame">
+
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <img src="assets/images/sanjog.png" alt="Sanjog Arora"
+                                    style="width:100%; height:100%; object-fit:contain; display:block;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="role">
+                        Master Planner
+                    </div>
+
+                    <h2 class="name">
+                        Sanjog Arora
+                    </h2>
+
+                    <div class="line"></div>
+
+                    <p class="description">
+                        The strategist who helps the crew
+                        plan every expedition and discover
+                        treasures hidden beyond the map.
+                    </p>
+
+                </article>
+                  <!-- ================= TEACHER 4 ================= -->
+
+                <article class="card">
+
+                    <div class="rope"></div>
+
+                    <div class="corner tl">⚓</div>
+                    <div class="corner tr">✦</div>
+                    <div class="corner bl">✦</div>
+                    <div class="corner br">⚓</div>
+
+                    <div class="spark s1"></div>
+                    <div class="spark s2"></div>
+                    <div class="spark s3"></div>
+                    <div class="spark s4"></div>
+
+                    <div class="photo-frame">
+
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <img src="assets/images/noopur.jpeg" alt="Noopur Shrivastav"
+                                    style="width:100%; height:100%; object-fit:contain; display:block;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="role">
+                        Crew Mentor
+                    </div>
+
+                    <h2 class="name">
+                        Noopur Shrivastav
+                    </h2>
+
+                    <div class="line"></div>
+
+                    <p class="description">
+                        A mentor who inspires the crew to
+                        explore new ideas and discover
+                        new possibilities.
+                    </p>
+
+                </article>
+
+
+                <!-- ================= TEACHER 5 ================= -->
+
+                <article class="card">
+
+                    <div class="rope"></div>
+
+                    <div class="corner tl">✦</div>
+                    <div class="corner tr">⚓</div>
+                    <div class="corner bl">⚓</div>
+                    <div class="corner br">✦</div>
+
+                    <div class="spark s1"></div>
+                    <div class="spark s2"></div>
+                    <div class="spark s3"></div>
+                    <div class="spark s4"></div>
+
+                    <div class="photo-frame">
+
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <img src="assets/images/akanksha.png" alt="Akanksha Chaturvedi"
+                                    style="width:100%; height:100%; object-fit:contain; display:block;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="role">
+                        Guardian
+                    </div>
+
+                    <h2 class="name">
+
+                        Akanksha Chaturvedi
+                    </h2>
+
+                    <div class="line"></div>
+
+                    <p class="description">
+                        The guardian of the crew who inspires
+                        curiosity, confidence and the courage
+                        to explore unknown waters.
+                    </p>
+
+                </article>
+
+
+                <!-- ================= TEACHER 6 ================= -->
+
+                <article class="card">
+
+                    <div class="rope"></div>
+
+                    <div class="corner tl">✦</div>
+                    <div class="corner tr">⚓</div>
+                    <div class="corner bl">⚓</div>
+                    <div class="corner br">✦</div>
+
+                    <div class="spark s1"></div>
+                    <div class="spark s2"></div>
+                    <div class="spark s3"></div>
+                    <div class="spark s4"></div>
+
+                    <div class="photo-frame">
+
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <img src="assets/images/mansi.png" alt="Mansi Vijayvargiya"
+                                    style="width:100%; height:100%; object-fit:contain; display:block;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="role">
+                        Treasure Keeper
+                    </div>
+
+                    <h2 class="name">
+                        Mansi Vijayvargiya
+                    </h2>
+
+                    <div class="line"></div>
+
+                    <p class="description">
+                        A guiding presence who helps the crew
+                        protect knowledge and continue the
+                        journey toward new horizons.
+                    </p>
+
+                </article>
+            </section>
+             <br/>
+
+            <div class="main-title" style="margin-top: 100px;">
+                <h1>ALL EVENT COORDINATORS</h1>
+                <div class="title-line"></div>
+            </div>
+
+            <section class="category-section">
+
+                <h2 class="category-title">
+                    TECHNICAL ACTIVITIES
+                </h2>
+                <p class="category-subtitle">
+                    Overall Coordinators: Mr. Sanjog Arora, Ms. Akanksha Chaturvedi
+                </p>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        GameOn: Arena Wars (BGMI &amp; Free Fire)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Naresh Kumar Marwal, Mr. Saurabh Agarwal, Mr. Jai Prakash Pareek
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        CodeClash
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Nitesh Kaushik, Mr. Amit Arya
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Deck Craft
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Nirmalya Chowdhury, Mr. Shahnawaz Ansari
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Debugging
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Harveer Singh, Mr. Mayank Singh
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Quiz Competition
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Prashant Kumar, Dr. Sonu Saini
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        NeuroCanvas ( AI Painting)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Ms. Shweta Sharma, Ms. Muskan Choudhary
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Google Hunt
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Aslam Khan, Mr. Shahnawaz Ansari
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        BotBrew
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Uzair Ali, Ms. Shweta Sharma, Mr. Shivcharan Sharma
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        IPL Auction
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Uttam Kumar Gupta, Dr. Prakash Singh, Mr. Satish Kumar Jangid
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Laser Loot
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Ms. Hemlata Panwar, Mr. Jitendra Rai, Mr. Sonu Sahu
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Escape Room
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Dharmendra Chaudhary, Mr. Harveer Singh, Mr. Krishan Gautam
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Frankenstein Web &amp; Deployment
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Komal Tahiliani, Mr. Mayank Singh, Mr. Shivcharan Sharma
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Architectural Arena (System Design)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Ms. Shweta Sharma, Ms. Muskan Choudhary
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="category-section">
+
+                <h2 class="category-title">
+                    Cultural Activities
+                </h2>
+                <p class="category-subtitle">
+                    Overall Coordinators: Mr. Shiv Kumar S, Ms. Noopur Shrivastava
+                </p>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Fashion Fleet (Fashion Show)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Ms. Kritika Pal Saini, Mr. Uzair Ali, Mr. Vishram Saini
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Pirate's Melody (Solo Singing)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Sanjana Chugh, Ms. Pooja Soni
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Solo Storm (Dance Solo)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Ms. Arpita Sharma, Ms. Abhilasha Kumawat
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Crew in Motion (Dance Group)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Ms. Arpita Sharma, Ms. Abhilasha Sharma
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Pirates Street (Nukkad Natak)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Bhavana Mathur, Dr. Renu Saxena, Mr. Hanuman Sahay Mali
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Sailor's Words (Poetry)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Meharuddin Ahmed, Ms. Pooja Soni
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Captain Clash (Rap Battle)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Anil Dhawan, Ms. Divya Chauhan
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Reel Rush (Reel Making)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Aslam Khan, Mr. Shahnawaz Ansari
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        The Pirate's Tale (Mono Act)
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Bhavana Mathur, Dr. Renu Saxena, Mr. Hanuman Sahay Mali
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="category-section">
+
+                <h2 class="category-title">
+                    FUN ACTIVITIES
+                </h2>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Pirate Photo Booth &amp; Tattoo Station
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Suresh Kumar Sharma, Mr. Kripa Shankar
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Roadies
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Ajit, Mr. Sunil Raj Meena, Mr. Bhimraj Saini
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Captain's Challenge
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Ravi Prakash Sharma, Mr. Satish Jangid
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="category-section">
+
+                <h2 class="category-title">
+                    COMMITTEES
+                </h2>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Registration &amp; PR Colleges
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Shiv Kumar S, Ms. Noopur Shrivastava, Ms. Arpita Sharma, Mr. Rahul Goyal, Mr. Meharuddin Ahmed, Dr. Nirmalya Chowdhary
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Decoration
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Prasoon Sharma, Ms. Kritika Pal Saini, Mr. Paylet Gurjar
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Website
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Sanjog Arora, Ms. Akanksha Chaturvedi
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Sponsorship
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Anup Dubey, Dr. Uttam Kr. Gupta, Mr. Shahnawaz Ansari, Mr. Prasoon Sharma, Mr. Ayush Jain
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Publicity &amp; Social Media
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Sanjog Arora, Ms. Akanksha Chaturvedi, Mr. Kishan Kant Saini
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Press Media
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Ms. Meena Kaurani, Mr. Vinod Saini
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Stage / Light &amp; Sound / Back Stage
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Ms. Noopur Shrivastava, Mr. Prasoon Sharma, Mr. Mahendra Singh
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Anchoring
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Ms. Kritika Pal Saini, Ms. Divya Chauhan
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Hospitality
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Prasoon Sharma, Mr. Mahendra Singh, Mr. Bhupendra Singh Tomar
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Medical
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Ms. Charu Chauhan, Mr. Bhimraj Saini
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Discipline
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Proctor Team
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Logistic / Stalls Management
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Prasoon Sharma, Mr. Subhash Sharma, Mr. Bhupendra Singh Tomar, Mr. Mahendra Singh, Mr. Vinod Saini
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Certificate &amp; Prize Distribution
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Dr. Sanjana Chugh, Dr. Ajit, Mr. Tikam Khandelwal, Mr. Deepak Banjara
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Purchase
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: Mr. Subhash Sharma
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div class="event-name">
+                        Internal College PR
+                    </div>
+                    <div class="coordinators">
+                        Coordinators: I Year - Dr. Anil Dhawan, Dr. Sanjana Chugh | CE Dept. - Mr. Shiv Kumar S, Mr. Sunil R Meena | CSE Dept. - Mr. Dharmendra Chaudhary, Mr. Sanjog Arora | EE Dept. - Mr. Pramil sinha, Dr. Uttam Gupta | ME Dept. - Dr. Bhavana Mathur, Mr. Prashant Kumar
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Footer Credits & Social Media Icons (Exact as details.html) -->
+            <footer class="details-footer">
+                <p>Designed &amp; Developed by <strong>Devanshu Meena, Bhavna Motiyani, Taniya Baliyan</strong></p>
+                <p><em>Under the guidance of </em><strong>Mr. Sanjog Arora &amp; Ms. Akanksha Chaturvedi</strong></p>
+                <p class="fest-copy">© 2026 ECHONA • Anand International College of Engineering, Jaipur</p>
+
+                <!-- Social Media Links Container -->
+                <div class="social-icons-wrap">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/anandice.jpr" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram" title="Instagram" class="social-btn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/anandicejaipur" target="_blank" rel="noopener noreferrer"
+                        aria-label="Facebook" title="Facebook" class="social-btn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+
+                    <!-- Twitter / X -->
+                    <a href="https://twitter.com/AnandcollegeEng" target="_blank" rel="noopener noreferrer"
+                        aria-label="Twitter / X" title="Twitter / X" class="social-btn">
+                        <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@anand-ice" target="_blank" rel="noopener noreferrer"
+                        aria-label="YouTube" title="YouTube" class="social-btn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/school/anand-ice" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn" title="LinkedIn" class="social-btn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                        </svg>
+                    </a>
+
+                    <!-- Snapchat -->
+                    <a href="https://www.snapchat.com/add/anandice.jpr" target="_blank" rel="noopener noreferrer"
+                        aria-label="Snapchat" title="Snapchat" class="social-btn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12.298.002c-3.642.062-6.524 2.87-6.524 6.551 0 .61.096 1.45.289 2.052.125.39.062.593-.167.873-.393.479-1.077.925-1.802 1.173-.474.161-.837.49-.837.973 0 .736.634 1.258 1.488 1.258.261 0 .546-.051.815-.145.541-.188.826.046.702.585-.349 1.517-1.42 2.62-2.825 2.946-.48.111-.747.534-.747.986 0 .584.457.994 1.157 1.031.57.03 1.282-.125 1.944-.412.399-.173.666-.08.831.253.518 1.045 1.47 1.637 2.76 1.713.432.025.748.243.834.606.126.533.435.856.965.986.721.178 1.64.269 2.698.269 1.139 0 2.115-.101 2.883-.301.485-.126.772-.44.898-.948.093-.374.406-.598.847-.621 1.284-.067 2.227-.648 2.748-1.688.169-.336.438-.429.839-.255.666.29 1.385.446 1.961.414.697-.038 1.15-.447 1.15-1.031 0-.452-.267-.875-.747-.986-1.405-.326-2.476-1.429-2.825-2.946-.124-.539.161-.773.702-.585.269.094.554.145.815.145.854 0 1.488-.522 1.488-1.258 0-.483-.363-.812-.837-.973-.725-.248-1.409-.694-1.802-1.173-.229-.28-.292-.483-.167-.873.193-.602.289-1.442.289-2.052 0-3.681-2.882-6.489-6.524-6.551z" />
+                        </svg>
+                    </a>
+                </div>
+            </footer>
+
+        </main>
+
+        <script>
+            function toggleMobileNav() {
+                const drawer = document.getElementById('mobile-nav-drawer');
+                const panel = document.getElementById('mobile-nav-panel');
+                const toggleBtn = document.getElementById('mobile-nav-toggle');
+                const toggleIcon = document.getElementById('mobile-nav-toggle-icon');
+                if (!drawer || !panel) return;
+                const isOpen = !drawer.classList.contains('pointer-events-none');
+                if (isOpen) {
+                    closeMobileNav();
+                } else {
+                    drawer.classList.remove('pointer-events-none', 'opacity-0');
+                    drawer.classList.add('opacity-100');
+                    panel.classList.remove('translate-x-full', 'pointer-events-none');
+                    panel.classList.add('translate-x-0', 'pointer-events-auto');
+                    if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
+                    if (toggleIcon) toggleIcon.textContent = 'close';
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeMobileNav() {
+                const drawer = document.getElementById('mobile-nav-drawer');
+                const panel = document.getElementById('mobile-nav-panel');
+                const toggleBtn = document.getElementById('mobile-nav-toggle');
+                const toggleIcon = document.getElementById('mobile-nav-toggle-icon');
+                if (!drawer || !panel) return;
+                drawer.classList.remove('opacity-100');
+                drawer.classList.add('opacity-0', 'pointer-events-none');
+                panel.classList.remove('translate-x-0', 'pointer-events-auto');
+                panel.classList.add('translate-x-full', 'pointer-events-none');
+                if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+                if (toggleIcon) toggleIcon.textContent = 'menu';
+                document.body.style.overflow = '';
+            }
+        </script>
+
+    </body>
+
+</html>
