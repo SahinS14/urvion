@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title class="">ECHONA - 2026</title>
+    <title class="">URVION - 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -1473,6 +1473,8 @@
         }
     </style>
 
+<style>/* Preserve crisp art and clear mobile branding. */
+#urvion-hero-art{object-position:45% center}nav img[src*="urvion-wordmark"]{filter:none!important} @media(min-width:1024px){#urvion-hero-art{object-position:center}}</style>
 </head>
 
 
@@ -1526,79 +1528,6 @@
     <!-- ==================================================================== -->
     <!-- FULL-SCREEN SEAMLESS ANIMATION PRELOADER                             -->
     <!-- ==================================================================== -->
-    <div id="video-preloader"
-        class="fixed inset-0 z-[99999] w-full h-full h-[100dvh] bg-[#0a0503] transition-opacity duration-[800ms] ease-out select-none overflow-hidden flex flex-col justify-between">
-
-        <!-- Full-Bleed Edge-to-Edge Animation Video -->
-        <div class="absolute inset-0 w-full h-full z-0 overflow-hidden flex items-center justify-center">
-            <video id="preloader-video" class="w-full h-full object-cover block filter brightness-105 contrast-105"
-                autoplay="" muted="" playsinline="" webkit-playsinline="" preload="auto">
-                <source src="assets/videos/preloader.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <!-- Cinematic Vignette & Edge Blend -->
-            <div
-                class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(10,5,3,0.75)_95%)]">
-            </div>
-            <div
-                class="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0a0503] via-transparent to-[#0a0503]/50">
-            </div>
-        </div>
-
-        <!-- Top Floating Controls Header -->
-        <div class="relative z-10 w-full p-4 sm:p-6 flex items-center justify-between pointer-events-auto">
-            <!-- Anand Logo (Same as Home Page Nav) -->
-            <div class="relative flex items-center gap-2.5 sm:gap-3 shrink-0 group">
-                <!-- Glowing Light Behind Anand Logo -->
-                <div
-                    class="absolute inset-0 m-auto w-3/4 h-3/4 rounded-full bg-gradient-to-r from-[#ffe082] via-[#d49e1e] to-[#f59e0b] opacity-75 blur-md group-hover:blur-lg group-hover:scale-125 group-hover:opacity-100 transition-all duration-300 pointer-events-none animate-pulse">
-                </div>
-                <!-- Mobile Logo (anand2.png) -->
-                <img src="assets/images/anand.png" alt="Anand Logo"
-                    class="block sm:hidden relative z-10 h-16 w-auto max-w-[200px] object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(255,224,130,0.9)]" decoding="async">
-                <!-- Desktop Logo (anand.png) -->
-                <img src="assets/images/anand.png" alt="Anand Logo"
-                    class="hidden sm:block relative z-10 h-11 w-auto object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(255,224,130,0.9)]" decoding="async">
-            </div>
-
-            <!-- Right Controls: Audio & Skip Intro -->
-            <div class="flex items-center gap-3">
-                <!-- Audio Toggle -->
-                <button id="preloader-mute-btn" onclick="togglePreloaderAudio()" aria-label="Toggle Sound"
-                    class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#160d08]/70 hover:bg-[#2a170d]/90 text-[#f2be71] border border-[#8e683e]/50 hover:border-[#f2be71] backdrop-blur-md text-xs font-bold transition-all cursor-pointer shadow-lg active:scale-95">
-                    <span id="preloader-mute-icon" class="material-symbols-outlined text-[16px]">volume_off</span>
-                    <span id="preloader-mute-text" class="hidden sm:inline">Sound Off</span>
-                </button>
-
-                <!-- Skip Intro Button -->
-                <button id="preloader-skip-btn" onclick="dismissPreloader()" aria-label="Skip Intro"
-                    class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#d49e1e] via-[#e5ab2a] to-[#b37e0d] text-[#160d08] font-black text-xs uppercase tracking-wider shadow-[0_4px_18px_rgba(212,158,30,0.5)] border border-[#ffe082] hover:scale-105 active:scale-95 transition-all cursor-pointer">
-                    <span>Skip Intro</span>
-                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Bottom Loading Status & Progress Bar -->
-        <div class="relative z-10 w-full p-4 sm:p-6 flex flex-col items-center gap-2 pointer-events-none">
-            <div
-                class="flex items-center gap-2 text-xs text-[#d4a359] font-bold tracking-[0.2em] uppercase drop-shadow-md">
-                <span class="material-symbols-outlined text-[16px] text-[#fde047] animate-pulse">anchor</span>
-                <span>HOISTING SAILS &amp; PREPARING VOYAGE</span>
-            </div>
-
-            <!-- Ultra-Sleek Full-Width Progress Indicator Bar -->
-            <div
-                class="w-full max-w-md bg-[#160d08]/80 border border-[#8e683e]/60 rounded-full p-0.5 backdrop-blur-md shadow-lg">
-                <div class="w-full bg-[#2a170d] h-1.5 rounded-full overflow-hidden relative">
-                    <div id="preloader-progress-bar"
-                        class="bg-gradient-to-r from-[#d49e1e] via-[#e5ab2a] to-[#fde047] h-full w-0 transition-all duration-150 rounded-full shadow-[0_0_12px_#fde047]">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
         (function () {
             const preloader = document.getElementById('video-preloader');
@@ -1863,15 +1792,15 @@
         class="fixed top-0 left-0 w-full z-50 bg-[#5A4632]/95 backdrop-blur-md shadow-[0_4px_22px_rgba(10,5,2,0.7)] border-b border-[#d49e1e]/60">
         <div class="w-full px-4 sm:px-6 lg:px-10 py-3 flex items-center justify-between gap-4">
             <a class="relative flex items-center gap-2.5 sm:gap-3 shrink-0 group" href="#">
-                <!-- Glowing Light Behind Anand Logo -->
+                <!-- Glowing Light Behind URVION — ECO SOCIAL CLUB -->
                 <div
                     class="absolute inset-0 m-auto w-3/4 h-3/4 rounded-full bg-gradient-to-r from-[#ffe082] via-[#d49e1e] to-[#f59e0b] opacity-75 blur-md group-hover:blur-lg group-hover:scale-125 group-hover:opacity-100 transition-all duration-300 pointer-events-none animate-pulse">
                 </div>
                 <!-- Mobile Logo (anand2.png) -->
-                <img src="assets/images/anand.png" alt="Anand Logo"
+                <img src="assets/images/urvion-wordmark.png" alt="URVION — ECO SOCIAL CLUB"
                     class="block sm:hidden relative z-10 h-20 w-auto max-w-[200px] object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(255,224,130,0.9)]" decoding="async">
-                <!-- Desktop Logo (anand.png) -->
-                <img src="assets/images/anand.png" alt="Anand Logo"
+                <!-- Desktop Logo (ECO SOCIAL CLUB.png) -->
+                <img src="assets/images/urvion-wordmark.png" alt="URVION — ECO SOCIAL CLUB"
                     class="hidden sm:block relative z-10 h-20 w-auto max-w-[250px] object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(255,224,130,0.9)]" decoding="async">
             </a>
             <nav class="hidden lg:flex items-center gap-6 px-7 py-2">
@@ -1879,7 +1808,7 @@
                     <span class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span
                         class="">Deck</span></a>
                 <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-                    href="#echona-about"><span class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span
+                    href="#urvion-about"><span class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span
                         class="">About</span></a>
                 <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
                     href="#headliners-section"><span
@@ -1902,7 +1831,7 @@
                         class="material-symbols-outlined text-[20px] text-[#E8D7B5]">history_edu</span><span
                         class="">Flashback</span></a>
                 <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-                    href="#echona-guidelines"><span
+                    href="#urvion-guidelines"><span
                         class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span
                         class="">Guidelines</span></a>
                 <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
@@ -1916,51 +1845,7 @@
 
             <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
                 <!-- Mariner's Compass Replay Preloader Button in Navbar -->
-                <button id="navbar-replay-btn" aria-label="Replay Cinematic Preloader Intro (Mariner's Compass)"
-                    title="Replay Preloader Intro Video (Mariner's Compass)"
-                    class="relative group flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-full bg-gradient-to-b from-[#341d10] via-[#25150c] to-[#180e09] text-[#f2be71] border-2 border-[#d49e1e] hover:border-[#ffe082] shadow-[0_2px_14px_rgba(212,158,30,0.6)] active:scale-95 transition-all cursor-pointer shrink-0"
-                    onclick="replayPreloader()">
-                    <div class="w-6 h-6 sm:w-7 sm:h-7 relative flex items-center justify-center shrink-0">
-                        <svg class="w-full h-full animate-compass-spin" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="47" fill="#1c0f09" stroke="#d49e1e" stroke-width="3"></circle>
-                            <circle cx="50" cy="50" r="42" fill="none" stroke="#8e683e" stroke-width="1.5"
-                                stroke-dasharray="2 3">
-                            </circle>
-                            <circle cx="50" cy="50" r="34" fill="#2a170d" stroke="#d49e1e" stroke-width="1"></circle>
-                            <g stroke="#d49e1e" stroke-width="1.5">
-                                <line x1="50" y1="8" x2="50" y2="16"></line>
-                                <line x1="50" y1="84" x2="50" y2="92"></line>
-                                <line x1="8" y1="50" x2="16" y2="50"></line>
-                                <line x1="84" y1="50" x2="92" y2="50"></line>
-                                <line x1="21" y1="21" x2="27" y2="27"></line>
-                                <line x1="73" y1="73" x2="79" y2="79"></line>
-                                <line x1="79" y1="21" x2="73" y2="27"></line>
-                                <line x1="21" y1="79" x2="27" y2="73"></line>
-                            </g>
-                            <text x="50" y="26" font-size="9" font-weight="bold" fill="#f2be71" text-anchor="middle"
-                                font-family="serif">N</text>
-                            <text x="50" y="80" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle"
-                                font-family="serif">S</text>
-                            <text x="78" y="53" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle"
-                                font-family="serif">E</text>
-                            <text x="22" y="53" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle"
-                                font-family="serif">W</text>
-                        </svg>
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 absolute inset-0 m-auto animate-boat-sway pointer-events-none drop-shadow-[0_0_8px_#fde047]"
-                            viewBox="0 0 60 60">
-                            <polygon points="30,6 36,30 30,26 24,30" fill="#b91c1c" stroke="#fca5a5" stroke-width="0.5">
-                            </polygon>
-                            <polygon points="30,54 36,30 30,26 24,30" fill="#3a2410" stroke="#90bbeb"
-                                stroke-width="0.5"></polygon>
-                            <circle cx="30" cy="30" r="4" fill="#d49e1e" stroke="#ffe082" stroke-width="1.5"></circle>
-                        </svg>
-                    </div>
-                    <span class="absolute -top-1 -right-1 flex h-2 w-2 sm:h-2.5 sm:w-2.5">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fde047] opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-[#eab308]"></span>
-                    </span>
-                </button>
+                
                 <button id="mobile-nav-toggle" aria-label="Open Captain's Logbook &amp; Navigation Map"
                     aria-expanded="false"
                     class="lg:hidden relative group flex items-center justify-center active:scale-95 transition-all cursor-pointer shrink-0"
@@ -2024,7 +1909,7 @@
                             class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </a>
                     <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-                        href="#echona-about" onclick="closeMobileNav()">
+                        href="#urvion-about" onclick="closeMobileNav()">
                         <div class="flex items-center gap-2.5"><span
                                 class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">info</span><span
                                 class="font-serif text-sm font-bold text-[#3a2410]">About</span></div><span
@@ -2066,7 +1951,7 @@
                             class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </a>
                     <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-                        href="#echona-guidelines" onclick="closeMobileNav()">
+                        href="#urvion-guidelines" onclick="closeMobileNav()">
                         <div class="flex items-center gap-2.5"><span
                                 class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">menu_book</span><span
                                 class="font-serif text-sm font-bold text-[#3a2410]">Guidelines</span></div><span
@@ -2105,7 +1990,7 @@
             </div>
             <div class="mt-6 pt-3 border-t border-[#8e683e]/40 text-center relative z-10">
                 <div class="text-[11px] text-[#615143] font-bold flex items-center justify-center gap-1.5"><span
-                        class="">Anand-ICE Jaipur • Oct 30-31</span><span class="text-[#ca8a04]">⚓</span></div>
+                        class="">ECO SOCIAL CLUB Jaipur • Oct 30-31</span><span class="text-[#ca8a04]">⚓</span></div>
             </div>
         </div>
     </div>
@@ -2117,15 +2002,9 @@
             class="relative w-full min-h-screen lg:min-h-0 lg:h-[101vh] flex items-center justify-center -mt-20 pt-24 lg:pt-20 pb-6 lg:pb-4 overflow-hidden bg-gradient-to-b from-[#180e09] via-[#2d1b11] to-[#1a0f0a]">
             <!-- Crisp HD Pirate Galleon Background Video -->
             <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                <video id="hero-bg-video"
-                    class="w-full h-full object-cover object-center opacity-95 filter brightness-110 saturate-125 contrast-110 scale-[1.01] transition-opacity duration-1000"
-                    muted="" loop="" playsinline="" webkit-playsinline="" preload="none"
-                    poster="assets/images/hero.png">
-                    <source src="assets/videos/338280.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
+                <img id="urvion-hero-art" src="assets/images/urvion-hero.png" alt="A golden pirate galleon sailing toward tropical cliffs at sunset" class="w-full h-full object-cover object-center" fetchpriority="high" decoding="async">
                 <!-- Elegant balanced dark vignette & scrim overlay for 100% legibility -->
-                <div class="absolute inset-0 bg-gradient-to-t from-[#140b07] via-[#1a0f0a]/35 to-[#120a06]/20"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#140b07] via-[#08191f]/10 to-[#06161e]/10"></div>
                 <div
                     class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(15,8,4,0.55)_100%)]">
                 </div>
@@ -2135,9 +2014,9 @@
                 class="relative z-10 max-w-5xl mx-auto px-4 w-full flex flex-col items-center text-center my-auto pt-4">
                 <!-- Main Headline Image -->
                 <div
-                    class="relative max-w-xs sm:max-w-md lg:max-w-xl mx-auto mb-2 flex items-center justify-center group">
-                    <img src="assets/images/echona-26.png" alt="ECHONA 2026"
-                        class="w-full h-auto object-contain max-h-40 sm:max-h-56 lg:max-h-72 filter drop-shadow-[0_6px_28px_rgba(212,158,30,0.85)] drop-shadow-[0_0_15px_rgba(0,0,0,0.9)] hover:scale-105 transition-transform duration-300" decoding="async">
+                    class="relative w-full max-w-sm sm:max-w-xl lg:max-w-3xl mx-auto mb-5 flex items-center justify-center group">
+                    <img src="assets/images/urvion-wordmark.png" alt="URVION 2026"
+                        class="w-full h-auto object-contain max-h-48 sm:max-h-72 lg:max-h-80 filter drop-shadow-[0_6px_20px_rgba(0,0,0,0.75)] drop-shadow-[0_0_15px_rgba(0,0,0,0.9)] hover:scale-105 transition-transform duration-300" decoding="async">
                 </div>
                 <!-- 3D Solid White Sparkling Subtitle -->
                 <div class="relative flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6 select-none">
@@ -2160,7 +2039,7 @@
                 0 0 25px rgba(255, 255, 255, 0.9);
               animation: textSparkle 2.5s ease-in-out infinite;
             ">
-                        INTER COLLEGIATE TECHNO-CULTURAL FEST
+                        THE GRAND TECHNO-CULTURAL VOYAGE
                     </h3>
                     <span class="text-[#ffffff] text-lg sm:text-xl animate-ping opacity-90 drop-shadow-[0_0_12px_#fff]"
                         style="animation-delay: 1.25s;">✦</span>
@@ -2168,9 +2047,9 @@
 
 
 
-                <!-- ECHONA 2026 - Captain's Log countdown -->
+                <!-- URVION 2026 - Captain's Log countdown -->
                 <section class="ecv my-6" id="ecv" data-target="2026-10-30T09:00:00+05:30"
-                    aria-label="Countdown to ECHONA 2026">
+                    aria-label="Countdown to URVION 2026">
                     <div class="ecv-dust" aria-hidden="true"></div>
 
                     <div class="ecv-log">
@@ -2230,7 +2109,7 @@
 
                         var target = new Date(root.getAttribute("data-target")).getTime();
                         if (isNaN(target)) {
-                            console.error("ECHONA countdown: data-target is not a valid date string.");
+                            console.error("URVION countdown: data-target is not a valid date string.");
                             root.style.display = "none";
                             return;
                         }
@@ -2323,7 +2202,7 @@
                 class="flex-1 h-[2px] sm:h-[3px] bg-gradient-to-r from-transparent via-[#fde047] to-[#d49e1e] shadow-[0_0_12px_#fde047,0_0_24px_#eab308]">
             </div>
             <div class="px-3 sm:px-6 shrink-0 relative flex items-center justify-center">
-                <img src="assets/images/separtor2.png" alt="Pirate Ribbon Separator"
+                <img src="assets/images/urvion-divider.png" alt="Pirate Ribbon Separator"
                     class="h-8 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_16px_rgba(253,224,71,0.9)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)] animate-boat-sway" decoding="async" loading="lazy">
             </div>
             <div
@@ -2332,17 +2211,17 @@
         </div>
 
         <!--
-  ECHONA 2026 - About section, "About Echona" (drop-in snippet)
+  URVION 2026 - About section, "About Urvion" (drop-in snippet)
 
   WHERE THIS TEXT CAME FROM
-  Rebuilt from the actual ECHONA 2025 "About Echona" section (screenshots
+  Rebuilt from the actual URVION 2025 "About Urvion" section (screenshots
   you shared), not from search results. That section was written for
   2025's Halloween x Multiverse theme, so it is split below into two
   kinds of text - marked with HTML comments so you can tell them apart:
 
   1. FACT / EVERGREEN (kept from 2025, only reworded to drop the
-     Halloween-specific wording): the opening description of Echona as
-     an Anand-ICE techno-cultural fest, and the full Attractions list -
+     Halloween-specific wording): the opening description of Urvion as
+     an ECO SOCIAL CLUB techno-cultural fest, and the full Attractions list -
      prize pool, goodies, performances, technical & cultural events,
      live concert, food stalls, fiesta, carnival. Nothing here is
      invented; these are the same facts, not new ones.
@@ -2356,7 +2235,7 @@
 
   HOW TO USE
   Paste this whole block where the About section should sit on the
-  ECHONA 2026 page. Self-contained; all classes are prefixed "eab-" so
+  URVION 2026 page. Self-contained; all classes are prefixed "eab-" so
   they won't clash with the rest of your site's CSS.
 -->
 
@@ -2643,7 +2522,7 @@
             }
         </style>
 
-        <section class="eab" id="echona-about" aria-labelledby="eab-heading">
+        <section class="eab" id="urvion-about" aria-labelledby="eab-heading">
             <span class="eab-deco d1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 4l7 7M20 4l-7 7M4 20l7-7M20 20l-7-7"></path>
@@ -2671,14 +2550,14 @@
                             <path d="M12 2v20M12 6l7 3-7 3-7-3 7-3z"></path>
                         </svg>
                     </div>
-                    <h2 class="eab-title" id="eab-heading">About Echona</h2>
+                    <h2 class="eab-title" id="eab-heading">About Urvion</h2>
                 </div>
 
                 <div class="eab-copy">
                     <!-- FACT / EVERGREEN - reworded from the 2025 opening line, Halloween wording removed -->
                     <p>A magnificent event that transforms you from within - a vibrant fusion of culture and technology,
                         talent
-                        and creativity. Anand-ICE's biggest on-campus festival of the year invites you aboard, where the
+                        and creativity. ECO SOCIAL CLUB's biggest on-campus festival of the year invites you aboard, where the
                         campus
                         turns into uncharted waters, alive with mystery and thrill.</p>
                     <!-- FACT / EVERGREEN - kept close to the 2025 wording, this part was not theme-specific -->
@@ -2688,7 +2567,7 @@
                         the
                         atmosphere, every moment promises its own thrill.</p>
                     <!-- FACT - theme name confirmed by the user as "Pirate" -->
-                    <p>This year, ECHONA sails into the world of <mark>PIRATE</mark>, where old maps run out and every
+                    <p>This year, URVION sails into the world of <mark>PIRATE</mark>, where old maps run out and every
                         horizon
                         hides a new find. The mood turns bold, adventurous, and a little dangerous - turning the fest
                         into a voyage
@@ -2813,7 +2692,7 @@
                 class="flex-1 h-[2px] sm:h-[3px] bg-gradient-to-r from-transparent via-[#fde047] to-[#d49e1e] shadow-[0_0_12px_#fde047,0_0_24px_#eab308]">
             </div>
             <div class="px-3 sm:px-6 shrink-0 relative flex items-center justify-center">
-                <img src="assets/images/separtor2.png" alt="Pirate Ribbon Separator"
+                <img src="assets/images/urvion-divider.png" alt="Pirate Ribbon Separator"
                     class="h-8 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_16px_rgba(253,224,71,0.9)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)] animate-boat-sway" decoding="async" loading="lazy">
             </div>
             <div
@@ -3504,7 +3383,7 @@
                                     without speaking. (Solo)</p>
                                 <div class="mt-3 text-xs text-[#5a4a3b] font-bold flex items-center gap-1"><span
                                         class="material-symbols-outlined text-[16px] text-[#943800]">location_on</span>
-                                    Venue: Near I Love Anand
+                                    Venue: Near I Love ECO SOCIAL CLUB
                                 </div>
                             </div>
                             <div
@@ -3866,7 +3745,7 @@
                 class="flex-1 h-[2px] sm:h-[3px] bg-gradient-to-r from-transparent via-[#fde047] to-[#d49e1e] shadow-[0_0_12px_#fde047,0_0_24px_#eab308]">
             </div>
             <div class="px-3 sm:px-6 shrink-0 relative flex items-center justify-center">
-                <img src="assets/images/separtor2.png" alt="Pirate Ribbon Separator"
+                <img src="assets/images/urvion-divider.png" alt="Pirate Ribbon Separator"
                     class="h-8 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_16px_rgba(253,224,71,0.9)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)] animate-boat-sway" decoding="async" loading="lazy">
             </div>
             <div
@@ -3886,7 +3765,7 @@
                 </h2>
 
                 <p class="mt-3 text-sm md:text-base text-[#d8c3aa] max-w-xl font-medium">
-                    Anchor your alliance with Echona 2026. Partner with our sovereign voyage!
+                    Anchor your alliance with Urvion 2026. Partner with our sovereign voyage!
                 </p>
 
 
@@ -3911,7 +3790,7 @@
 
                         <!-- Plaque 2: MRQ BUS SERVICE -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('MRQ BUS SERVICE', 'Moving You Forward.', 'MRQ Bus Service is a trusted transportation partner committed to safe, reliable, and comfortable travel. Keeping students and attendees connected and on the move throughout Echona 2026.', 'Official Transport Partner', 'Transport Partner', 'directions_bus', '')">
+                            onclick="openSponsorModal('MRQ BUS SERVICE', 'Moving You Forward.', 'MRQ Bus Service is a trusted transportation partner committed to safe, reliable, and comfortable travel. Keeping students and attendees connected and on the move throughout Urvion 2026.', 'Official Transport Partner', 'Transport Partner', 'directions_bus', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -3937,7 +3816,7 @@
 
                         <!-- Plaque 3: INFLUENCE NEXUS -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-2"
-                            onclick="openSponsorModal('INFLUENCE NEXUS', 'Connect. Amplify. Inspire.', 'Influence Nexus is a dynamic marketing and media partner that connects brands with the right audiences. Empowering Echona 2026 with strategic outreach, influencer networks, and impactful storytelling.', 'Official Media Partner', 'Media Partner', 'campaign', '')">
+                            onclick="openSponsorModal('INFLUENCE NEXUS', 'Connect. Amplify. Inspire.', 'Influence Nexus is a dynamic marketing and media partner that connects brands with the right audiences. Empowering Urvion 2026 with strategic outreach, influencer networks, and impactful storytelling.', 'Official Media Partner', 'Media Partner', 'campaign', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -3963,7 +3842,7 @@
 
                         <!-- Plaque 4: ANGEERA AIRCON -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('ANGEERA AIRCON', 'Cool Comfort. Delivered.', 'Angeera Aircon brings premium air conditioning solutions to homes and businesses. Proud to keep the Echona 2026 experience cool, comfortable, and refreshing for every attendee.', 'Official Comfort Partner', 'HVAC Partner', 'ac_unit', '')">
+                            onclick="openSponsorModal('ANGEERA AIRCON', 'Cool Comfort. Delivered.', 'Angeera Aircon brings premium air conditioning solutions to homes and businesses. Proud to keep the Urvion 2026 experience cool, comfortable, and refreshing for every attendee.', 'Official Comfort Partner', 'HVAC Partner', 'ac_unit', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -3989,7 +3868,7 @@
 
                         <!-- Plaque 5: NOHARA SOLARGY -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('NOHARA SOLARGY', 'Power the Future.', 'Nohara Solargy is a leading solar energy solutions provider, dedicated to sustainable and clean power. Bringing green energy leadership and innovation to Echona 2026 as our energy partner.', 'Official Energy Partner', 'Energy Partner', 'solar_power', '')">
+                            onclick="openSponsorModal('NOHARA SOLARGY', 'Power the Future.', 'Nohara Solargy is a leading solar energy solutions provider, dedicated to sustainable and clean power. Bringing green energy leadership and innovation to Urvion 2026 as our energy partner.', 'Official Energy Partner', 'Energy Partner', 'solar_power', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4015,7 +3894,7 @@
 
                         <!-- Plaque 6: CODEYART -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('CODEYART', 'Code. Create. Conquer.', 'CodeYart Software Solutions is a cutting-edge software development company building elegant digital products and experiences. Supporting Echona 2026 as the official tech solutions partner.', 'Official Tech Partner', 'Tech Partner', 'code', '')">
+                            onclick="openSponsorModal('CODEYART', 'Code. Create. Conquer.', 'CodeYart Software Solutions is a cutting-edge software development company building elegant digital products and experiences. Supporting Urvion 2026 as the official tech solutions partner.', 'Official Tech Partner', 'Tech Partner', 'code', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4041,7 +3920,7 @@
 
                         <!-- Plaque 7: UNILOX -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('UNILOX', 'Unlock Your Potential.', 'Unilox is a forward-thinking brand committed to unlocking new possibilities. Proud to be part of Echona 2026, driving value and innovation for students and participants.', 'Official Partner', 'Brand Partner', 'lock_open', '')">
+                            onclick="openSponsorModal('UNILOX', 'Unlock Your Potential.', 'Unilox is a forward-thinking brand committed to unlocking new possibilities. Proud to be part of Urvion 2026, driving value and innovation for students and participants.', 'Official Partner', 'Brand Partner', 'lock_open', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4067,7 +3946,7 @@
 
                         <!-- Plaque 8: GRRAS -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-2"
-                            onclick="openSponsorModal('GRRAS', 'Train. Certify. Excel.', 'Grras Solutions is a premier IT training and certification institute offering industry-recognized courses. Empowering Echona 2026 participants with cutting-edge skills for the digital future.', 'Official Training Partner', 'Training Partner', 'school', '')">
+                            onclick="openSponsorModal('GRRAS', 'Train. Certify. Excel.', 'Grras Solutions is a premier IT training and certification institute offering industry-recognized courses. Empowering Urvion 2026 participants with cutting-edge skills for the digital future.', 'Official Training Partner', 'Training Partner', 'school', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4093,7 +3972,7 @@
 
                         <!-- Plaque 9: COPLUR -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('COPLUR', 'Bridging Talent & Empowering Futures.', 'Coplur is dedicated to connecting exceptional talent with transformative opportunities. As a proud partner of Echona 2026, Coplur helps bridge the gap between ambition and achievement for every student.', 'Official Talent Partner', 'Talent Partner', 'handshake', '')">
+                            onclick="openSponsorModal('COPLUR', 'Bridging Talent & Empowering Futures.', 'Coplur is dedicated to connecting exceptional talent with transformative opportunities. As a proud partner of Urvion 2026, Coplur helps bridge the gap between ambition and achievement for every student.', 'Official Talent Partner', 'Talent Partner', 'handshake', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4145,7 +4024,7 @@
 
                         <!-- Plaque 11: UNIQUE FACILITY AND MANAGEMENT SERVICES -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('UNIQUE FACILITY', 'Managing Excellence, Delivering Comfort.', 'Unique Facility and Management Services is a trusted name in professional facility management, delivering world-class operational support, housekeeping, and infrastructure services. Proud to be an official partner of Echona 2026.', 'Official Facility Partner', 'Facility Partner', 'corporate_fare', '')">
+                            onclick="openSponsorModal('UNIQUE FACILITY', 'Managing Excellence, Delivering Comfort.', 'Unique Facility and Management Services is a trusted name in professional facility management, delivering world-class operational support, housekeeping, and infrastructure services. Proud to be an official partner of Urvion 2026.', 'Official Facility Partner', 'Facility Partner', 'corporate_fare', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4172,7 +4051,7 @@
 
                         <!-- Plaque 12: SUMMER COOL REFRIGERATION -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('SUMMER COOL REFRIGERATION', 'Stay Cool, Stay Fresh.', 'Summer Cool Refrigeration provides premium refrigeration and cooling solutions for commercial and industrial needs. Keeping Echona 2026 fresh, cool, and comfortable as our official refrigeration partner.', 'Official Refrigeration Partner', 'Cooling Partner', 'thermostat', '')">
+                            onclick="openSponsorModal('SUMMER COOL REFRIGERATION', 'Stay Cool, Stay Fresh.', 'Summer Cool Refrigeration provides premium refrigeration and cooling solutions for commercial and industrial needs. Keeping Urvion 2026 fresh, cool, and comfortable as our official refrigeration partner.', 'Official Refrigeration Partner', 'Cooling Partner', 'thermostat', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4203,7 +4082,7 @@
 
                         <!-- Plaque 2: MRQ BUS SERVICE -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('MRQ BUS SERVICE', 'Moving You Forward.', 'MRQ Bus Service is a trusted transportation partner committed to safe, reliable, and comfortable travel. Keeping students and attendees connected and on the move throughout Echona 2026.', 'Official Transport Partner', 'Transport Partner', 'directions_bus', '')">
+                            onclick="openSponsorModal('MRQ BUS SERVICE', 'Moving You Forward.', 'MRQ Bus Service is a trusted transportation partner committed to safe, reliable, and comfortable travel. Keeping students and attendees connected and on the move throughout Urvion 2026.', 'Official Transport Partner', 'Transport Partner', 'directions_bus', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4229,7 +4108,7 @@
                         
                          <!-- Plaque 2: RAJESH TOYOTA -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('MRQ BUS SERVICE', 'Moving You Forward.', 'MRQ Bus Service is a trusted transportation partner committed to safe, reliable, and comfortable travel. Keeping students and attendees connected and on the move throughout Echona 2026.', 'Official Transport Partner', 'Transport Partner', 'directions_bus', '')">
+                            onclick="openSponsorModal('MRQ BUS SERVICE', 'Moving You Forward.', 'MRQ Bus Service is a trusted transportation partner committed to safe, reliable, and comfortable travel. Keeping students and attendees connected and on the move throughout Urvion 2026.', 'Official Transport Partner', 'Transport Partner', 'directions_bus', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4255,7 +4134,7 @@
 
                         <!-- Plaque 3: INFLUENCE NEXUS -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-2"
-                            onclick="openSponsorModal('INFLUENCE NEXUS', 'Connect. Amplify. Inspire.', 'Influence Nexus is a dynamic marketing and media partner that connects brands with the right audiences. Empowering Echona 2026 with strategic outreach, influencer networks, and impactful storytelling.', 'Official Media Partner', 'Media Partner', 'campaign', '')">
+                            onclick="openSponsorModal('INFLUENCE NEXUS', 'Connect. Amplify. Inspire.', 'Influence Nexus is a dynamic marketing and media partner that connects brands with the right audiences. Empowering Urvion 2026 with strategic outreach, influencer networks, and impactful storytelling.', 'Official Media Partner', 'Media Partner', 'campaign', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4281,7 +4160,7 @@
 
                         <!-- Plaque 4: ANGEERA AIRCON -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('ANGEERA AIRCON', 'Cool Comfort. Delivered.', 'Angeera Aircon brings premium air conditioning solutions to homes and businesses. Proud to keep the Echona 2026 experience cool, comfortable, and refreshing for every attendee.', 'Official Comfort Partner', 'HVAC Partner', 'ac_unit', '')">
+                            onclick="openSponsorModal('ANGEERA AIRCON', 'Cool Comfort. Delivered.', 'Angeera Aircon brings premium air conditioning solutions to homes and businesses. Proud to keep the Urvion 2026 experience cool, comfortable, and refreshing for every attendee.', 'Official Comfort Partner', 'HVAC Partner', 'ac_unit', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4307,7 +4186,7 @@
 
                         <!-- Plaque 5: NOHARA SOLARGY -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('NOHARA SOLARGY', 'Power the Future.', 'Nohara Solargy is a leading solar energy solutions provider, dedicated to sustainable and clean power. Bringing green energy leadership and innovation to Echona 2026 as our energy partner.', 'Official Energy Partner', 'Energy Partner', 'solar_power', '')">
+                            onclick="openSponsorModal('NOHARA SOLARGY', 'Power the Future.', 'Nohara Solargy is a leading solar energy solutions provider, dedicated to sustainable and clean power. Bringing green energy leadership and innovation to Urvion 2026 as our energy partner.', 'Official Energy Partner', 'Energy Partner', 'solar_power', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4333,7 +4212,7 @@
 
                         <!-- Plaque 6: CODEYART -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('CODEYART', 'Code. Create. Conquer.', 'CodeYart Software Solutions is a cutting-edge software development company building elegant digital products and experiences. Supporting Echona 2026 as the official tech solutions partner.', 'Official Tech Partner', 'Tech Partner', 'code', '')">
+                            onclick="openSponsorModal('CODEYART', 'Code. Create. Conquer.', 'CodeYart Software Solutions is a cutting-edge software development company building elegant digital products and experiences. Supporting Urvion 2026 as the official tech solutions partner.', 'Official Tech Partner', 'Tech Partner', 'code', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4359,7 +4238,7 @@
 
                         <!-- Plaque 7: UNILOX -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('UNILOX', 'Unlock Your Potential.', 'Unilox is a forward-thinking brand committed to unlocking new possibilities. Proud to be part of Echona 2026, driving value and innovation for students and participants.', 'Official Partner', 'Brand Partner', 'lock_open', '')">
+                            onclick="openSponsorModal('UNILOX', 'Unlock Your Potential.', 'Unilox is a forward-thinking brand committed to unlocking new possibilities. Proud to be part of Urvion 2026, driving value and innovation for students and participants.', 'Official Partner', 'Brand Partner', 'lock_open', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4385,7 +4264,7 @@
 
                         <!-- Plaque 8: GRRAS -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-2"
-                            onclick="openSponsorModal('GRRAS', 'Train. Certify. Excel.', 'Grras Solutions is a premier IT training and certification institute offering industry-recognized courses. Empowering Echona 2026 participants with cutting-edge skills for the digital future.', 'Official Training Partner', 'Training Partner', 'school', '')">
+                            onclick="openSponsorModal('GRRAS', 'Train. Certify. Excel.', 'Grras Solutions is a premier IT training and certification institute offering industry-recognized courses. Empowering Urvion 2026 participants with cutting-edge skills for the digital future.', 'Official Training Partner', 'Training Partner', 'school', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4411,7 +4290,7 @@
 
                         <!-- Plaque 9: COPLUR -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('COPLUR', 'Bridging Talent & Empowering Futures.', 'Coplur is dedicated to connecting exceptional talent with transformative opportunities. As a proud partner of Echona 2026, Coplur helps bridge the gap between ambition and achievement for every student.', 'Official Talent Partner', 'Talent Partner', 'handshake', '')">
+                            onclick="openSponsorModal('COPLUR', 'Bridging Talent & Empowering Futures.', 'Coplur is dedicated to connecting exceptional talent with transformative opportunities. As a proud partner of Urvion 2026, Coplur helps bridge the gap between ambition and achievement for every student.', 'Official Talent Partner', 'Talent Partner', 'handshake', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4463,7 +4342,7 @@
 
                         <!-- Plaque 11: UNIQUE FACILITY AND MANAGEMENT SERVICES -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('UNIQUE FACILITY', 'Managing Excellence, Delivering Comfort.', 'Unique Facility and Management Services is a trusted name in professional facility management, delivering world-class operational support, housekeeping, and infrastructure services. Proud to be an official partner of Echona 2026.', 'Official Facility Partner', 'Facility Partner', 'corporate_fare', '')">
+                            onclick="openSponsorModal('UNIQUE FACILITY', 'Managing Excellence, Delivering Comfort.', 'Unique Facility and Management Services is a trusted name in professional facility management, delivering world-class operational support, housekeeping, and infrastructure services. Proud to be an official partner of Urvion 2026.', 'Official Facility Partner', 'Facility Partner', 'corporate_fare', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4490,7 +4369,7 @@
 
                         <!-- Plaque 12: SUMMER COOL REFRIGERATION -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('SUMMER COOL REFRIGERATION', 'Stay Cool, Stay Fresh.', 'Summer Cool Refrigeration provides premium refrigeration and cooling solutions for commercial and industrial needs. Keeping Echona 2026 fresh, cool, and comfortable as our official refrigeration partner.', 'Official Refrigeration Partner', 'Cooling Partner', 'thermostat', '')">
+                            onclick="openSponsorModal('SUMMER COOL REFRIGERATION', 'Stay Cool, Stay Fresh.', 'Summer Cool Refrigeration provides premium refrigeration and cooling solutions for commercial and industrial needs. Keeping Urvion 2026 fresh, cool, and comfortable as our official refrigeration partner.', 'Official Refrigeration Partner', 'Cooling Partner', 'thermostat', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4523,12 +4402,12 @@
             <!-- ======================================================== -->
             <div class="max-w-5xl mx-auto px-4 mt-8 pb-4 text-center relative z-20">
                 <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-                    <!-- BUTTON 1: Know More About Echona -->
+                    <!-- BUTTON 1: Know More About Urvion -->
                     <a href="sponsors.html"
                         class="group relative inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#24150b] via-[#361e10] to-[#201107] text-[#f2be71] font-bold text-xs sm:text-sm uppercase tracking-wider border-2 border-[#8e683e] hover:border-[#f2be71] shadow-[0_4px_18px_rgba(0,0,0,0.7)] hover:shadow-[0_6px_25px_rgba(242,190,113,0.35)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer">
                         <span
                             class="material-symbols-outlined text-[20px] text-[#f2be71] group-hover:rotate-6 transition-transform">auto_stories</span>
-                        <span>Know More About Echona</span>
+                        <span>Know More About Urvion</span>
                     </a>
 
                     <!-- BUTTON 2: Book Your Sponsorship (Qfix Link) -->
@@ -4560,7 +4439,7 @@
                 class="flex-1 h-[2px] sm:h-[3px] bg-gradient-to-r from-transparent via-[#fde047] to-[#d49e1e] shadow-[0_0_12px_#fde047,0_0_24px_#eab308]">
             </div>
             <div class="px-3 sm:px-6 shrink-0 relative flex items-center justify-center">
-                <img src="assets/images/separtor2.png" alt="Pirate Ribbon Separator"
+                <img src="assets/images/urvion-divider.png" alt="Pirate Ribbon Separator"
                     class="h-8 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_16px_rgba(253,224,71,0.9)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)] animate-boat-sway" decoding="async" loading="lazy">
             </div>
             <div
@@ -4585,7 +4464,7 @@
                 </h2>
 
                 <p class="mt-3 text-sm md:text-base text-[#d8c3aa] max-w-xl font-medium">
-                    Feast like sovereign voyagers! Savor delectable cuisines, street delicacies, and refreshing beverages powering Echona 2026.
+                    Feast like sovereign voyagers! Savor delectable cuisines, street delicacies, and refreshing beverages powering Urvion 2026.
                 </p>
             </div>
 
@@ -4606,7 +4485,7 @@
 
                         <!-- Plaque 1: BALAJI BEVERAGES -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('BALAJI BEVERAGES', 'Refreshing India.', 'Balaji Beverages delivers premium, invigorating refreshment with pure taste and quality. Keeping festival-goers re-energized and refreshed throughout Echona 2026.', 'Official Beverage Partner', 'Food &amp; Beverage Partner', 'local_bar', '')">
+                            onclick="openSponsorModal('BALAJI BEVERAGES', 'Refreshing India.', 'Balaji Beverages delivers premium, invigorating refreshment with pure taste and quality. Keeping festival-goers re-energized and refreshed throughout Urvion 2026.', 'Official Beverage Partner', 'Food &amp; Beverage Partner', 'local_bar', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4632,7 +4511,7 @@
 
                         <!-- Plaque 2: FAST PIZZA -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('FAST PIZZA', 'Hot, Cheesy &amp; Fast.', 'Fast Pizza serves up artisanal, oven-fresh pizzas loaded with premium melted cheese and sizzling toppings. Satisfying all student cravings with unmatched speed and flavor at Echona 2026.', 'Official Pizza Partner', 'Food &amp; Beverage Partner', 'local_pizza', '')">
+                            onclick="openSponsorModal('FAST PIZZA', 'Hot, Cheesy &amp; Fast.', 'Fast Pizza serves up artisanal, oven-fresh pizzas loaded with premium melted cheese and sizzling toppings. Satisfying all student cravings with unmatched speed and flavor at Urvion 2026.', 'Official Pizza Partner', 'Food &amp; Beverage Partner', 'local_pizza', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4658,7 +4537,7 @@
 
                         <!-- Plaque 3: DOSA ANNA -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-2"
-                            onclick="openSponsorModal('DOSA ANNA', 'Authentic South Indian Food Court.', 'Dosa Anna delivers the authentic culinary spirit of South India — offering crispy golden dosas, steaming soft idlis, and traditional rich chutneys to delight every palate at Echona 2026.', 'Official South Indian Partner', 'Food &amp; Beverage Partner', 'restaurant', '')">
+                            onclick="openSponsorModal('DOSA ANNA', 'Authentic South Indian Food Court.', 'Dosa Anna delivers the authentic culinary spirit of South India — offering crispy golden dosas, steaming soft idlis, and traditional rich chutneys to delight every palate at Urvion 2026.', 'Official South Indian Partner', 'Food &amp; Beverage Partner', 'restaurant', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4684,7 +4563,7 @@
 
                         <!-- Plaque 4: SAI CHAAP CORNER -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-2"
-                            onclick="openSponsorModal('SAI CHAAP CORNER', 'Flavours That Sizzle.', 'Sai Chaap Corner is renowned for tender, smoky tandoori soya chaap, rich aromatic gravies, and sensational street food delicacies that keep festival crowds coming back for more at Echona 2026.', 'Official Chaap Partner', 'Food &amp; Beverage Partner', 'kebab_dining', '')">
+                            onclick="openSponsorModal('SAI CHAAP CORNER', 'Flavours That Sizzle.', 'Sai Chaap Corner is renowned for tender, smoky tandoori soya chaap, rich aromatic gravies, and sensational street food delicacies that keep festival crowds coming back for more at Urvion 2026.', 'Official Chaap Partner', 'Food &amp; Beverage Partner', 'kebab_dining', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4710,7 +4589,7 @@
 
                         <!-- Plaque 5: KATHMANDU CARTEL -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('KATHMANDU CARTEL', 'Himalayan Asian Street Delights.', 'Kathmandu Cartel brings authentic Himalayan street food, succulent dumplings, and aromatic pan-Asian wok delicacies crafted with vibrant culinary passion to fuel the fest at Echona 2026.', 'Official Asian Street Food Partner', 'Food &amp; Beverage Partner', 'ramen_dining', '')">
+                            onclick="openSponsorModal('KATHMANDU CARTEL', 'Himalayan Asian Street Delights.', 'Kathmandu Cartel brings authentic Himalayan street food, succulent dumplings, and aromatic pan-Asian wok delicacies crafted with vibrant culinary passion to fuel the fest at Urvion 2026.', 'Official Asian Street Food Partner', 'Food &amp; Beverage Partner', 'ramen_dining', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4736,7 +4615,7 @@
 
                         <!-- Plaque 6: WAFFLEHOLIC -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('WAFFLEHOLIC', 'Sweet Cravings, Golden Waffles.', 'Waffleholic serves up decadent Belgian waffles, rich chocolate drizzles, and sweet dessert treats crafted to delight festival-goers throughout Echona 2026.', 'Official Dessert Partner', 'Food &amp; Beverage Partner', 'icecream', '')">
+                            onclick="openSponsorModal('WAFFLEHOLIC', 'Sweet Cravings, Golden Waffles.', 'Waffleholic serves up decadent Belgian waffles, rich chocolate drizzles, and sweet dessert treats crafted to delight festival-goers throughout Urvion 2026.', 'Official Dessert Partner', 'Food &amp; Beverage Partner', 'icecream', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4767,7 +4646,7 @@
 
                         <!-- Duplicated Plaque 1: BALAJI BEVERAGES -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('BALAJI BEVERAGES', 'Refreshing India.', 'Balaji Beverages delivers premium, invigorating refreshment with pure taste and quality. Keeping festival-goers re-energized and refreshed throughout Echona 2026.', 'Official Beverage Partner', 'Food &amp; Beverage Partner', 'local_bar', '')">
+                            onclick="openSponsorModal('BALAJI BEVERAGES', 'Refreshing India.', 'Balaji Beverages delivers premium, invigorating refreshment with pure taste and quality. Keeping festival-goers re-energized and refreshed throughout Urvion 2026.', 'Official Beverage Partner', 'Food &amp; Beverage Partner', 'local_bar', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4793,7 +4672,7 @@
 
                         <!-- Duplicated Plaque 2: FAST PIZZA -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('FAST PIZZA', 'Hot, Cheesy &amp; Fast.', 'Fast Pizza serves up artisanal, oven-fresh pizzas loaded with premium melted cheese and sizzling toppings. Satisfying all student cravings with unmatched speed and flavor at Echona 2026.', 'Official Pizza Partner', 'Food &amp; Beverage Partner', 'local_pizza', '')">
+                            onclick="openSponsorModal('FAST PIZZA', 'Hot, Cheesy &amp; Fast.', 'Fast Pizza serves up artisanal, oven-fresh pizzas loaded with premium melted cheese and sizzling toppings. Satisfying all student cravings with unmatched speed and flavor at Urvion 2026.', 'Official Pizza Partner', 'Food &amp; Beverage Partner', 'local_pizza', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4819,7 +4698,7 @@
 
                         <!-- Duplicated Plaque 3: DOSA ANNA -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-2"
-                            onclick="openSponsorModal('DOSA ANNA', 'Authentic South Indian Food Court.', 'Dosa Anna delivers the authentic culinary spirit of South India — offering crispy golden dosas, steaming soft idlis, and traditional rich chutneys to delight every palate at Echona 2026.', 'Official South Indian Partner', 'Food &amp; Beverage Partner', 'restaurant', '')">
+                            onclick="openSponsorModal('DOSA ANNA', 'Authentic South Indian Food Court.', 'Dosa Anna delivers the authentic culinary spirit of South India — offering crispy golden dosas, steaming soft idlis, and traditional rich chutneys to delight every palate at Urvion 2026.', 'Official South Indian Partner', 'Food &amp; Beverage Partner', 'restaurant', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4845,7 +4724,7 @@
 
                         <!-- Duplicated Plaque 4: SAI CHAAP CORNER -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-2"
-                            onclick="openSponsorModal('SAI CHAAP CORNER', 'Flavours That Sizzle.', 'Sai Chaap Corner is renowned for tender, smoky tandoori soya chaap, rich aromatic gravies, and sensational street food delicacies that keep festival crowds coming back for more at Echona 2026.', 'Official Chaap Partner', 'Food &amp; Beverage Partner', 'kebab_dining', '')">
+                            onclick="openSponsorModal('SAI CHAAP CORNER', 'Flavours That Sizzle.', 'Sai Chaap Corner is renowned for tender, smoky tandoori soya chaap, rich aromatic gravies, and sensational street food delicacies that keep festival crowds coming back for more at Urvion 2026.', 'Official Chaap Partner', 'Food &amp; Beverage Partner', 'kebab_dining', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4871,7 +4750,7 @@
 
                         <!-- Duplicated Plaque 5: KATHMANDU CARTEL -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-rotate-1"
-                            onclick="openSponsorModal('KATHMANDU CARTEL', 'Himalayan Asian Street Delights.', 'Kathmandu Cartel brings authentic Himalayan street food, succulent dumplings, and aromatic pan-Asian wok delicacies crafted with vibrant culinary passion to fuel the fest at Echona 2026.', 'Official Asian Street Food Partner', 'Food &amp; Beverage Partner', 'ramen_dining', '')">
+                            onclick="openSponsorModal('KATHMANDU CARTEL', 'Himalayan Asian Street Delights.', 'Kathmandu Cartel brings authentic Himalayan street food, succulent dumplings, and aromatic pan-Asian wok delicacies crafted with vibrant culinary passion to fuel the fest at Urvion 2026.', 'Official Asian Street Food Partner', 'Food &amp; Beverage Partner', 'ramen_dining', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4897,7 +4776,7 @@
 
                         <!-- Duplicated Plaque 6: WAFFLEHOLIC -->
                         <div class="group relative w-48 sm:w-72 flex flex-col items-center cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
-                            onclick="openSponsorModal('WAFFLEHOLIC', 'Sweet Cravings, Golden Waffles.', 'Waffleholic serves up decadent Belgian waffles, rich chocolate drizzles, and sweet dessert treats crafted to delight festival-goers throughout Echona 2026.', 'Official Dessert Partner', 'Food &amp; Beverage Partner', 'icecream', '')">
+                            onclick="openSponsorModal('WAFFLEHOLIC', 'Sweet Cravings, Golden Waffles.', 'Waffleholic serves up decadent Belgian waffles, rich chocolate drizzles, and sweet dessert treats crafted to delight festival-goers throughout Urvion 2026.', 'Official Dessert Partner', 'Food &amp; Beverage Partner', 'icecream', '')">
                             <div class="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#2b170e] rounded-t-full shadow-inner flex flex-col items-center justify-between py-0.5 border border-[#8e683e]/60 z-20">
                                 <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#8e683e] shadow-inner"></span>
                                 <span class="w-1.5 h-2.5 sm:h-3 bg-[#d49e1e] rounded-sm"></span>
@@ -4995,7 +4874,7 @@
                         <span class="material-symbols-outlined text-[26px]">sports_esports</span>
                     </div>
                     <div>
-                        <span class="text-[10px] uppercase text-[#f2be71] font-bold tracking-widest block">Esports Arena • Echona 2026</span>
+                        <span class="text-[10px] uppercase text-[#f2be71] font-bold tracking-widest block">Esports Arena • Urvion 2026</span>
                         <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#ffe082] leading-tight">Game ON - Arena Wars</h3>
                     </div>
                 </div>
@@ -5070,7 +4949,7 @@
             </div>
         </div>
 
-        <!-- Interactive Modal for Sponsorship Deck (Know More About Echona) -->
+        <!-- Interactive Modal for Sponsorship Deck (Know More About Urvion) -->
         <div class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 backdrop-blur-md hidden p-4 overflow-y-auto"
             id="sponsorshipDeckModal" onclick="if(event.target === this) closeSponsorshipDeckModal()">
             <div
@@ -5095,10 +4974,10 @@
                         <span class="text-[11px] uppercase tracking-widest text-[#f2be71] font-bold block mb-1">Official
                             Sponsorship Deck &amp; Overview</span>
                         <h3 class="font-serif text-2xl sm:text-3xl font-bold text-[#ffe29a] leading-tight">
-                            ECHONA 2026: The Sovereign Voyage
+                            URVION 2026: The Sovereign Voyage
                         </h3>
                         <p class="text-xs sm:text-sm text-[#d8c3aa] mt-1 font-medium">
-                            Anand International College of Engineering, Jaipur | Techno-Cultural Flagship
+                            ECO SOCIAL CLUB, Jaipur | Techno-Cultural Flagship
                         </p>
                     </div>
                 </div>
@@ -5168,7 +5047,7 @@
                             <h4 class="text-sm font-bold text-[#ffe082]">Direct Talent Acquisition &amp; Placement
                                 Synergies</h4>
                             <p class="text-xs text-[#d8c3aa] mt-0.5 leading-relaxed">
-                                Synergies with Anand-ICE Training &amp; Placement Cell, executive networking in VIP
+                                Synergies with ECO SOCIAL CLUB Training &amp; Placement Cell, executive networking in VIP
                                 guest lounges, and direct access to top talents.
                             </p>
                         </div>
@@ -5177,9 +5056,9 @@
 
                 <!-- Footer CTAs -->
                 <div class="pt-4 border-t border-[#8e683e]/40 flex flex-wrap items-center justify-between gap-3">
-                    <a href="#echona-about" onclick="closeSponsorshipDeckModal()"
+                    <a href="#urvion-about" onclick="closeSponsorshipDeckModal()"
                         class="text-xs font-bold text-[#f2be71] hover:text-[#ffe082] underline inline-flex items-center gap-1">
-                        <span>Read Full "About Echona" Story</span>
+                        <span>Read Full "About Urvion" Story</span>
                         <span class="material-symbols-outlined text-[14px]">arrow_downward</span>
                     </a>
 
@@ -5227,7 +5106,7 @@
                         Faculty Coordinator &amp; Dy. Training &amp; Placement Officer
                     </p>
                     <p class="text-[11px] text-[#a99a90]">
-                        Anand International College of Engineering, Jaipur
+                        ECO SOCIAL CLUB, Jaipur
                     </p>
                 </div>
 
@@ -5284,7 +5163,7 @@
                 class="flex-1 h-[2px] sm:h-[3px] bg-gradient-to-r from-transparent via-[#fde047] to-[#d49e1e] shadow-[0_0_12px_#fde047,0_0_24px_#eab308]">
             </div>
             <div class="px-3 sm:px-6 shrink-0 relative flex items-center justify-center">
-                <img src="assets/images/separtor2.png" alt="Pirate Ribbon Separator"
+                <img src="assets/images/urvion-divider.png" alt="Pirate Ribbon Separator"
                     class="h-8 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_16px_rgba(253,224,71,0.9)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)] animate-boat-sway" decoding="async" loading="lazy">
             </div>
             <div
@@ -5401,7 +5280,7 @@
                                 stroke-width="5"></path>
                         </svg>
 
-                        <!-- Sailing Ship Navigator (HMS ECHONA) removed -->
+                        <!-- Sailing Ship Navigator (HMS URVION) removed -->
 
                         <!-- Dynamic Event Flags Container (Pinned Along Map Route) -->
                         <div id="timeline-flags-container"
@@ -5419,7 +5298,7 @@
                 class="flex-1 h-[2px] sm:h-[3px] bg-gradient-to-r from-transparent via-[#fde047] to-[#d49e1e] shadow-[0_0_12px_#fde047,0_0_24px_#eab308]">
             </div>
             <div class="px-3 sm:px-6 shrink-0 relative flex items-center justify-center">
-                <img src="assets/images/separtor2.png" alt="Pirate Ribbon Separator"
+                <img src="assets/images/urvion-divider.png" alt="Pirate Ribbon Separator"
                     class="h-8 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_16px_rgba(253,224,71,0.9)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)] animate-boat-sway" decoding="async" loading="lazy">
             </div>
             <div
@@ -5900,7 +5779,7 @@
             }
         </style>
 
-        <div class="ecg" id="echona-guidelines" aria-labelledby="ecg-heading">
+        <div class="ecg" id="urvion-guidelines" aria-labelledby="ecg-heading">
 
             <div class="ecg-inner">
 
@@ -5919,7 +5798,7 @@
                         </svg>
                     </div>
                     <h2 class="ecg-title" id="ecg-heading">The Captain's Code</h2>
-                    <p class="ecg-subtitle">Every traveler who boards ECHONA must sail under the same code. Cross it,
+                    <p class="ecg-subtitle">Every traveler who boards URVION must sail under the same code. Cross it,
                         and you
                         answer to the crew.</p>
                     <div class="ecg-dates"><b>30-31 OCTOBER 2026</b></div>
@@ -5948,7 +5827,7 @@
                             <div class="ecg-panelinner">
                                 <div class="ecg-body">
                                     <ul class="ecg-rules">
-                                        <li>Shuttle services run from the Anand-ICE Corporate City Office (D-40, Shanti
+                                        <li>Shuttle services run from the ECO SOCIAL CLUB Corporate City Office (D-40, Shanti
                                             Path, Sector 7,
                                             Jawahar Nagar, Jaipur) to the venue, as per the following schedule:
                                             <br><b>Day 1 - 30 October 2026:</b> Bus 1 departs 10:00 AM, Bus 2 departs
@@ -5991,7 +5870,7 @@
                             <div class="ecg-panelinner">
                                 <div class="ecg-body">
                                     <ul class="ecg-rules">
-                                        <li>Accommodation is available for <b>girl students of Anand-ICE</b> on a
+                                        <li>Accommodation is available for <b>girl students of ECO SOCIAL CLUB</b> on a
                                             payment and first-come,
                                             first-served basis, at ₹200 per head per day for twin sharing.</li>
                                         <li>Accommodation is also available for <b>boys and girls participating from
@@ -6026,7 +5905,7 @@
                             <div class="ecg-panelinner">
                                 <div class="ecg-body">
                                     <ul class="ecg-rules">
-                                        <li>ECHONA supports both languages - some events run in English, others in
+                                        <li>URVION supports both languages - some events run in English, others in
                                             Hindi. Refer to the event
                                             rulebook for language details of each event.</li>
                                         <li>Some events run parallel to each other, so a participant can only compete in
@@ -6208,7 +6087,7 @@
                 class="flex-1 h-[2px] sm:h-[3px] bg-gradient-to-r from-transparent via-[#fde047] to-[#d49e1e] shadow-[0_0_12px_#fde047,0_0_24px_#eab308]">
             </div>
             <div class="px-3 sm:px-6 shrink-0 relative flex items-center justify-center">
-                <img src="assets/images/separtor2.png" alt="Pirate Ribbon Separator"
+                <img src="assets/images/urvion-divider.png" alt="Pirate Ribbon Separator"
                     class="h-8 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_16px_rgba(253,224,71,0.9)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)] animate-boat-sway" decoding="async" loading="lazy">
             </div>
             <div
@@ -6260,8 +6139,7 @@
                         <h3 class="font-serif text-base sm:text-lg font-bold text-[#f2be71] tracking-wide">EXPEDITION
                             MAP &amp;
                             DESTINATION</h3>
-                        <span class="text-[11px] text-[#d8c3aa] font-semibold block">Anand International College of
-                            Engineering
+                        <span class="text-[11px] text-[#d8c3aa] font-semibold block">ECO SOCIAL CLUB
                             • Agra Road, Jaipur</span>
                     </div>
                 </div>
@@ -6359,9 +6237,7 @@
                         </strong></p>
                     <p class="mt-1"><em>Under the guidance of </em><strong>Mr. Sanjog Arora &amp; Ms. Akanksha
                             Chaturvedi</strong></p>
-                    <p class="mt-2 text-[#8e683e]">© 2026 ECHONA • Anand International College
-                        of
-                        Engineering, Jaipur</p>
+                    <p class="mt-2 text-[#8e683e]">© 2026 URVION • ECO SOCIAL CLUB, Jaipur</p>
 
                     <!-- Social Media Links Container -->
                     <div class="flex items-center justify-center gap-3 mt-4">
@@ -6555,7 +6431,7 @@
                     { id: "d2m-e3", title: "Escape Room", time: "10:00 AM - 01:00 PM", timeBadge: "DAY 2 • 10:00 AM - 01:00 PM", category: "Fun Activity", categoryColor: "bg-[#943800] text-[#fde047]", icon: "key", venue: "📍 LSP, Drama Club Area", desc: "Mythological escape room quest filled with locks, secret codes, and pirate trickery.", left: "41%", top: "18%" },
                     { id: "d2m-e4", title: "Lazer Loot", time: "10:00 AM - 01:00 PM", timeBadge: "DAY 2 • 10:00 AM - 01:00 PM", category: "technical", categoryColor: "bg-[#3a2410] text-[#ffe082]", icon: "light_mode", venue: "📍 Dark Room", desc: "Navigate through a maze of laser beams in pitch darkness without triggering alarms!", left: "59%", top: "48%" },
                     { id: "d2m-e5", title: "Game on Arena (Free Fire)", time: "10:00 AM - 01:00 PM", timeBadge: "DAY 2 • 10:00 AM - 01:00 PM", category: "technical", categoryColor: "bg-[#3a2410] text-[#ffe082]", icon: "sports_esports", venue: "📍 Computer Center", desc: "Competitive multiplayer squad battles in Free Fire across intense map rounds.", left: "77%", top: "34%" },
-                    { id: "d2m-e6", title: "Captain's Challenge (Fun Activity)", time: "10:00 AM - 01:00 PM", timeBadge: "DAY 2 • 10:00 AM - 01:00 PM", category: "Fun Activity", categoryColor: "bg-[#943800] text-[#fde047]", icon: "sports", venue: "📍 Near I Love Anand", desc: "Dumb charades with a high-tech twist! Enact technical terms, programming languages, and gadgets.", left: "95%", top: "66%" }
+                    { id: "d2m-e6", title: "Captain's Challenge (Fun Activity)", time: "10:00 AM - 01:00 PM", timeBadge: "DAY 2 • 10:00 AM - 01:00 PM", category: "Fun Activity", categoryColor: "bg-[#943800] text-[#fde047]", icon: "sports", venue: "📍 Near I Love ECO SOCIAL CLUB", desc: "Dumb charades with a high-tech twist! Enact technical terms, programming languages, and gadgets.", left: "95%", top: "66%" }
                 ]
             },
             day2_evening: {
@@ -6855,7 +6731,7 @@
 
 
         // =========================================================
-        // ECHONA 2026 OFFICIAL EVENT RULEBOOKS DATABASE
+        // URVION 2026 OFFICIAL EVENT RULEBOOKS DATABASE
         // =========================================================
         const EVENT_RULEBOOKS_DB = {
             "quiz competition": {
@@ -7253,7 +7129,7 @@
                 ]
             },
             "captains challange": {
-                "venue": "Near I Love Anand",
+                "venue": "Near I Love ECO SOCIAL CLUB",
                 "tagline": "Gesture the code, guess the gadget!",
                 "teamSize": "Solo",
                 "regFee": "Rs. 250/-",
@@ -7364,7 +7240,7 @@
                 "teamSize": "4 Members",
                 "regFee": "Rs. 800/-",
                 "cashPrize": "Upto Rs. 8,000/-",
-                "about": "Cinematic filmmaking and viral reel creation challenge capturing the essence and grandeur of Echona 2026!",
+                "about": "Cinematic filmmaking and viral reel creation challenge capturing the essence and grandeur of Urvion 2026!",
                 "rules": [
                     "Entire footage must be shot on campus during the festival.",
                     "Submit final rendered reel before the designated deadline (3:00 PM).",
@@ -8085,11 +7961,11 @@
                     "Main stage live musical performance.",
                     "Time: 8:00 PM - 9:15 PM.",
                     "Live acoustic & electric fusion instruments and vocals.",
-                    "Entry permitted with valid Echona 2026 festival pass."
+                    "Entry permitted with valid Urvion 2026 festival pass."
                 ],
                 "coordinators": [
                     {
-                        "name": "Echona Stage Crew",
+                        "name": "Urvion Stage Crew",
                         "details": "Central Stage Committee",
                         "phone": "Band Night"
                     }
@@ -8106,11 +7982,11 @@
                     "Main stage live musical performance.",
                     "Time: 9:30 PM - 10:00 PM.",
                     "Live acoustic & electric fusion instruments and vocals.",
-                    "Entry permitted with valid Echona 2026 festival pass."
+                    "Entry permitted with valid Urvion 2026 festival pass."
                 ],
                 "coordinators": [
                     {
-                        "name": "Echona Stage Crew",
+                        "name": "Urvion Stage Crew",
                         "details": "Central Stage Committee",
                         "phone": "Band Night"
                     }
@@ -8131,7 +8007,7 @@
                 ],
                 "coordinators": [
                     {
-                        "name": "Echona Stage Crew",
+                        "name": "Urvion Stage Crew",
                         "details": "Central Stage Committee",
                         "phone": "DJ Night"
                     }
@@ -8143,16 +8019,16 @@
                 "teamSize": "Celebrity Star Night",
                 "regFee": "Festival Pass",
                 "cashPrize": "Grand Star Finale",
-                "about": "The grand musical climax of Echona 2026! Renowned playback sensation and superstar Sunanda Sharma takes the main stage with her blockbuster anthems and electrifying live performance.",
+                "about": "The grand musical climax of Urvion 2026! Renowned playback sensation and superstar Sunanda Sharma takes the main stage with her blockbuster anthems and electrifying live performance.",
                 "rules": [
                     "Grand central stage live concert.",
                     "Time: 8:30 PM - 10:00 PM.",
-                    "Entry permitted with valid Echona 2026 festival pass / wristband.",
+                    "Entry permitted with valid Urvion 2026 festival pass / wristband.",
                     "Decorum and safety guidelines must be observed throughout the show."
                 ],
                 "coordinators": [
                     {
-                        "name": "Echona Stage Crew",
+                        "name": "Urvion Stage Crew",
                         "details": "Central Stage Committee",
                         "phone": "Star Night"
                     }
@@ -8329,7 +8205,7 @@
 
             // ---- About ----
             const descEl = document.getElementById('scroll-desc');
-            if (descEl) descEl.textContent = (db && db.about) ? db.about : (evt.desc || 'Join the grand quest and showcase your skills at Echona 2026!');
+            if (descEl) descEl.textContent = (db && db.about) ? db.about : (evt.desc || 'Join the grand quest and showcase your skills at Urvion 2026!');
 
             // ---- Rules ----
             const rulesWrapper = document.getElementById('scroll-rules-wrapper');
@@ -9055,7 +8931,7 @@
                     <div style="width:100%;text-align:left;margin:.3em 0 .2em;">
                         <p class="royal-label" style="font-size:.75em;margin-bottom:.25em;">About Event</p>
                         <p class="royal-desc" style="font-size:.92em;line-height:1.5;color:#2b170e;margin:0;"
-                            id="scroll-desc">Join the grand quest and showcase your skills at Echona 2026!</p>
+                            id="scroll-desc">Join the grand quest and showcase your skills at Urvion 2026!</p>
                     </div>
 
                     <!-- Rules -->
