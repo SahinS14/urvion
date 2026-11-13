@@ -1,0 +1,9 @@
+(()=>{
+const wrap=document.getElementById('festival-voyage'),hero=document.getElementById('urvion-main-hero'),about=document.getElementById('esc-about'),moon=wrap?.querySelector('.voyage-moon'),disc=moon?.firstElementChild,bg=about?.querySelector('.esc-cove-bg');if(!wrap||!hero||!about||!moon)return;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)');let frame=0,visible=true,arrival=null;
+const clamp=x=>Math.max(0,Math.min(1,x));
+function draw(){frame=0;const width=wrap.clientWidth,mobile=width<801,size=moon.offsetWidth;const scroll=-wrap.getBoundingClientRect().top;const startX=width*(mobile?.5:.53)-size/2,startY=hero.offsetHeight*(mobile?.26:.20)-size/2;const targetX=width*(mobile?.40:.22)-size/2,targetY=about.getBoundingClientRect().top-wrap.getBoundingClientRect().top+(mobile?115:190)-size/2;const raw=clamp(scroll/Math.max(1,hero.offsetHeight*.92)),p=reduce.matches?0:raw;moon.style.opacity=String(1-p*.85);moon.style.transform=`translate3d(${startX+(targetX-startX)*p}px,${startY+(targetY-startY)*p}px,0) scale(${1-p*.20})`;}
+function schedule(){if(!frame&&visible)frame=requestAnimationFrame(draw)}
+function enter(){arrival?.cancel();draw();if(reduce.matches)return;arrival=disc.animate([{transform:'translate3d(0,-45vh,0) scale(2.4)',opacity:0},{opacity:1,offset:.22},{transform:'translate3d(0,0,0) scale(1)',opacity:1}],{duration:1800,easing:'cubic-bezier(.23,1,.32,1)'});}
+addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});addEventListener('urvion:intro-dismissed',enter);new IntersectionObserver(e=>{visible=e[0].isIntersecting;schedule()},{rootMargin:'100px'}).observe(wrap);reduce.addEventListener('change',()=>{arrival?.cancel();draw()});draw();
+})();

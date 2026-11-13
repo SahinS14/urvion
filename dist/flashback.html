@@ -2,1078 +2,2162 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pirate Flashback</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: #000;
-      font-family: Georgia, "Times New Roman", serif;
-      color: #f7dfaa;
-      min-height: 100vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Custom Cursor from details.html */
-    @media (min-width: 768px) {
-      html,
-      body,
-      button,
-      a,
-      input,
-      select,
-      textarea,
-      [role="button"],
-      .cursor-pointer,
-      [onclick],
-      label,
-      .memory-cell,
-      #scene {
-        cursor: url('assets/images/pointer-cursor-80.png') 40 40, url('assets/images/pointer-cursor-80.png') 35 35, url('assets/images/pointer-cursor-64.png') 32 32, url('assets/images/pointer-cursor-48.png') 24 24, auto !important;
-      }
-    }
-
-    /* Keyframes and classes from details.html */
-    @keyframes boatSway {
-      0%, 100% {
-        transform: translate3d(0, 0, 0) rotate(-1.5deg);
-      }
-      50% {
-        transform: translate3d(0, -11px, 0) rotate(2.5deg);
-      }
-    }
-
-    @keyframes compassSpin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes goldPulse {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 4px 16px rgba(212, 158, 30, 0.5);
-      }
-      50% {
-        transform: scale(1.02);
-        box-shadow: 0 6px 24px rgba(255, 224, 130, 0.7);
-      }
-    }
-
-    .animate-boat-sway {
-      animation: boatSway 6s ease-in-out infinite;
-    }
-
-    .animate-compass-spin {
-      animation: compassSpin 40s linear infinite;
-    }
-
-    .animate-gold-pulse {
-      animation: goldPulse 3s ease-in-out infinite;
-    }
-
-    .parchment-card {
-      background-color: #f1dfc3;
-      border: 1px solid #a88358;
-      box-shadow: 0 10px 24px -4px rgba(43, 27, 14, 0.28), 0 4px 8px -2px rgba(43, 27, 14, 0.16);
-      color: #231508;
-      position: relative;
-    }
-
-    .wax-seal {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #b91c1c, #7f1d1d);
-      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3), 0 3px 6px rgba(0, 0, 0, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fecaca;
-      font-size: 14px;
-      font-family: serif;
-      font-weight: bold;
-    }
-
-
-
-    /* ===================== FOOTER (Exact as details.html) ===================== */
-    .site-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: 3000;
-      background: linear-gradient(to top, rgba(10, 4, 2, 0.98) 0%, rgba(20, 9, 3, 0.95) 75%, rgba(20, 9, 3, 0.88) 100%);
-      border-top: 1px solid rgba(142, 104, 62, 0.4);
-      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 14px 16px 16px;
-      font-family: Georgia, "Times New Roman", serif;
-    }
-
-    .site-footer .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .site-footer .text-xs {
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .site-footer .text-\[\#a89582\] {
-      color: #a89582;
-    }
-
-    .site-footer .text-\[\#8e683e\] {
-      color: #8e683e;
-    }
-
-    .site-footer strong {
-      color: #f7dfaa;
-      font-weight: 700;
-    }
-
-    .site-footer em {
-      font-style: italic;
-    }
-
-    .site-footer p {
-      margin: 0;
-    }
-
-    .site-footer p.mt-1 {
-      margin-top: 4px;
-    }
-
-    .site-footer p.mt-2 {
-      margin-top: 6px;
-    }
-
-    /* Social icons container and buttons */
-    .site-footer .social-icons-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .site-footer .social-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 9999px;
-      background: linear-gradient(to bottom, #3a2213, #1f1008);
-      border: 1px solid rgba(142, 104, 62, 0.6);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #f2be71;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      flex-shrink: 0;
-      box-sizing: border-box;
-    }
-
-    .site-footer .social-btn:hover {
-      color: #ffe082;
-      border-color: #ffe082;
-      box-shadow: 0 0 15px rgba(255, 224, 130, 0.45);
-      transform: scale(1.1);
-    }
-
-    .site-footer .social-btn:active {
-      transform: scale(0.95);
-    }
-
-    .site-footer .social-btn svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-      display: block;
-    }
-
-    .site-footer .social-btn svg.icon-x {
-      width: 14px;
-      height: 14px;
-    }
-
-    @media (max-width: 600px) {
-      .site-footer {
-        padding: 8px 10px 10px;
-      }
-
-      .site-footer .text-xs {
-        font-size: 10px;
-        line-height: 1.35;
-      }
-
-      .site-footer p.mt-1 {
-        margin-top: 2px;
-      }
-
-      .site-footer p.mt-2 {
-        margin-top: 4px;
-      }
-
-      .site-footer .social-icons-wrap {
-        gap: 8px;
-        margin-top: 8px;
-      }
-
-      .site-footer .social-btn {
-        width: 34px;
-        height: 34px;
-      }
-
-      .site-footer .social-btn svg {
-        width: 13px;
-        height: 13px;
-      }
-
-      .site-footer .social-btn svg.icon-x {
-        width: 11.5px;
-        height: 11.5px;
-      }
-    }
-
-    #scene {
-      width: 100vw;
-      height: calc(100vh - 104px - 145px);
-      /* subtract header (104px) + footer (145px) */
-      margin-top: 104px;
-      background: #000;
-      position: relative;
-      flex: 1;
-    }
-
-    @media (max-width: 1024px) {
-      #scene {
-        margin-top: 96px;
-        height: calc(100vh - 96px - 135px);
-      }
-    }
-
-    @media (max-width: 600px) {
-      #scene {
-        margin-top: 86px;
-        height: calc(100vh - 86px - 118px);
-      }
-    }
-
-    .title {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      padding: 12px 28px;
-      border: 2px solid rgba(245, 203, 116, 0.75);
-      border-radius: 4px;
-      background: rgba(20, 9, 3, 0.9);
-      box-shadow: 0 0 20px rgba(255, 194, 66, 0.28), inset 0 0 10px rgba(255, 211, 112, 0.1);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      font-size: clamp(14px, 3vw, 24px);
-      backdrop-filter: blur(5px);
-      pointer-events: none;
-    }
-
-    /* Back Button — hidden since we have the header nav now */
-    .back-btn {
-      display: none;
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 1100;
-      display: none;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      background: rgba(20, 9, 3, 0.9);
-      color: #f7dfaa;
-      text-decoration: none;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(12px, 1.6vw, 15px);
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      border: 2px solid rgba(245, 203, 116, 0.75);
-      border-radius: 4px;
-      box-shadow: 0 0 15px rgba(255, 194, 66, 0.28), inset 0 0 10px rgba(255, 211, 112, 0.1);
-      backdrop-filter: blur(5px);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .back-btn:hover {
-      background: rgba(45, 22, 10, 0.95);
-      border-color: #ffd700;
-      color: #ffd700;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), inset 0 0 12px rgba(255, 215, 0, 0.2);
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 600px) {
-      .back-btn {
-        top: 15px;
-        left: 15px;
-        padding: 7px 12px;
-        font-size: 11px;
-        letter-spacing: 1px;
-      }
-    }
-
-    .memory-cell {
-      position: absolute;
-      /* Switched to absolute positioning for true randomness */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      /* Start hidden and scaled down */
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out, transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-      pointer-events: none;
-    }
-
-    .memory-cell.active {
-      opacity: 1;
-      pointer-events: auto;
-      cursor: pointer;
-    }
-
-    .memory-cell img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 2px solid rgba(255, 215, 0, 0.5);
-      box-shadow: 0 0 15px rgba(255, 174, 0, 0.3);
-      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s ease;
-    }
-
-    .memory-cell.active:hover {
-      z-index: 500 !important;
-    }
-
-    .memory-cell.active:hover img {
-      border-color: #ffd700;
-      box-shadow: 0 0 30px rgba(255, 193, 7, 0.9);
-      transform: scale(1.06);
-    }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 5000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(8px);
-      justify-content: center;
-      align-items: center;
-      padding: 15px;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .modal.active {
-      display: flex;
-      opacity: 1;
-    }
-
-    .modal-content {
-      position: relative;
-      max-width: 100%;
-      max-height: 95vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal img {
-      max-width: 100%;
-      max-height: 95vh;
-      border-radius: 8px;
-      border: 2px solid #ffd700;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
-      object-fit: contain;
-    }
-
-    .close-modal {
-      position: absolute;
-      top: -15px;
-      right: -15px;
-      width: 45px;
-      height: 45px;
-      background: #111;
-      border: 2px solid #ffd700;
-      border-radius: 50%;
-      color: #ffd700;
-      font-size: 32px;
-      line-height: 40px;
-      text-align: center;
-      cursor: pointer;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-      z-index: 5001;
-      transition: all 0.2s;
-    }
-
-    @media (max-width: 600px) {
-      .close-modal {
-        top: 15px;
-        right: 15px;
-        position: fixed;
-      }
-    }
-
-    .close-modal:hover {
-      background: #ffd700;
-      color: #000;
-      transform: scale(1.1);
-    }
-
-    /* Golden Bubble Animation */
-    .golden-bubble {
-      position: fixed;
-      bottom: -30px;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 100;
-      background: radial-gradient(circle at 30% 30%, #fff9d6 0%, #ffd700 35%, rgba(255, 174, 0, 0.35) 70%, transparent 100%);
-      box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
-      animation: goldenBubbleFloat linear forwards;
-    }
-
-    @keyframes goldenBubbleFloat {
-      0% {
-        transform: translate3d(0, 0, 0) scale(0.6);
-        opacity: 0;
-      }
-
-      15% {
-        opacity: 0.6;
-      }
-
-      50% {
-        transform: translate3d(25px, -50vh, 0) scale(1);
-        opacity: 0.4;
-      }
-
-      100% {
-        transform: translate3d(-20px, -115vh, 0) scale(0.4);
-        opacity: 0;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- TOP NAVIGATION (Exact as details.html) -->
-  <header
-    class="fixed top-0 left-0 w-full z-50 bg-[#5A4632]/95 backdrop-blur-md shadow-[0_4px_22px_rgba(10,5,2,0.7)] border-b border-[#d49e1e]/60">
-    <div class="w-full px-4 sm:px-6 lg:px-10 py-3 flex items-center justify-between gap-4">
-      <a class="relative flex items-center gap-2.5 sm:gap-3 shrink-0 group" href="index.html">
-        <!-- Glowing Light Behind URVION — ECO SOCIAL CLUB -->
-        <div
-          class="absolute inset-0 m-auto w-3/4 h-3/4 rounded-full bg-gradient-to-r from-[#ffe082] via-[#d49e1e] to-[#f59e0b] opacity-75 blur-md group-hover:blur-lg group-hover:scale-125 group-hover:opacity-100 transition-all duration-300 pointer-events-none animate-pulse">
-        </div>
-        <!-- Mobile Logo (ECO SOCIAL CLUB.png) -->
-        <img src="assets/images/urvion-wordmark.png" alt="URVION — ECO SOCIAL CLUB"
-          class="block sm:hidden relative z-10 h-20 w-auto max-w-[200px] object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(255,224,130,0.9)]">
-        <!-- Desktop Logo (ECO SOCIAL CLUB.png) -->
-        <img src="assets/images/urvion-wordmark.png" alt="URVION — ECO SOCIAL CLUB"
-          class="hidden sm:block relative z-10 h-20 w-auto max-w-[250px] object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(255,224,130,0.9)]">
-      </a>
-      <nav class="hidden lg:flex items-center gap-6 px-7 py-2">
-        <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-          href="index.html"><span class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Deck</span></a>
-        <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-          href="index.html#urvion-about"><span class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>About</span></a>
-        <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-          href="index.html#headliners-section"><span
-            class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>VIPs</span></a>
-        <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-          href="index.html#treasure-map-section"><span
-            class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Events</span></a>
-        <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-          href="sponsors.html"><span
-            class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Sponsors</span></a>
-        <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-          href="index.html#voyage-route-timeline"><span
-            class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Voyage</span></a>
-        <a class="text-base text-[#f2be71] font-bold flex items-center gap-1.5 tracking-wide drop-shadow-[0_0_8px_rgba(255,224,130,0.6)]"
-          href="flashback.html"><span
-            class="material-symbols-outlined text-[20px] text-[#f2be71]">history_edu</span><span>Flashback</span></a>
-        <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-          href="index.html#urvion-guidelines"><span
-            class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Guidelines</span></a>
-        <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-          href="crew.html"><span class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Crew</span></a>
-        <a class="text-base text-[#E8D7B5] hover:text-[#f2be71] transition-colors font-semibold flex items-center gap-1.5 tracking-wide"
-          href="index.html#the-crew-section"><span
-            class="material-symbols-outlined text-[20px] text-[#E8D7B5]"></span><span>Contact Us</span></a>
-      </nav>
-
-      <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-        <!-- Mariner's Compass Icon Button -->
-        <a href="index.html" aria-label="Replay Cinematic Preloader Intro"
-          title="Return to Grand Voyage Deck"
-          class="relative group flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-full bg-gradient-to-b from-[#341d10] via-[#25150c] to-[#180e09] text-[#f2be71] border-2 border-[#d49e1e] hover:border-[#ffe082] shadow-[0_2px_14px_rgba(212,158,30,0.6)] active:scale-95 transition-all cursor-pointer shrink-0">
-          <div class="w-6 h-6 sm:w-7 sm:h-7 relative flex items-center justify-center shrink-0">
-            <svg class="w-full h-full animate-compass-spin" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="47" fill="#1c0f09" stroke="#d49e1e" stroke-width="3"></circle>
-              <circle cx="50" cy="50" r="42" fill="none" stroke="#8e683e" stroke-width="1.5" stroke-dasharray="2 3"></circle>
-              <circle cx="50" cy="50" r="34" fill="#2a170d" stroke="#d49e1e" stroke-width="1"></circle>
-              <g stroke="#d49e1e" stroke-width="1.5">
-                <line x1="50" y1="8" x2="50" y2="16"></line>
-                <line x1="50" y1="84" x2="50" y2="92"></line>
-                <line x1="8" y1="50" x2="16" y2="50"></line>
-                <line x1="84" y1="50" x2="92" y2="50"></line>
-                <line x1="21" y1="21" x2="27" y2="27"></line>
-                <line x1="73" y1="73" x2="79" y2="79"></line>
-                <line x1="79" y1="21" x2="73" y2="27"></line>
-                <line x1="21" y1="79" x2="27" y2="73"></line>
-              </g>
-              <text x="50" y="26" font-size="9" font-weight="bold" fill="#f2be71" text-anchor="middle" font-family="serif">N</text>
-              <text x="50" y="80" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle" font-family="serif">S</text>
-              <text x="78" y="53" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle" font-family="serif">E</text>
-              <text x="22" y="53" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle" font-family="serif">W</text>
-            </svg>
-            <svg class="w-4 h-4 sm:w-5 sm:h-5 absolute inset-0 m-auto animate-boat-sway pointer-events-none drop-shadow-[0_0_8px_#fde047]"
-              viewBox="0 0 60 60">
-              <polygon points="30,6 36,30 30,26 24,30" fill="#b91c1c" stroke="#fca5a5" stroke-width="0.5"></polygon>
-              <polygon points="30,54 36,30 30,26 24,30" fill="#3a2410" stroke="#90bbeb" stroke-width="0.5"></polygon>
-              <circle cx="30" cy="30" r="4" fill="#d49e1e" stroke="#ffe082" stroke-width="1.5"></circle>
-            </svg>
-          </div>
-          <span class="absolute -top-1 -right-1 flex h-2 w-2 sm:h-2.5 sm:w-2.5">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fde047] opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-[#eab308]"></span>
-          </span>
-        </a>
-
-        <!-- Mobile Nav Toggle -->
-        <button id="mobile-nav-toggle" aria-label="Open Captain's Logbook &amp; Navigation Map"
-          aria-expanded="false"
-          class="lg:hidden relative group flex items-center justify-center active:scale-95 transition-all cursor-pointer shrink-0"
-          onclick="toggleMobileNav()">
-          <div
-            class="w-14 h-9 rounded-full bg-gradient-to-b from-[#341d10] via-[#25150c] to-[#180e09] border-2 border-[#d49e1e] hover:border-[#ffe082] shadow-[0_2px_12px_rgba(212,158,30,0.5)] flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-300">
-            <span class="material-symbols-outlined text-[20px] text-[#f2be71]"
-              id="mobile-nav-toggle-icon">menu</span>
-          </div>
-          <span class="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fde047] opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#eab308]"></span>
-          </span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- MOBILE NAV DRAWER (Exact as details.html) -->
-  <div id="mobile-nav-drawer"
-    class="fixed inset-0 z-[9999] pointer-events-none opacity-0 transition-opacity duration-300">
-    <div id="mobile-nav-backdrop" class="absolute inset-0 bg-[#0c0604]/85 backdrop-blur-sm cursor-pointer"
-      onclick="closeMobileNav()"></div>
-    <div class="absolute top-0 right-0 w-full max-w-sm h-full bg-[#1c0f09]/95 border-l-4 border-l-[#8e683e] border-b-2 border-[#d49e1e] shadow-[0_0_40px_rgba(0,0,0,0.9)] p-5 flex flex-col justify-between overflow-y-auto transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-none parchment-card text-[#231508]"
-      id="mobile-nav-panel">
-      <span class="material-symbols-outlined absolute top-3 left-3 text-[#8e683e] text-[20px] opacity-60 pointer-events-none">anchor</span>
-      <span class="material-symbols-outlined absolute bottom-3 left-3 text-[#8e683e] text-[20px] opacity-60 pointer-events-none">anchor</span>
-      <div class="relative z-10 flex-1 flex flex-col">
-        <div class="flex items-center justify-between pb-4 border-b-2 border-[#8e683e]/60">
-          <div class="flex items-center gap-2.5">
-            <div
-              class="w-10 h-10 rounded-full bg-[#fcf8ee] border-2 border-[#8e683e] shadow-md flex items-center justify-center text-[#7b5800] animate-boat-sway">
-              <span class="material-symbols-outlined text-[24px] text-[#7b5800]">sailing</span>
-            </div>
-            <div>
-              <div class="flex items-center gap-1.5"><span
-                  class="font-serif text-base font-extrabold text-[#3a2410] tracking-wider">CAPTAIN'S LOG</span><span class="text-xs">☠️</span></div><span
-                class="text-[10px] text-[#7b5800] font-extrabold uppercase tracking-widest block">Navigational Chart</span>
-            </div>
-          </div>
-          <button aria-label="Close Chart Log"
-            class="wax-seal hover:scale-110 active:scale-95 transition-transform shadow-md cursor-pointer border-2 border-[#fca5a5]"
-            onclick="closeMobileNav()"><span
-              class="material-symbols-outlined text-[16px] text-white">close</span></button>
-        </div>
-        <div
-          class="mt-4 p-2.5 rounded-lg bg-[#fcf8ee] border border-[#cfbfa7] shadow-inner flex items-center justify-between text-xs">
-          <div class="flex items-center gap-1.5 font-bold text-[#3a2410]"><span
-              class="material-symbols-outlined text-[16px] text-[#d49e1e]">explore</span><span>Voyage Checkpoint:</span></div><span
-            class="px-2 py-0.5 rounded bg-[#ede1cc] text-[#7b5800] text-[10px] font-extrabold uppercase border border-[#cfbfa7]">Oct 30-31 • Jaipur</span>
-        </div>
-        <div class="mt-4 space-y-2.5">
-          <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-            href="index.html" onclick="closeMobileNav()">
-            <div class="flex items-center gap-2.5"><span
-                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">anchor</span><span
-                class="font-serif text-sm font-bold text-[#3a2410]">Deck</span></div><span
-              class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </a>
-          <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-            href="index.html#urvion-about" onclick="closeMobileNav()">
-            <div class="flex items-center gap-2.5"><span
-                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">info</span><span
-                class="font-serif text-sm font-bold text-[#3a2410]">About</span></div><span
-              class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </a>
-          <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-            href="index.html#headliners-section" onclick="closeMobileNav()">
-            <div class="flex items-center gap-2.5"><span
-                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">stars</span><span
-                class="font-serif text-sm font-bold text-[#3a2410]">VIPs</span></div><span
-              class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </a>
-          <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-            href="index.html#treasure-map-section" onclick="closeMobileNav()">
-            <div class="flex items-center gap-2.5"><span
-                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">event</span><span
-                class="font-serif text-sm font-bold text-[#3a2410]">Events</span></div><span
-              class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </a>
-          <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-            href="sponsors.html" onclick="closeMobileNav()">
-            <div class="flex items-center gap-2.5"><span
-                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">handshake</span><span
-                class="font-serif text-sm font-bold text-[#3a2410]">Sponsors</span></div><span
-              class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </a>
-          <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-            href="index.html#voyage-route-timeline" onclick="closeMobileNav()">
-            <div class="flex items-center gap-2.5"><span
-                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">map</span><span
-                class="font-serif text-sm font-bold text-[#3a2410]">Voyage</span></div><span
-              class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </a>
-          <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#ede1cc] text-[#3a2410] border-2 border-[#d49e1e] font-bold text-xs shadow-sm"
-            href="flashback.html" onclick="closeMobileNav()">
-            <div class="flex items-center gap-2.5"><span
-                class="material-symbols-outlined text-[#7b5800] text-[20px]">history_edu</span><span
-                class="font-serif text-sm font-bold text-[#3a2410]">Flashback</span></div><span
-              class="material-symbols-outlined text-[16px] text-[#7b5800]">arrow_forward</span>
-          </a>
-          <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-            href="index.html#urvion-guidelines" onclick="closeMobileNav()">
-            <div class="flex items-center gap-2.5"><span
-                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">menu_book</span><span
-                class="font-serif text-sm font-bold text-[#3a2410]">Guidelines</span></div><span
-              class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </a>
-          <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-            href="crew.html">
-            <div class="flex items-center gap-2.5"><span
-                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">groups</span><span
-                class="font-serif text-sm font-bold text-[#3a2410]">Crew</span></div><span
-              class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </a>
-          <a class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#fcf8ee] text-[#3a2410] border-2 border-[#8e683e] font-bold text-xs shadow-sm hover:border-[#d49e1e] hover:bg-[#ede1cc] transition-all"
-            href="index.html#the-crew-section" onclick="closeMobileNav()">
-            <div class="flex items-center gap-2.5"><span
-                class="material-symbols-outlined text-[#7b5800] text-[20px] group-hover:scale-110 transition-transform">contact_support</span><span
-                class="font-serif text-sm font-bold text-[#3a2410]">Contact Us</span></div><span
-              class="material-symbols-outlined text-[16px] text-[#7b5800] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </a>
-        </div>
-        <div class="mt-auto pt-4 border-t-2 border-[#8e683e]/50 space-y-2.5">
-          <a class="flex items-center justify-center gap-2 w-full py-3.5 bg-[#fcf8ee] text-[#3a2410] rounded-xl border-2 border-[#8e683e] font-extrabold text-xs uppercase tracking-wider hover:border-[#3a2410] hover:bg-[#ede1cc] shadow-sm transition-all"
-            href="https://forms.eduqfix.com/echonaevent/add?formType=5706833377524017" target="_blank"
-            onclick="closeMobileNav()"><span
-              class="material-symbols-outlined text-[18px] text-[#3a2410]">how_to_reg</span><span>REGISTER EXPEDITION NOW</span></a>
-          <a class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-[#d49e1e] via-[#e5ab2a] to-[#b37e0d] text-[#160d08] font-black text-xs uppercase tracking-wider shadow-[0_4px_16px_rgba(212,158,30,0.5)] border border-[#ffe082] hover:scale-105 transition-all animate-gold-pulse"
-            href="https://forms.eduqfix.com/echonaevent/add?formType=5706833377524017" target="_blank"
-            onclick="closeMobileNav()"><span
-              class="material-symbols-outlined text-[18px]">confirmation_number</span><span>ATTENDEE CHARTER PASS</span></a>
-        </div>
-      </div>
-      <div class="mt-6 pt-3 border-t border-[#8e683e]/40 text-center relative z-10">
-        <div class="text-[11px] text-[#615143] font-bold flex items-center justify-center gap-1.5"><span>ECO SOCIAL CLUB Jaipur • Oct 30-31</span><span class="text-[#ca8a04]">⚓</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="scene">
-    <a href="index.html" class="back-btn" id="backBtn">⬅ Back to Home</a>
-    <div class="title">☠ PIRATE FLASHBACK ☠</div>
-    <!-- Scattered memories injected here -->
-  </div>
-
-  <!-- ===== SITE FOOTER ===== -->
-  <footer class="site-footer">
-    <div class="footer-container text-center text-xs text-[#a89582]">
-      <p class="">Designed &amp; Developed by <strong>Devanshu Meena, Bhavna Motiyani, Taniya Baliyan
-        </strong></p>
-      <p class="mt-1"><em>Under the guidance of </em><strong>Mr. Sanjog Arora &amp; Ms. Akanksha
-          Chaturvedi</strong></p>
-      <p class="mt-2 text-[#8e683e]">© 2026 URVION • ECO SOCIAL CLUB, Jaipur</p>
-
-      <!-- Social Media Links Container -->
-      <div class="social-icons-wrap flex items-center justify-center gap-3 mt-4">
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/anandice.jpr" target="_blank" rel="noopener noreferrer"
-          aria-label="Instagram" title="Instagram"
-          class="social-btn w-10 h-10 rounded-full bg-gradient-to-b from-[#3a2213] to-[#1f1008] border border-[#8e683e]/60 flex items-center justify-center text-[#f2be71] hover:text-[#ffe082] hover:border-[#ffe082] hover:shadow-[0_0_15px_rgba(255,224,130,0.45)] hover:scale-110 active:scale-95 transition-all duration-300">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
-            </path>
-          </svg>
-        </a>
-
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/anandicejaipur" target="_blank" rel="noopener noreferrer"
-          aria-label="Facebook" title="Facebook"
-          class="social-btn w-10 h-10 rounded-full bg-gradient-to-b from-[#3a2213] to-[#1f1008] border border-[#8e683e]/60 flex items-center justify-center text-[#f2be71] hover:text-[#ffe082] hover:border-[#ffe082] hover:shadow-[0_0_15px_rgba(255,224,130,0.45)] hover:scale-110 active:scale-95 transition-all duration-300">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
-            </path>
-          </svg>
-        </a>
-
-        <!-- Twitter / X -->
-        <a href="https://twitter.com/AnandcollegeEng" target="_blank" rel="noopener noreferrer"
-          aria-label="Twitter / X" title="Twitter / X"
-          class="social-btn w-10 h-10 rounded-full bg-gradient-to-b from-[#3a2213] to-[#1f1008] border border-[#8e683e]/60 flex items-center justify-center text-[#f2be71] hover:text-[#ffe082] hover:border-[#ffe082] hover:shadow-[0_0_15px_rgba(255,224,130,0.45)] hover:scale-110 active:scale-95 transition-all duration-300">
-          <svg class="icon-x w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
-            </path>
-          </svg>
-        </a>
-
-        <!-- YouTube -->
-        <a href="https://www.youtube.com/@anand-ice" target="_blank" rel="noopener noreferrer"
-          aria-label="YouTube" title="YouTube"
-          class="social-btn w-10 h-10 rounded-full bg-gradient-to-b from-[#3a2213] to-[#1f1008] border border-[#8e683e]/60 flex items-center justify-center text-[#f2be71] hover:text-[#ffe082] hover:border-[#ffe082] hover:shadow-[0_0_15px_rgba(255,224,130,0.45)] hover:scale-110 active:scale-95 transition-all duration-300">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
-            </path>
-          </svg>
-        </a>
-
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/school/anand-ice" target="_blank" rel="noopener noreferrer"
-          aria-label="LinkedIn" title="LinkedIn"
-          class="social-btn w-10 h-10 rounded-full bg-gradient-to-b from-[#3a2213] to-[#1f1008] border border-[#8e683e]/60 flex items-center justify-center text-[#f2be71] hover:text-[#ffe082] hover:border-[#ffe082] hover:shadow-[0_0_15px_rgba(255,224,130,0.45)] hover:scale-110 active:scale-95 transition-all duration-300">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z">
-            </path>
-          </svg>
-        </a>
-
-        <!-- Snapchat -->
-        <a href="https://www.snapchat.com/add/anandice.jpr" target="_blank" rel="noopener noreferrer"
-          aria-label="Snapchat" title="Snapchat"
-          class="social-btn w-10 h-10 rounded-full bg-gradient-to-b from-[#3a2213] to-[#1f1008] border border-[#8e683e]/60 flex items-center justify-center text-[#f2be71] hover:text-[#ffe082] hover:border-[#ffe082] hover:shadow-[0_0_15px_rgba(255,224,130,0.45)] hover:scale-110 active:scale-95 transition-all duration-300">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M12.298.002c-3.642.062-6.524 2.87-6.524 6.551 0 .61.096 1.45.289 2.052.125.39.062.593-.167.873-.393.479-1.077.925-1.802 1.173-.474.161-.837.49-.837.973 0 .736.634 1.258 1.488 1.258.261 0 .546-.051.815-.145.541-.188.826.046.702.585-.349 1.517-1.42 2.62-2.825 2.946-.48.111-.747.534-.747.986 0 .584.457.994 1.157 1.031.57.03 1.282-.125 1.944-.412.399-.173.666-.08.831.253.518 1.045 1.47 1.637 2.76 1.713.432.025.748.243.834.606.126.533.435.856.965.986.721.178 1.64.269 2.698.269 1.139 0 2.115-.101 2.883-.301.485-.126.772-.44.898-.948.093-.374.406-.598.847-.621 1.284-.067 2.227-.648 2.748-1.688.169-.336.438-.429.839-.255.666.29 1.385.446 1.961.414.697-.038 1.15-.447 1.15-1.031 0-.452-.267-.875-.747-.986-1.405-.326-2.476-1.429-2.825-2.946-.124-.539.161-.773.702-.585.269.094.554.145.815.145.854 0 1.488-.522 1.488-1.258 0-.483-.363-.812-.837-.973-.725-.248-1.409-.694-1.802-1.173-.229-.28-.292-.483-.167-.873.193-.602.289-1.442.289-2.052 0-3.681-2.882-6.489-6.524-6.551z">
-            </path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Modal for full size image viewing -->
-  <div class="modal" id="imageModal" onclick="closeModal(event)">
-    <div class="modal-content">
-      <div class="close-modal" onclick="closeModal(event)">&times;</div>
-      <img id="modalImg" src="" alt="Full size memory">
-    </div>
-  </div>
-  <script>
-    const photos = [
-      "a.jpeg", "b.jpeg", "c.jpeg", "d.jpeg", "e.jpeg", "f.jpeg", "g.jpeg", "h.jpeg", "i.jpeg", "k.jpeg", "l.jpeg", "m.jpeg", "n.jpeg", "o.jpeg", "q.jpeg", "r.jpeg", "s.jpeg", "t.jpeg", "u.jpeg", "v.jpeg", "w.jpeg", "x.jpeg", "y.jpeg", "z.jpeg",
-      "1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg", "8.jpeg", "9.jpeg", "10.jpeg",
-      "A1.jpeg", "A2.jpeg", "A3.jpeg", "A4.jpeg", "A5.jpeg", "A6.jpeg", "A7.jpeg", "A8.jpeg", "A9.jpeg", "A10.jpeg", "A11.jpeg", "A12.jpeg", "A13.jpeg", "A14.jpeg", "A15.jpeg", "A16.jpeg", "A17.jpeg", "A18.jpeg", "A19.jpeg", "A20.jpeg", "A21.jpeg", "A23.jpeg", "A24.jpeg", "A25.jpeg", "A26.jpeg", "A28.jpeg"
-    ];
-
-    const scene = document.getElementById('scene');
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImg');
-
-    let isModalOpen = false;
-    let frames = [];
-    const POOL_SIZE = 30; // Max DOM elements to reuse
-
-    function shuffle(array) {
-      const arr = [...array];
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    let photoQueue = [];
-    function getNextPhoto() {
-      if (photoQueue.length === 0) photoQueue = shuffle(photos);
-      return photoQueue.pop();
-    }
-
-    function initPool() {
-      for (let i = 0; i < POOL_SIZE; i++) {
-        const cell = document.createElement('div');
-        cell.className = 'memory-cell';
-
-        const img = document.createElement('img');
-        cell.appendChild(img);
-
-        cell.onclick = () => {
-          if (cell.classList.contains('active')) {
-            openModal(img.src);
-          }
-        };
-
-        scene.appendChild(cell);
-        frames.push({
-          el: cell,
-          img: img,
-          active: false,
-          x: 0, y: 0, w: 0, h: 0, rot: 0,
-          waitingToRemove: false,
-          timer: null
-        });
-      }
-    }
-
-    function spawnMemory() {
-      if (isModalOpen) return;
-
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const isMobile = w < 600;
-
-      // Aim for a nice density that doesn't feel empty but allows space for collision avoidance
-      const maxOccupancy = isMobile ? 6 : 11;
-      const activeCount = frames.filter(f => f.active).length;
-
-      if (activeCount >= maxOccupancy) return; // Wait until some disappear
-
-      const inactiveFrame = frames.find(f => !f.active);
-      if (!inactiveFrame) return; // Pool exhausted
-
-      // Significantly increased image sizes
-      const width = isMobile ? (150 + Math.random() * 70) : (230 + Math.random() * 110);
-      const height = width * (0.8 + Math.random() * 0.45); // Random slightly rectangular shapes
-
-      let foundSpot = false;
-      let tx = 0, ty = 0;
-      const padding = 15; // Keep away from screen edges
-
-      // Collision Detection Logic (Try up to 75 times to find a safe spot)
-      for (let attempt = 0; attempt < 75; attempt++) {
-        tx = padding + Math.random() * (w - width - padding * 2);
-        ty = padding + Math.random() * (h - height - padding * 2);
-
-        // Avoid the title, back button, and footer areas roughly
-        if (ty < 95 && tx > w / 2 - 180 && tx < w / 2 + 180) continue;
-        if (ty < 85 && tx < 230) continue;
-        if (ty + height > h - 140) continue;
-
-        let overlaps = false;
-        // Check against all currently active frames
-        for (let i = 0; i < frames.length; i++) {
-          const f = frames[i];
-          if (f.active) {
-            const gap = 15; // Minimum space between images
-            // Simple AABB (Axis-Aligned Bounding Box) collision detection
-            if (tx < f.x + f.w + gap &&
-              tx + width + gap > f.x &&
-              ty < f.y + f.h + gap &&
-              ty + height + gap > f.y) {
-              overlaps = true;
-              break;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URVION</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&amp;family=Pirata+One&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            corePlugins: {
+                preflight: false,
             }
-          }
+        }
+    </script>
+
+    <style>
+        @media (min-width: 768px) {
+            html,
+            body,
+            button,
+            a,
+            input,
+            select,
+            textarea,
+            [role="button"],
+            .cursor-pointer,
+            [onclick],
+            label {
+                cursor: url('assets/images/pointer-cursor-80.png') 40 40, url('assets/images/pointer-cursor-80.png') 35 35, url('assets/images/pointer-cursor-64.png') 32 32, url('assets/images/pointer-cursor-48.png') 24 24, auto !important;
+            }
         }
 
-        if (!overlaps) {
-          foundSpot = true;
-          break;
+        .team {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
-      }
 
-      // If we couldn't find a non-overlapping spot after 50 random tries, the screen is full enough
-      if (!foundSpot) return;
+        /* =========================================================
+   PIRATE UNIVERSE — TEACHER TEAM
+   Single HTML File
+========================================================= */
 
-      // Assign positioning data
-      inactiveFrame.x = tx;
-      inactiveFrame.y = ty;
-      inactiveFrame.w = width;
-      inactiveFrame.h = height;
-      inactiveFrame.active = true;
-
-      const rot = -25 + Math.random() * 50; // Random tilt
-      inactiveFrame.rot = rot;
-      const z = 10 + Math.floor(Math.random() * 100);
-
-      // Apply styles
-      inactiveFrame.img.src = 'assets/images/flashback/' + getNextPhoto();
-      inactiveFrame.el.style.width = width + 'px';
-      inactiveFrame.el.style.height = height + 'px';
-      inactiveFrame.el.style.left = tx + 'px';
-      inactiveFrame.el.style.top = ty + 'px';
-      inactiveFrame.el.style.zIndex = z;
-
-      // Start state for animation
-      inactiveFrame.el.style.transform = `scale(0.5) rotate(${rot}deg)`;
-
-      // Force browser to register the start state before animating to active state
-      void inactiveFrame.el.offsetWidth;
-
-      inactiveFrame.el.classList.add('active');
-      inactiveFrame.el.style.transform = `scale(1) rotate(${rot}deg)`;
-
-      // Display duration between 4s and 7s
-      const duration = 4000 + Math.random() * 3000;
-
-      inactiveFrame.timer = setTimeout(() => {
-        if (!isModalOpen) {
-          removeMemory(inactiveFrame);
-        } else {
-          inactiveFrame.waitingToRemove = true;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }, duration);
-    }
 
-    function removeMemory(frame) {
-      frame.el.classList.remove('active');
-      frame.el.style.transform = `scale(0.5) rotate(${frame.rot}deg)`;
+        :root {
+            /* HARDWARE ACCELERATION TO PREVENT FLICKERING */
+            --hw-accel: translateZ(0);
+        }
 
-      // Wait for the transition to finish
-      setTimeout(() => {
-        frame.active = false;
-        frame.waitingToRemove = false;
-      }, 1500);
-    }
+        .moon,
+        .star,
+        .orbit,
+        .bubble,
+        .ship,
+        .card,
+        .card::before,
+        .card::after,
+        .corner,
+        .spark {
+            will-change: transform, opacity, filter;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
 
-    // Modal logic
-    function openModal(src) {
-      isModalOpen = true;
-      modalImg.src = src;
-      modal.style.display = 'flex';
+        :root {
+            --espresso: #21130d;
+            --dark-brown: #352017;
+            --walnut: #563827;
+            --brown: #765039;
+            --cream: #f4ead5;
+            --ivory: #fff8e9;
+            --gold: #d6a84d;
+            --bright-gold: #ffe29a;
+            --shadow: #120a06;
+        }
 
-      // Special hover-fix when clicking
-      frames.forEach(f => {
-        if (f.active) f.el.style.zIndex = 10;
-      });
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--ivory);
+            font-family: Georgia, "Times New Roman", serif;
 
-      setTimeout(() => modal.classList.add('active'), 10);
-    }
+            background:
+                radial-gradient(circle at 50% 45%, #6b4730 0%, transparent 25%),
+                radial-gradient(circle at 15% 20%, #4b2c1d 0%, transparent 30%),
+                radial-gradient(circle at 85% 75%, #4a2b1c 0%, transparent 30%),
+                linear-gradient(135deg, #160b07, #332016 45%, #170b07);
+        }
 
-    function closeModal(event) {
-      if (event.target.id === 'imageModal' || event.target.className.includes('close-modal')) {
-        modal.classList.remove('active');
-        setTimeout(() => {
-          modal.style.display = 'none';
-          modalImg.src = '';
-          isModalOpen = false;
+        /* =========================================================
+   COSMIC PIRATE BACKGROUND
+========================================================= */
 
-          // Cleanup memories that expired while modal was open
-          frames.forEach(c => {
-            if (c.waitingToRemove) removeMemory(c);
-          });
+        .universe {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-        }, 400);
-      }
-    }
+        .moon {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
 
-    // Initial Setup
-    initPool();
+            background:
+                radial-gradient(circle at 35% 30%,
+                    #fff7dc 0%,
+                    #d8bd79 35%,
+                    #806038 70%,
+                    #392416 100%);
 
-    // Attempt to spawn memories rapidly (the collision detection automatically throttles it when full)
-    setInterval(spawnMemory, 250);
+            box-shadow:
+                0 0 40px rgba(255, 218, 128, .22),
+                0 0 120px rgba(214, 168, 77, .15);
 
-    // Ambient golden bubbles
-    function createGoldenBubble() {
-      const bubble = document.createElement("div");
-      bubble.className = "golden-bubble";
+            opacity: .22;
+            animation: moonFloat 12s ease-in-out infinite;
+        }
 
-      const size = 3 + Math.random() * 8;
-      const duration = 8 + Math.random() * 10;
+        @keyframes moonFloat {
 
-      bubble.style.width = size + "px";
-      bubble.style.height = size + "px";
-      bubble.style.left = Math.random() * 100 + "vw";
-      bubble.style.animationDuration = duration + "s";
+            0%,
+            100% {
+                transform: translate(-50%, 0) scale(1)
+            }
 
-      document.body.appendChild(bubble);
-      setTimeout(() => bubble.remove(), duration * 1000);
-    }
-    setInterval(createGoldenBubble, 600);
+            50% {
+                transform: translate(-50%, 20px) scale(1.04)
+            }
+        }
 
-    /* Mobile Nav Drawer Functions (Exact as details.html) */
-    function toggleMobileNav() {
-      const drawer = document.getElementById('mobile-nav-drawer');
-      const panel = document.getElementById('mobile-nav-panel');
-      const toggleBtn = document.getElementById('mobile-nav-toggle');
-      const toggleIcon = document.getElementById('mobile-nav-toggle-icon');
-      if (!drawer || !panel) return;
+        /* Stars */
 
-      const isClosed = drawer.classList.contains('pointer-events-none') || drawer.classList.contains('opacity-0');
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #ffe5a3;
+            box-shadow: 0 0 12px #d6a84d;
+            animation: starBlink 3s ease-in-out infinite;
+        }
 
-      if (isClosed) {
-        drawer.classList.remove('opacity-0', 'pointer-events-none');
-        drawer.classList.add('opacity-100', 'pointer-events-auto');
-        panel.classList.remove('translate-x-full', 'pointer-events-none');
-        panel.classList.add('translate-x-0', 'pointer-events-auto');
-        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
-        if (toggleIcon) toggleIcon.textContent = 'close';
-      } else {
-        closeMobileNav();
-      }
-    }
+        @keyframes starBlink {
 
-    function closeMobileNav() {
-      const drawer = document.getElementById('mobile-nav-drawer');
-      const panel = document.getElementById('mobile-nav-panel');
-      const toggleBtn = document.getElementById('mobile-nav-toggle');
-      const toggleIcon = document.getElementById('mobile-nav-toggle-icon');
-      if (!drawer || !panel) return;
+            0%,
+            100% {
+                opacity: .15;
+                transform: scale(.7)
+            }
 
-      panel.classList.remove('translate-x-0', 'pointer-events-auto');
-      panel.classList.add('translate-x-full', 'pointer-events-none');
-      drawer.classList.remove('opacity-100', 'pointer-events-auto');
-      drawer.classList.add('opacity-0', 'pointer-events-none');
-      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
-      if (toggleIcon) toggleIcon.textContent = 'menu';
-    }
+            50% {
+                opacity: 1;
+                transform: scale(1.5)
+            }
+        }
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeMobileNav();
-    });
-  </script>
+        /* Orbital rings */
 
-</body>
+        .orbit {
+            position: absolute;
+            left: 50%;
+            top: 48%;
+            width: 1500px;
+            height: 620px;
+            transform: translate(-50%, -50%) rotate(-8deg);
+            border: 1px solid rgba(214, 168, 77, .25);
+            border-radius: 50%;
+            animation: orbit 25s linear infinite;
+        }
+
+        .orbit.two {
+            width: 1200px;
+            height: 800px;
+            transform: translate(-50%, -50%) rotate(24deg);
+            border-style: dashed;
+            opacity: .35;
+            animation-duration: 35s;
+        }
+
+        @keyframes orbit {
+            to {
+                transform: translate(-50%, -50%) rotate(352deg);
+            }
+        }
+
+        /* =========================================================
+   GOLDEN BUBBLES
+========================================================= */
+
+        .bubbles {
+            position: absolute;
+            inset: 0;
+        }
+
+        .bubble {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle at 30% 25%,
+                    #fff8cf 0 8%,
+                    #ffe28a 18%,
+                    #d6a84d 50%,
+                    rgba(214, 168, 77, .05) 72%);
+
+            box-shadow:
+                0 0 10px rgba(255, 218, 128, .8),
+                0 0 25px rgba(214, 168, 77, .3);
+
+            animation:
+                bubbleMove var(--time) linear infinite,
+                bubbleSpin 4s ease-in-out infinite;
+        }
+
+        @keyframes bubbleMove {
+            from {
+                transform: translate3d(0, 110vh, 0) scale(.5);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: .9
+            }
+
+            85% {
+                opacity: .8
+            }
+
+            to {
+                transform: translate3d(var(--move), -20vh, 0) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bubbleSpin {
+            50% {
+                opacity: 1
+            }
+        }
+
+        /* =========================================================
+   SHIPS
+========================================================= */
+
+        .ship {
+            position: absolute;
+            font-size: 65px;
+            filter:
+                drop-shadow(0 0 10px rgba(214, 168, 77, .35));
+            opacity: .45;
+            animation: shipMove 30s linear infinite;
+        }
+
+        .ship.one {
+            top: 25%;
+            left: -120px;
+        }
+
+        .ship.two {
+            top: 72%;
+            left: -160px;
+            font-size: 48px;
+            animation-duration: 38s;
+            animation-delay: 8s;
+        }
+
+        @keyframes shipMove {
+            0% {
+                transform: translateX(-150px) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateX(55vw) translateY(25px) rotate(3deg);
+            }
+
+            100% {
+                transform: translateX(110vw) translateY(-10px) rotate(-2deg);
+            }
+        }
+
+        /* =========================================================
+   MAIN
+========================================================= */
+
+        .main {
+            position: relative;
+            z-index: 5;
+            width: min(1500px, 94%);
+            margin: auto;
+            padding: 130px 0 100px;
+        }
+
+        /* Header */
+
+        .heading {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .heading .mini {
+            color: #d6a84d;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        .heading h1 {
+            font-size: clamp(45px, 6vw, 85px);
+            color: var(--cream);
+
+            text-shadow:
+                0 3px 0 #3b2115,
+                0 0 25px rgba(214, 168, 77, .3);
+        }
+
+        .heading h1 span {
+            color: #d6a84d;
+        }
+
+        .heading p {
+            margin-top: 18px;
+            color: #dbc6a4;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        /* =========================================================
+   TEAM GRID
+========================================================= */
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        /* =========================================================
+   PIRATE CARD
+========================================================= */
+
+        .card {
+            position: relative;
+            min-height: 550px;
+            padding: 25px;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(244, 234, 213, .98),
+                    rgba(217, 190, 143, .98) 55%,
+                    rgba(160, 117, 72, .98));
+
+            color: #2a170e;
+
+            /* irregular pirate parchment shape */
+            border-radius:
+                75px 25px 85px 32px / 35px 80px 30px 90px;
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, .65),
+                inset 0 0 30px rgba(79, 43, 22, .35);
+
+            transform: translateY(0);
+            transition: .6s ease;
+
+            isolation: isolate;
+        }
+
+        /* Outer golden glow */
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: -5px;
+
+            border-radius:
+                80px 30px 90px 37px / 40px 85px 35px 95px;
+
+            background:
+                conic-gradient(from 0deg,
+                    transparent 0deg,
+                    #8d672c 35deg,
+                    #ffe29a 70deg,
+                    transparent 105deg,
+                    transparent 180deg,
+                    #d6a84d 235deg,
+                    #fff0b7 275deg,
+                    transparent 315deg);
+
+            z-index: -2;
+
+            animation: borderRotate 7s linear infinite;
+        }
+
+        /* Dark outer shadow */
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: -14px;
+
+            border-radius:
+                90px 40px 100px 45px / 50px 95px 45px 105px;
+
+            border: 2px solid rgba(214, 168, 77, .22);
+
+            box-shadow:
+                0 0 25px rgba(214, 168, 77, .18),
+                inset 0 0 25px rgba(214, 168, 77, .12);
+
+            z-index: -3;
+
+            animation: borderPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes borderRotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes borderPulse {
+
+            0%,
+            100% {
+                opacity: .45;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-18px) rotate(.5deg);
+            box-shadow:
+                0 35px 80px rgba(0, 0, 0, .75),
+                0 0 45px rgba(214, 168, 77, .25);
+        }
+
+        /* =========================================================
+   ROPE BORDER
+========================================================= */
+
+        .rope {
+            position: absolute;
+            inset: 11px;
+
+            border:
+                4px dashed rgba(82, 48, 28, .72);
+
+            border-radius:
+                70px 22px 80px 28px / 30px 75px 28px 85px;
+
+            pointer-events: none;
+        }
+
+        .rope::before,
+        .rope::after {
+            content: "";
+            position: absolute;
+            inset: 6px;
+
+            border: 1px solid rgba(255, 242, 192, .8);
+
+            border-radius: inherit;
+        }
+
+        /* =========================================================
+   PIRATE CORNERS
+========================================================= */
+
+        .corner {
+            position: absolute;
+            z-index: 8;
+            color: #a97827;
+
+            font-size: 38px;
+
+            text-shadow:
+                0 2px 2px #5a351e,
+                0 0 15px rgba(214, 168, 77, .6);
+
+            animation: cornerGlow 2.5s ease-in-out infinite;
+        }
+
+        .corner.tl {
+            top: 10px;
+            left: 18px
+        }
+
+        .corner.tr {
+            top: 10px;
+            right: 18px
+        }
+
+        .corner.bl {
+            bottom: 10px;
+            left: 18px
+        }
+
+        .corner.br {
+            bottom: 10px;
+            right: 18px
+        }
+
+        @keyframes cornerGlow {
+
+            0%,
+            100% {
+                opacity: .7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* =========================================================
+   PHOTO AREA
+========================================================= */
+
+        .photo-frame {
+            position: relative;
+
+            width: 100%;
+            height: 380px;
+
+            margin: 45px auto 28px;
+
+            padding: 13px;
+
+            background:
+                linear-gradient(135deg,
+                    #6d452b,
+                    #e1bd6a,
+                    #704528,
+                    #f1d58a);
+
+            border-radius:
+                45px 18px 50px 20px;
+
+            box-shadow:
+                0 15px 30px rgba(44, 22, 10, .5),
+                inset 0 0 12px rgba(255, 240, 180, .7);
+
+            overflow: hidden;
+        }
+
+        /* Photo shine removed */
+
+        .photo-frame::before {
+            display: none;
+        }
+
+        /* Actual photo */
+
+        .photo {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(circle at 50% 30%,
+                    #fff4d4,
+                    #c9a774 55%,
+                    #765039);
+
+            border-radius:
+                34px 12px 38px 15px;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Placeholder */
+
+        .photo-placeholder {
+            font-size: 85px;
+            opacity: 1;
+        }
+
+        /* =========================================================
+   TEXT
+========================================================= */
+
+        .role {
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #80602f;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .name {
+            text-align: center;
+            font-size: 29px;
+            color: #3b2114;
+            margin-bottom: 13px;
+
+            text-shadow:
+                0 1px 0 #fff4d2;
+        }
+
+        .line {
+            width: 65%;
+            height: 2px;
+            margin: auto;
+
+            background:
+                linear-gradient(90deg,
+                    transparent,
+                    #9d722f,
+                    #f4d37b,
+                    #9d722f,
+                    transparent);
+        }
+
+        .description {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #5b3a25;
+            margin: 20px 12px 0;
+        }
+
+        /* =========================================================
+   FLOATING BORDER PARTICLES
+========================================================= */
+
+        .spark {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+
+            background: #ffe8a5;
+
+            box-shadow:
+                0 0 8px #d6a84d,
+                0 0 18px #d6a84d;
+
+            animation: sparkFloat 4s ease-in-out infinite;
+        }
+
+        .spark.s1 {
+            left: 7%;
+            top: 25%
+        }
+
+        .spark.s2 {
+            right: 8%;
+            top: 42%;
+            animation-delay: 1s
+        }
+
+        .spark.s3 {
+            left: 15%;
+            bottom: 18%;
+            animation-delay: 2s
+        }
+
+        .spark.s4 {
+            right: 14%;
+            bottom: 30%;
+            animation-delay: 3s
+        }
+
+        @keyframes sparkFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(.7);
+                opacity: .3;
+            }
+
+            50% {
+                transform: translateY(-18px) scale(1.5);
+                opacity: 1;
+            }
+        }
+
+        /* =========================================================
+   RESPONSIVE
+========================================================= */
+
+        @media(max-width:1050px) {
+
+            .team {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card {
+                min-height: 720px;
+            }
+
+            .photo-frame {
+                height: 390px;
+            }
+        }
+
+        @media(max-width:700px) {
+
+            .main {
+                width: 90%;
+                padding-top: 110px;
+            }
+
+            .heading {
+                margin-bottom: 45px;
+            }
+
+            .heading h1 {
+                font-size: 48px;
+            }
+
+            .heading p {
+                font-size: 12px;
+                line-height: 1.7;
+            }
+
+            .team {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .card {
+                min-height: 690px;
+                padding: 22px;
+            }
+
+            .photo-frame {
+                height: 400px;
+            }
+
+            .moon {
+                width: 250px;
+                height: 250px;
+            }
+
+            .orbit {
+                width: 900px;
+                height: 500px;
+            }
+        }
+
+        @media(max-width:430px) {
+
+            .card {
+                min-height: 650px;
+            }
+
+            .photo-frame {
+                height: 350px;
+            }
+
+            .name {
+                font-size: 25px;
+            }
+
+            .corner {
+                font-size: 30px;
+            }
+        }
+
+        /* =========================================================
+   OPTIMIZED IMAGE RULES
+   ========================================================= */
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+
+        /* =========================================================
+   PERFORMANCE OPTIMIZATION
+   Keeps the pirate look but reduces expensive repaints.
+   ========================================================= */
+
+        /* Let the browser isolate only the animated layers. */
+        .bubble,
+        .ship,
+        .star,
+        .spark,
+        .moon,
+        .orbit,
+        .card::before,
+        .card::after {
+            will-change: transform, opacity;
+        }
+
+        /* The orbit does not need continuous rotation. */
+        .orbit {
+            animation: none;
+            opacity: .7;
+        }
+
+        .orbit.two {
+            animation: none;
+            opacity: .22;
+        }
+
+        /* Fewer expensive full-card repaints. */
+        .card::before {
+            animation: borderShimmer 8s ease-in-out infinite;
+            opacity: .8;
+        }
+
+        .card::after {
+            animation: borderPulse 5s ease-in-out infinite;
+        }
+
+        /* Replace 360° border rotation with a light shimmer. */
+        @keyframes borderShimmer {
+
+            0%,
+            100% {
+                transform: scale(.995);
+                opacity: .65
+            }
+
+            50% {
+                transform: scale(1.005);
+                opacity: 1
+            }
+        }
+
+        /* Keep bubbles moving, but avoid unnecessary filtering. */
+        .bubble {
+            filter: none;
+        }
+
+        /* Reduce heavy hover repaint. */
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Respect users/devices that request reduced motion. */
+        @media (prefers-reduced-motion: reduce) {
+
+            .moon,
+            .star,
+            .bubble,
+            .ship,
+            .orbit,
+            .card::before,
+            .card::after,
+            .photo-frame::before,
+            .corner,
+            .spark {
+                animation: none !important;
+            }
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3b2114, #1a0f0a);
+            color: #d1b88e;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border: 2px solid #6b4d32;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(255, 240, 180, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #4a2b18, #2a1811);
+            color: #f1d58a;
+            border-color: #8c6a45;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), inset 0 0 8px rgba(255, 240, 180, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .back-btn {
+                top: 15px;
+                left: 15px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+
+        /* =========================================================
+   CATEGORY
+   ========================================================= */
+
+        .category-section {
+            max-width: 1250px;
+            margin: 0 auto 65px;
+        }
+
+        .category-title {
+            position: relative;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 35px;
+            color: #e0b45b;
+            margin-bottom: 22px;
+            padding-bottom: 10px;
+        }
+
+        .category-title::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 7px;
+            margin-top: 10px;
+
+            border-top: 1px solid rgba(210, 166, 77, .65);
+            border-bottom: 1px solid rgba(210, 166, 77, .28);
+
+            border-radius: 50%;
+            opacity: .75;
+        }
+
+        .category-subtitle {
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffe29a;
+            margin-top: -10px;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =========================================================
+   CURLY EVENT BOX
+   ========================================================= */
+
+        .event-box {
+            width: 100%;
+            min-height: 115px;
+
+            margin-bottom: 28px;
+
+            padding: 31px 42px;
+
+            position: relative;
+            overflow: visible;
+            isolation: isolate;
+
+            background:
+                radial-gradient(circle at 50% 50%,
+                    rgba(153, 103, 35, .12),
+                    transparent 65%),
+                linear-gradient(110deg,
+                    rgba(74, 43, 17, .97),
+                    rgba(45, 24, 9, .98));
+
+            border: none;
+
+            box-shadow:
+                inset 0 0 20px rgba(0, 0, 0, .25),
+                0 6px 18px rgba(0, 0, 0, .35);
+
+            transition:
+                transform .3s ease,
+                filter .3s ease,
+                box-shadow .3s ease;
+        }
+
+
+        /* =========================================================
+   OUTER CURLY FRAME
+   ========================================================= */
+
+        .event-box::before {
+            content: "";
+
+            position: absolute;
+
+            inset: -7px;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            border: 2px solid #b88938;
+
+            border-radius:
+                28px 9px 28px 9px / 9px 28px 9px 28px;
+
+            box-shadow:
+                0 0 0 2px rgba(54, 29, 9, .90),
+                0 0 0 4px rgba(184, 137, 56, .32),
+                0 0 12px rgba(218, 174, 77, .12);
+        }
+
+
+        /* =========================================================
+   INNER CURLY FRAME
+   ========================================================= */
+
+        .event-box::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 6px;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            border: 1px solid rgba(235, 195, 103, .45);
+
+            border-radius:
+                19px 6px 19px 6px / 6px 19px 6px 19px;
+
+            box-shadow:
+                inset 0 0 10px rgba(221, 174, 73, .10);
+        }
+
+
+        /* =========================================================
+   TEXT ABOVE FRAME
+   ========================================================= */
+
+        .event-box>* {
+            position: relative;
+            z-index: 3;
+        }
+
+
+        /* =========================================================
+   ORNAMENTAL CURLS
+   ========================================================= */
+
+        .event-name::before {
+            content: "❧";
+
+            position: absolute;
+
+            left: -29px;
+            top: -12px;
+
+            font-family: Georgia, serif;
+
+            font-size: 24px;
+
+            color: #d4a94f;
+
+            opacity: .85;
+
+            transform: rotate(-18deg);
+
+            text-shadow:
+                0 0 5px rgba(225, 179, 76, .25);
+        }
+
+
+        .coordinators::after {
+            content: "❧";
+
+            position: absolute;
+
+            right: -25px;
+            bottom: -10px;
+
+            font-family: Georgia, serif;
+
+            font-size: 22px;
+
+            color: #d4a94f;
+
+            opacity: .75;
+
+            transform: rotate(165deg);
+
+            text-shadow:
+                0 0 5px rgba(225, 179, 76, .25);
+        }
+
+
+        /* =========================================================
+   EVENT TEXT
+   ========================================================= */
+
+        .event-name {
+            font-family: 'Cinzel', serif;
+
+            font-size: 19px;
+
+            font-weight: 800;
+
+            color: #e9bd62;
+
+            letter-spacing: .5px;
+
+            margin-bottom: 12px;
+        }
+
+        .coordinators {
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #d8c18e;
+
+            line-height: 1.6;
+
+            position: relative;
+        }
+
+
+        /* =========================================================
+   HOVER GLOW
+   ========================================================= */
+
+        .event-box:hover {
+
+            transform: translateX(6px);
+
+            filter: brightness(1.08);
+
+            box-shadow:
+                inset 0 0 20px rgba(224, 180, 82, .10),
+                0 7px 20px rgba(0, 0, 0, .38),
+                0 0 20px rgba(224, 180, 82, .25);
+        }
+
+        .event-box:hover::before {
+
+            border-color: #ffe08a;
+
+            box-shadow:
+                0 0 0 2px rgba(72, 39, 11, .85),
+                0 0 0 4px rgba(220, 170, 70, .40),
+                0 0 18px rgba(255, 215, 100, .30);
+        }
+
+
+        /* =========================================================
+   GOLDEN SPRINKLES
+   ========================================================= */
+
+        .golden-sprinkles {
+            position: fixed;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: 25;
+        }
+
+        .golden-sprinkles i {
+            position: absolute;
+
+            top: -12px;
+            left: var(--x);
+
+            width: var(--w);
+            height: var(--h);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle at 35% 30%,
+                    #fff7c9 0 12%,
+                    #f7d56e 30%,
+                    #d49b2d 62%,
+                    rgba(212, 155, 45, 0) 78%);
+
+            box-shadow:
+                0 0 5px rgba(255, 220, 112, .65);
+
+            opacity: 0;
+
+            animation:
+                goldenSprinkle var(--t) linear var(--d) infinite;
+
+            will-change: transform, opacity;
+        }
+
+
+        /* PARTICLE POSITIONS */
+
+        .golden-sprinkles i:nth-child(1) {
+            --x: 2%;
+            --w: 4px;
+            --h: 9px;
+            --t: 9s;
+            --d: 0s
+        }
+
+        .golden-sprinkles i:nth-child(2) {
+            --x: 6%;
+            --w: 3px;
+            --h: 3px;
+            --t: 13s;
+            --d: 2s
+        }
+
+        .golden-sprinkles i:nth-child(3) {
+            --x: 10%;
+            --w: 5px;
+            --h: 8px;
+            --t: 11s;
+            --d: 4s
+        }
+
+        .golden-sprinkles i:nth-child(4) {
+            --x: 15%;
+            --w: 3px;
+            --h: 6px;
+            --t: 15s;
+            --d: 1s
+        }
+
+        .golden-sprinkles i:nth-child(5) {
+            --x: 20%;
+            --w: 6px;
+            --h: 6px;
+            --t: 10s;
+            --d: 6s
+        }
+
+        .golden-sprinkles i:nth-child(6) {
+            --x: 25%;
+            --w: 3px;
+            --h: 10px;
+            --t: 14s;
+            --d: 3s
+        }
+
+        .golden-sprinkles i:nth-child(7) {
+            --x: 30%;
+            --w: 4px;
+            --h: 4px;
+            --t: 12s;
+            --d: 7s
+        }
+
+        .golden-sprinkles i:nth-child(8) {
+            --x: 35%;
+            --w: 5px;
+            --h: 9px;
+            --t: 16s;
+            --d: 1s
+        }
+
+        .golden-sprinkles i:nth-child(9) {
+            --x: 40%;
+            --w: 3px;
+            --h: 5px;
+            --t: 10s;
+            --d: 5s
+        }
+
+        .golden-sprinkles i:nth-child(10) {
+            --x: 45%;
+            --w: 6px;
+            --h: 6px;
+            --t: 13s;
+            --d: 8s
+        }
+
+        .golden-sprinkles i:nth-child(11) {
+            --x: 50%;
+            --w: 4px;
+            --h: 9px;
+            --t: 11s;
+            --d: 2s
+        }
+
+        .golden-sprinkles i:nth-child(12) {
+            --x: 55%;
+            --w: 3px;
+            --h: 4px;
+            --t: 15s;
+            --d: 4s
+        }
+
+        .golden-sprinkles i:nth-child(13) {
+            --x: 60%;
+            --w: 5px;
+            --h: 7px;
+            --t: 9s;
+            --d: 6s
+        }
+
+        .golden-sprinkles i:nth-child(14) {
+            --x: 65%;
+            --w: 3px;
+            --h: 10px;
+            --t: 14s;
+            --d: 0s
+        }
+
+        .golden-sprinkles i:nth-child(15) {
+            --x: 70%;
+            --w: 6px;
+            --h: 5px;
+            --t: 12s;
+            --d: 7s
+        }
+
+        .golden-sprinkles i:nth-child(16) {
+            --x: 75%;
+            --w: 4px;
+            --h: 8px;
+            --t: 16s;
+            --d: 3s
+        }
+
+        .golden-sprinkles i:nth-child(17) {
+            --x: 80%;
+            --w: 3px;
+            --h: 5px;
+            --t: 10s;
+            --d: 5s
+        }
+
+        .golden-sprinkles i:nth-child(18) {
+            --x: 85%;
+            --w: 5px;
+            --h: 9px;
+            --t: 13s;
+            --d: 1s
+        }
+
+        .golden-sprinkles i:nth-child(19) {
+            --x: 90%;
+            --w: 4px;
+            --h: 4px;
+            --t: 15s;
+            --d: 8s
+        }
+
+        .golden-sprinkles i:nth-child(20) {
+            --x: 95%;
+            --w: 6px;
+            --h: 7px;
+            --t: 11s;
+            --d: 4s
+        }
+
+        .golden-sprinkles i:nth-child(21) {
+            --x: 8%;
+            --w: 3px;
+            --h: 10px;
+            --t: 14s;
+            --d: 2s
+        }
+
+        .golden-sprinkles i:nth-child(22) {
+            --x: 28%;
+            --w: 5px;
+            --h: 5px;
+            --t: 9s;
+            --d: 6s
+        }
+
+        .golden-sprinkles i:nth-child(23) {
+            --x: 48%;
+            --w: 4px;
+            --h: 8px;
+            --t: 16s;
+            --d: 0s
+        }
+
+        .golden-sprinkles i:nth-child(24) {
+            --x: 68%;
+            --w: 3px;
+            --h: 4px;
+            --t: 12s;
+            --d: 7s
+        }
+
+        .golden-sprinkles i:nth-child(25) {
+            --x: 88%;
+            --w: 6px;
+            --h: 9px;
+            --t: 13s;
+            --d: 3s
+        }
+
+
+        @keyframes goldenSprinkle {
+
+            0% {
+                transform: translate3d(0, -20px, 0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: .75;
+            }
+
+            35% {
+                transform: translate3d(15px, 35vh, 0);
+                opacity: .60;
+            }
+
+            65% {
+                transform: translate3d(-18px, 70vh, 0);
+                opacity: .65;
+            }
+
+            85% {
+                opacity: .40;
+            }
+
+            100% {
+                transform: translate3d(20px, 112vh, 0);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================================
+   GOLDEN BUBBLES
+   ========================================================= */
+
+        .golden-bubbles {
+            position: fixed;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: 20;
+        }
+
+        .golden-bubbles span {
+            position: absolute;
+
+            bottom: -45px;
+
+            width: var(--size, 18px);
+            height: var(--size, 18px);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle at 30% 25%,
+                    rgba(255, 248, 204, .98) 0 8%,
+                    rgba(246, 205, 94, .82) 20%,
+                    rgba(181, 123, 29, .30) 58%,
+                    transparent 72%);
+
+            border: 1px solid rgba(255, 218, 111, .72);
+
+            box-shadow:
+                0 0 8px rgba(245, 194, 61, .45);
+
+            opacity: 0;
+
+            animation:
+                goldBubble var(--duration, 12s) linear infinite;
+
+            will-change: transform, opacity;
+        }
+
+
+        .golden-bubbles span:nth-child(1) {
+            left: 4%;
+            --size: 15px;
+            --duration: 11s;
+            animation-delay: 0s;
+        }
+
+        .golden-bubbles span:nth-child(2) {
+            left: 15%;
+            --size: 25px;
+            --duration: 15s;
+            animation-delay: 2s;
+        }
+
+        .golden-bubbles span:nth-child(3) {
+            left: 27%;
+            --size: 12px;
+            --duration: 10s;
+            animation-delay: 5s;
+        }
+
+        .golden-bubbles span:nth-child(4) {
+            left: 39%;
+            --size: 20px;
+            --duration: 14s;
+            animation-delay: 1s;
+        }
+
+        .golden-bubbles span:nth-child(5) {
+            left: 50%;
+            --size: 10px;
+            --duration: 12s;
+            animation-delay: 7s;
+        }
+
+        .golden-bubbles span:nth-child(6) {
+            left: 61%;
+            --size: 27px;
+            --duration: 16s;
+            animation-delay: 3s;
+        }
+
+        .golden-bubbles span:nth-child(7) {
+            left: 72%;
+            --size: 14px;
+            --duration: 11s;
+            animation-delay: 6s;
+        }
+
+        .golden-bubbles span:nth-child(8) {
+            left: 82%;
+            --size: 22px;
+            --duration: 13s;
+            animation-delay: 2s;
+        }
+
+        .golden-bubbles span:nth-child(9) {
+            left: 91%;
+            --size: 11px;
+            --duration: 10s;
+            animation-delay: 8s;
+        }
+
+        .golden-bubbles span:nth-child(10) {
+            left: 97%;
+            --size: 24px;
+            --duration: 15s;
+            animation-delay: 4s;
+        }
+
+
+        @keyframes goldBubble {
+
+            0% {
+                transform: translate3d(0, 0, 0) scale(.55);
+                opacity: 0;
+            }
+
+            12% {
+                opacity: .65;
+            }
+
+            50% {
+                transform: translate3d(30px, -52vh, 0) scale(1);
+                opacity: .55;
+            }
+
+            78% {
+                opacity: .35;
+            }
+
+            100% {
+                transform: translate3d(-25px, -112vh, 0) scale(1.20);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================================
+   MOBILE
+   ========================================================= */
+
+        @media(max-width:700px) {
+
+            .coordinator-page {
+                padding: 55px 5% 70px;
+            }
+
+            .main-title {
+                margin-bottom: 50px;
+            }
+
+            .main-title h1 {
+                font-size: 45px;
+            }
+
+            .category-title {
+                font-size: 29px;
+            }
+
+            .event-box {
+                padding: 26px 30px;
+                margin-bottom: 25px;
+            }
+
+            .event-name {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            .coordinators {
+                font-size: 12px;
+            }
+
+            .event-name::before {
+                left: -22px;
+                font-size: 19px;
+            }
+
+            .coordinators::after {
+                right: -18px;
+                font-size: 18px;
+            }
+
+            .golden-sprinkles i:nth-child(n+16) {
+                display: none;
+            }
+
+            .golden-bubbles span:nth-child(n+7) {
+                display: none;
+            }
+        }
+
+
+        /* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+        @media(max-width:480px) {
+
+            .coordinator-page {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .main-title h1 {
+                font-size: 39px;
+            }
+
+            .category-title {
+                font-size: 26px;
+            }
+
+            .event-box {
+                padding: 24px 25px;
+                margin-bottom: 23px;
+            }
+
+            .event-name {
+                font-size: 15px;
+            }
+
+            .coordinators {
+                font-size: 11.5px;
+            }
+
+            .event-name::before {
+                left: -18px;
+                top: -9px;
+                font-size: 17px;
+            }
+
+            .coordinators::after {
+                right: -14px;
+                bottom: -7px;
+                font-size: 16px;
+            }
+
+            .golden-sprinkles i:nth-child(n+11) {
+                display: none;
+            }
+
+            .golden-bubbles span:nth-child(n+5) {
+                display: none;
+            }
+        }
+
+
+        /* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+        @media(prefers-reduced-motion:reduce) {
+
+            .golden-bubbles span,
+            .golden-sprinkles i,
+            .event-box {
+                animation: none !important;
+                transition: none !important;
+            }
+
+        }
+
+
+        /* =========================================================
+   HEADING
+   ========================================================= */
+
+        .main-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .main-title h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(48px, 6vw, 80px);
+            color: #e4b95f;
+            letter-spacing: 2px;
+
+            text-shadow:
+                3px 3px 0 #291205,
+                0 0 12px rgba(224, 180, 82, .12);
+        }
+
+        .title-line {
+            width: 230px;
+            height: 2px;
+            background: #a8782f;
+            margin: 22px auto 0;
+        }
+
+        /* =========================================================
+           DETAILS.HTML MATCHING FOOTER
+           ========================================================= */
+        .details-footer {
+            margin-top: 55px;
+            text-align: center;
+            font-size: 12px;
+            color: #a89582;
+            border-top: 1px solid rgba(142, 104, 62, 0.4);
+            padding-top: 24px;
+            padding-bottom: 24px;
+            font-family: Arial, sans-serif;
+            position: relative;
+            z-index: 10;
+        }
+
+        .details-footer p {
+            margin: 4px 0;
+            line-height: 1.5;
+        }
+
+        .details-footer strong {
+            color: #d8c18e;
+            font-weight: 700;
+        }
+
+        .details-footer em {
+            font-style: italic;
+            color: #a89582;
+        }
+
+        .details-footer .fest-copy {
+            color: #8e683e;
+            margin-top: 8px;
+        }
+
+        .details-footer .social-icons-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .details-footer .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background: linear-gradient(180deg, #3a2213 0%, #1f1008 100%);
+            border: 1px solid rgba(142, 104, 62, 0.6);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #f2be71;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .details-footer .social-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .details-footer .social-btn:hover {
+            color: #ffe082;
+            border-color: #ffe082;
+            box-shadow: 0 0 15px rgba(255, 224, 130, 0.45);
+            transform: scale(1.1);
+        }
+
+        .details-footer .social-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* =========================================================
+           DETAILS.HTML MATCHING NAV & ANIMATIONS
+           ========================================================= */
+        @keyframes boatSway {
+            0%, 100% {
+                transform: translate3d(0, 0, 0) rotate(-1.5deg);
+            }
+            50% {
+                transform: translate3d(0, -11px, 0) rotate(2.5deg);
+            }
+        }
+
+        @keyframes compassSpin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes goldPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 16px rgba(212, 158, 30, 0.5);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 6px 24px rgba(255, 224, 130, 0.7);
+            }
+        }
+
+        .animate-boat-sway {
+            animation: boatSway 6s ease-in-out infinite;
+        }
+
+        .animate-compass-spin {
+            animation: compassSpin 40s linear infinite;
+        }
+
+        .animate-gold-pulse {
+            animation: goldPulse 3s ease-in-out infinite;
+        }
+
+        .parchment-card {
+            background-color: #f1dfc3;
+            border: 1px solid #a88358;
+            box-shadow: 0 10px 24px -4px rgba(43, 27, 14, 0.28), 0 4px 8px -2px rgba(43, 27, 14, 0.16);
+            color: #231508;
+            position: relative;
+        }
+
+        .wax-seal {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #b91c1c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fca5a5;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            display: none !important;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+    </style>
+<style id="anchor-navigation-style">
+.anchor-menu-trigger{display:flex;align-items:center;gap:10px;color:#efcc7e;background:#07141b;border:1px solid #aa813c;border-radius:50px;padding:8px 18px;cursor:pointer}.anchor-menu-trigger svg{width:27px;height:34px;stroke:currentColor;stroke-width:2.5;transition:transform 220ms cubic-bezier(.23,1,.32,1)}.anchor-menu-trigger span{font:600 10px Inter,sans-serif;letter-spacing:.18em}
+#anchor-navigation{position:fixed;inset:0;margin:auto;width:min(1040px,94vw);max-height:92dvh;padding:0;border:1px solid #9e7735;border-radius:12px;color:#eadcbd;background:#051117 url('assets/images/urvion-footer-theme.png') center top/cover;overflow:auto;box-shadow:0 40px 140px #000c}#anchor-navigation::backdrop{background:#01080de8;backdrop-filter:blur(10px)}.anchor-nav-shell{padding:28px 38px;background:linear-gradient(110deg,#031016ed,#031016da)}.anchor-nav-top{display:flex;justify-content:space-between;align-items:center;font:500 11px Inter,sans-serif;letter-spacing:.22em;color:#ca9f51}.anchor-nav-close{width:40px;height:40px;border:1px solid #997642;border-radius:50%;background:transparent;color:#edcf92;cursor:pointer}.anchor-nav-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px;padding:24px 0 34px}.anchor-nav-symbol{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}.anchor-chain{position:absolute;top:0;left:50%;height:25%;width:7px;background:repeating-linear-gradient(0deg,#b48b48 0 6px,transparent 6px 10px);opacity:.5}.anchor-nav-symbol>svg{width:190px;height:230px;stroke:#d9af5f;stroke-width:1.5;filter:drop-shadow(0 12px 35px #c4943a33)}.anchor-nav-symbol p{text-align:center;font:400 11px/1.8 Cinzel,serif;letter-spacing:.22em;color:#a58e66;margin-top:24px}.anchor-nav-kicker{font:500 10px Inter,sans-serif;letter-spacing:.25em;color:#b98e46}.anchor-nav-content h2{font:400 36px/1.2 'Libre Caslon Text',serif;margin:12px 0 22px}.anchor-nav-content nav{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}.anchor-nav-content a{display:flex;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid #af8a422f;color:#e6d7b7;text-decoration:none;font:400 14px Inter,sans-serif}.anchor-nav-content a span{font-size:9px;color:#967a49}.anchor-nav-content a b{margin-left:auto;color:#c59c4e;font-weight:400}.anchor-nav-signoff{text-align:center;color:#8d7956;font:400 9px/1.8 Inter,sans-serif;letter-spacing:.16em;border-top:1px solid #a17c3433;padding-top:22px}
+@media(hover:hover) and (pointer:fine){.anchor-menu-trigger:hover svg{transform:rotate(-12deg)}.anchor-nav-content a:hover{color:#ffd786}.anchor-nav-close:hover{background:#b0853733}}
+@media(max-width:650px){.anchor-menu-trigger{padding:7px 12px}.anchor-menu-trigger span{display:none}.anchor-nav-shell{padding:20px}.anchor-nav-layout{grid-template-columns:1fr;gap:16px;padding-top:10px}.anchor-nav-symbol{height:95px}.anchor-nav-symbol>svg{width:65px;height:80px}.anchor-chain{height:12px}.anchor-nav-symbol p{display:none}.anchor-nav-content h2{font-size:29px}.anchor-nav-content a{padding:13px 0;font-size:13px}.anchor-nav-content nav{gap:0 16px}.anchor-nav-signoff{font-size:8px}}
+</style><style id="illustrated-navigation-style">
+.anchor-menu-trigger{position:relative;border:none;background:transparent;border-radius:0;padding:0 5px;min-width:74px;height:76px;flex-direction:column;gap:0;isolation:isolate}.anchor-menu-trigger:before{content:'';position:absolute;inset:8px;border-radius:50%;background:radial-gradient(circle,#d5a24633,transparent 70%);z-index:-1}.anchor-menu-trigger img{width:70px;height:62px;object-fit:contain;filter:drop-shadow(0 3px 8px #0009);transition:transform 240ms cubic-bezier(.23,1,.32,1)}.anchor-menu-trigger span{display:block!important;font:600 7px/1.2 Inter,sans-serif;letter-spacing:.14em;color:#ead09a;white-space:nowrap}.anchor-menu-trigger:focus-visible{outline:2px solid #f8d58b;outline-offset:4px}.anchor-menu-trigger[aria-expanded=true] img{transform:rotate(12deg)}
+.nav-anchor-transition{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;background:radial-gradient(ellipse at center,#12313be8,#01090ff5);pointer-events:auto;overflow:hidden}.nav-anchor-transition[hidden]{display:none}.nav-transition-rope{position:absolute;top:0;left:50%;height:50%;width:4px;background:repeating-linear-gradient(45deg,#b38b47 0 4px,#42321a 4px 8px);transform-origin:top}.nav-transition-image{height:min(70vh,680px);width:min(80vw,500px);object-fit:contain;filter:drop-shadow(0 0 40px #d8aa3940)}.nav-transition-caption{position:absolute;bottom:9%;color:#d2b374;font:500 10px Cinzel,serif;letter-spacing:.38em}
+#anchor-navigation{width:min(1120px,96vw);background:#04121a url('assets/images/nav-captains-chart.png') center/cover;border:1px solid #b38b48;border-radius:4px;box-shadow:0 50px 160px #000}.anchor-nav-shell{background:linear-gradient(100deg,#02101855,#03121bd9 48%,#03121bc7);padding:28px 42px}.anchor-nav-layout{grid-template-columns:.7fr 1.3fr;gap:44px}.anchor-nav-symbol{min-height:390px;overflow:visible}.anchor-chain{display:none}.nav-chart-anchor{height:320px;width:100%;object-fit:contain;filter:drop-shadow(0 16px 25px #0008)}.nav-chart-coordinate{position:absolute;top:5px;left:0;font:400 9px Inter,sans-serif;letter-spacing:.2em;color:#a88c5d}.anchor-nav-symbol p{margin-top:0;font-size:11px;color:#cfb57c}.anchor-nav-symbol p span{font:italic 13px Georgia,serif;letter-spacing:0;color:#9e957e}.anchor-nav-content h2{font-size:40px;color:#f1e5c7}.anchor-nav-content nav{gap:8px 18px}.anchor-nav-content a{position:relative;padding:16px 12px;background:linear-gradient(100deg,#99713b14,transparent);border:1px solid #ae8b3e40;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));transition:background 180ms ease,color 180ms ease}.anchor-nav-content a span{border:1px solid #a17d3c80;border-radius:50%;width:24px;height:24px;display:grid;place-items:center;flex-shrink:0}.anchor-nav-content a:focus-visible{outline:2px solid #f4d180;outline-offset:-3px}.anchor-nav-top{border-bottom:1px solid #99764144;padding-bottom:16px}.anchor-nav-signoff{margin-top:10px}
+@media(hover:hover) and (pointer:fine){.anchor-menu-trigger:hover img{transform:translateY(-4px) rotate(-9deg)}.anchor-nav-content a:hover{background:#b88c3430;color:#ffe0a1}}
+@media(max-width:650px){.anchor-menu-trigger{height:66px;min-width:68px}.anchor-menu-trigger img{height:54px;width:60px}.anchor-menu-trigger span{font-size:6px}.anchor-nav-shell{padding:18px}.anchor-nav-layout{display:block;padding-top:10px}.anchor-nav-symbol{height:135px;min-height:0}.nav-chart-anchor{height:145px;width:130px;position:absolute;top:-18px;left:50%;margin-left:-65px}.anchor-nav-symbol p{position:absolute;bottom:0;left:0;text-align:left;font-size:8px}.anchor-nav-symbol p span{display:none}.nav-chart-coordinate{font-size:7px}.anchor-nav-content h2{font-size:29px;margin:8px 0 18px}.anchor-nav-content a{padding:13px 8px;font-size:12px;gap:7px}.anchor-nav-content nav{gap:8px 10px}.anchor-nav-content a span{width:20px;height:20px;font-size:8px}.anchor-nav-signoff{font-size:7px;padding-top:15px}}
+@media(prefers-reduced-motion:reduce){.anchor-menu-trigger img{transition:none;transform:none!important}}
+</style><style id="hero-anchor-and-chart-refinement">
+.hero-anchor-control{position:absolute;right:6%;bottom:10%;z-index:25;width:140px;height:165px;min-width:0;padding:0;transform-origin:50% -45px;animation:hero-anchor-drift 6s cubic-bezier(.77,0,.175,1) infinite alternate}
+.hero-anchor-control:before{inset:0;background:radial-gradient(ellipse,#e9af3d28,transparent 68%)}
+.hero-anchor-control:after{content:'';position:absolute;top:-46px;left:50%;width:4px;height:52px;background:repeating-linear-gradient(45deg,#d2aa60 0 3px,#614c28 3px 6px);opacity:.75;z-index:-1}
+.hero-anchor-control img{width:116px;height:133px;filter:drop-shadow(0 6px 20px #000b)}.hero-anchor-control span{font-size:8px;letter-spacing:.18em;margin-top:8px;color:#ffdfa0}
+@keyframes hero-anchor-drift{from{transform:rotate(-4deg) translateY(0)}to{transform:rotate(4deg) translateY(7px)}}
+#anchor-navigation{width:min(1060px,95vw);max-height:94dvh;border:1px solid #ad8c4c;border-radius:12px;background-position:center;background-size:100% 100%;overflow:auto}.anchor-nav-shell{padding:28px 40px;background:linear-gradient(90deg,#03111833,#031118bf 45%,#0311189c)}
+.anchor-nav-layout{grid-template-columns:.8fr 1.2fr;gap:42px;padding:30px 0 22px}.anchor-nav-symbol{min-height:350px;justify-content:center}.nav-chart-anchor{height:260px;width:260px;position:relative;top:auto;left:auto;margin:0;animation:chart-wheel-drift 10s cubic-bezier(.77,0,.175,1) infinite alternate;transform-origin:center}.anchor-nav-symbol:before,.anchor-nav-symbol:after{content:'';position:absolute;border:1px solid #b58a3655;border-radius:50%;width:310px;height:310px;top:30px;left:50%;margin-left:-155px;pointer-events:none}.anchor-nav-symbol:after{width:340px;height:340px;margin-left:-170px;top:15px;border-style:dashed;opacity:.45}.anchor-nav-symbol p{position:relative;bottom:auto;left:auto;text-align:center;margin-top:25px}.anchor-nav-symbol p span{display:block}.nav-chart-coordinate{top:0;left:0}.anchor-nav-content h2{font-size:36px;margin:9px 0 22px}.anchor-nav-content nav{display:flex;flex-direction:column;gap:7px;position:relative}.anchor-nav-content nav:before{content:'';position:absolute;left:23px;top:18px;bottom:18px;width:1px;background:#a7843f55}.anchor-nav-content a{clip-path:none;border:0;border-bottom:1px solid #b8944c30;background:linear-gradient(90deg,#b086301a,transparent);padding:10px 12px;gap:17px;border-radius:4px;position:relative}.anchor-nav-content a span{background:#071b23;border-color:#a58243;width:24px;height:24px;position:relative;z-index:1}.anchor-nav-content a em{font:400 18px/1.3 'Libre Caslon Text',Georgia,serif;font-style:normal}.anchor-nav-content a b{padding-right:6px}.anchor-nav-kicker{font-size:9px;letter-spacing:.24em}.anchor-nav-signoff{padding-top:17px;margin-top:0}.anchor-nav-top{font-size:10px}.anchor-nav-content a:focus-visible{outline-offset:0}
+@keyframes chart-wheel-drift{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+@media(max-width:650px){.hero-anchor-control{right:5%;top:17%;bottom:auto;width:100px;height:124px}.hero-anchor-control img{width:88px;height:100px}.hero-anchor-control span{font-size:6px}.hero-anchor-control:after{top:-30px;height:35px;width:3px}.anchor-nav-shell{padding:19px 22px}.anchor-nav-layout{display:block;padding:12px 0 18px}.anchor-nav-symbol{height:125px;min-height:0}.nav-chart-anchor{width:103px;height:113px;position:relative;top:auto;left:auto;margin:0}.anchor-nav-symbol:before{width:116px;height:116px;top:4px;margin-left:-58px}.anchor-nav-symbol:after{width:132px;height:132px;top:-4px;margin-left:-66px}.anchor-nav-symbol p{display:none}.nav-chart-coordinate{font-size:7px;top:10px}.anchor-nav-content{padding-top:13px}.anchor-nav-content h2{font-size:27px;margin:7px 0 16px}.anchor-nav-content a{padding:11px 10px;gap:14px}.anchor-nav-content a em{font-size:16px}.anchor-nav-content nav:before{left:21px}.anchor-nav-content a span{width:23px;height:23px}.anchor-nav-signoff{font-size:7px;letter-spacing:.1em}.anchor-nav-top{font-size:8px;letter-spacing:.15em}.anchor-nav-close{width:33px;height:33px}}
+@media(prefers-reduced-motion:reduce){.hero-anchor-control,.nav-chart-anchor{animation:none!important}}
+</style><style id="natural-nautical-navigation">
+/* A clearly separated control: the dock is still, only the suspended mechanism moves. */
+.hero-anchor-control{position:absolute;right:26px;top:145px;bottom:auto;width:106px;height:180px;padding:12px 8px 10px;display:flex;align-items:center;justify-content:flex-start;gap:0;animation:none!important;transform:none!important;background:linear-gradient(155deg,#102b34fa,#020c12fc 70%);border:1px solid #c39b51;border-radius:54px 54px 10px 10px;box-shadow:0 12px 30px #000b,0 0 0 5px #031018a8,inset 0 0 18px #ad7c2920;overflow:visible;isolation:isolate;cursor:pointer}
+.hero-anchor-control:before{inset:5px;border:1px solid #9e7d4244;border-radius:48px 48px 6px 6px;background:none;z-index:-1}
+.hero-anchor-control:after{height:7px;width:25px;top:28px;left:calc(50% - 12px);background:linear-gradient(#bca36c,#6f5128);border-radius:50%;opacity:1;box-shadow:0 2px 5px #000}
+.hero-anchor-control .hero-menu-eyebrow{font:600 7px/1 Inter,sans-serif;letter-spacing:.2em;color:#a7a38d;position:relative;margin:0 0 4px}
+.hero-anchor-hanger{display:block!important;position:relative;width:73px;height:110px;margin:0!important;transform-origin:50% 0;animation:anchor-pendulum 4.8s ease-in-out infinite;will-change:transform}
+.hero-anchor-hanger img{display:block;width:73px!important;height:110px!important;object-fit:contain;filter:drop-shadow(0 6px 6px #0008)!important;animation:anchor-heave 6.2s ease-in-out infinite;transition:none!important;transform-origin:50% 0}
+.hero-anchor-control .hero-menu-caption{font:700 10px/1.2 Cinzel,serif;letter-spacing:.14em;color:#ffe2a0;margin:5px 0 0;display:flex!important;gap:7px;align-items:center}.hero-menu-caption b{font:400 15px Georgia,serif;color:#dfa948}.hero-anchor-control .hero-menu-hint{font:400 6px/1 Inter,sans-serif;letter-spacing:.2em;color:#9d8a64;margin:6px 0 0}
+.hero-anchor-control[aria-expanded=true] .hero-anchor-hanger,.hero-anchor-control[aria-expanded=true] img{animation-play-state:paused}
+@keyframes anchor-pendulum{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes anchor-heave{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+/* Living chart layers stay decorative; destinations remain stable and legible. */
+#anchor-navigation{isolation:isolate;overflow:hidden;background-color:#04121a}
+.anchor-nav-shell{position:relative;z-index:2;max-height:94dvh;overflow-y:auto;background:linear-gradient(90deg,#03111822,#031118d9 42%,#031118bd)}
+.chart-living-scene{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.chart-light{position:absolute;inset:-20%;background:radial-gradient(ellipse at 28% 40%,#e9af4040,transparent 44%);animation:chart-lantern-breathe 6s ease-in-out infinite alternate;animation-play-state:paused}
+.chart-tide{position:absolute;width:130%;height:28%;bottom:-9%;left:-15%;object-fit:fill;opacity:.22;animation:chart-tide-drift 11s ease-in-out infinite alternate;animation-play-state:paused}
+.chart-tide-front{height:20%;bottom:-7%;opacity:.35;animation-duration:8s;animation-direction:alternate-reverse}
+.chart-ember{position:absolute;width:3px;height:3px;background:#ffcf6b;border-radius:50%;box-shadow:0 0 10px 3px #e6ae4433;animation:chart-ember-rise 7s linear infinite;animation-play-state:paused;opacity:0}.chart-ember-one{left:15%;bottom:8%}.chart-ember-two{left:27%;bottom:15%;animation-delay:2.3s}.chart-ember-three{left:8%;bottom:18%;animation-delay:4.7s}
+.chart-compass-suspension{height:260px;transform-origin:50% 10%;animation:chart-compass-sway 7.5s ease-in-out infinite alternate;animation-play-state:paused;position:relative;z-index:1}
+.chart-compass-suspension .nav-chart-anchor{animation:chart-compass-bob 5.2s ease-in-out infinite alternate;animation-play-state:paused}
+.anchor-nav-symbol:before{animation:chart-ring-turn 60s linear infinite;animation-play-state:paused}.anchor-nav-symbol:after{animation:chart-ring-turn 85s linear infinite reverse;animation-play-state:paused}
+#anchor-navigation[open] .chart-light,#anchor-navigation[open] .chart-tide,#anchor-navigation[open] .chart-ember,#anchor-navigation[open] .chart-compass-suspension,#anchor-navigation[open] .nav-chart-anchor,#anchor-navigation[open] .anchor-nav-symbol:before,#anchor-navigation[open] .anchor-nav-symbol:after{animation-play-state:running}
+@keyframes chart-lantern-breathe{from{opacity:.35;transform:translate3d(-15px,0,0) scale(.98)}to{opacity:.8;transform:translate3d(15px,-10px,0) scale(1.04)}}
+@keyframes chart-tide-drift{from{transform:translate3d(-25px,3px,0)}to{transform:translate3d(25px,-4px,0)}}
+@keyframes chart-ember-rise{0%{transform:translate3d(0,0,0);opacity:0}20%{opacity:.65}80%{opacity:.35}100%{transform:translate3d(28px,-150px,0);opacity:0}}
+@keyframes chart-compass-sway{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+@keyframes chart-compass-bob{from{transform:translateY(0)}to{transform:translateY(7px)}}
+@keyframes chart-ring-turn{to{transform:rotate(360deg)}}
+@media(hover:hover) and (pointer:fine){.hero-anchor-control:hover{border-color:#ffe4a3;box-shadow:0 12px 30px #000b,0 0 0 5px #031018a8,0 0 28px #d7a74735}.hero-anchor-control:hover img{transform:none}.hero-anchor-control:hover .hero-menu-caption{color:#fff2ce}}
+@media(max-width:650px){.hero-anchor-control{top:122px;right:15px;width:88px;height:156px;border-radius:46px 46px 9px 9px;padding-top:11px}.hero-anchor-control:before{border-radius:40px 40px 5px 5px}.hero-anchor-hanger{width:61px;height:91px}.hero-anchor-hanger img{width:61px!important;height:91px!important}.hero-anchor-control .hero-menu-eyebrow{font-size:6px}.hero-anchor-control .hero-menu-caption{font-size:9px;margin-top:5px}.hero-anchor-control .hero-menu-hint{font-size:5px}.chart-compass-suspension{height:113px}.chart-tide{height:22%}.anchor-nav-shell{background:linear-gradient(180deg,#03111855,#031118d9 40%)}.chart-light{background:radial-gradient(ellipse at 50% 18%,#e9af4033,transparent 40%)}}
+@media(prefers-reduced-motion:reduce){.hero-anchor-hanger,.hero-anchor-hanger img,.chart-light,.chart-tide,.chart-ember,.chart-compass-suspension,.chart-compass-suspension .nav-chart-anchor,.anchor-nav-symbol:before,.anchor-nav-symbol:after{animation:none!important;will-change:auto}.chart-light{opacity:.45}.chart-ember{display:none}}
+</style><style id="fullscreen-ocean-navigation">
+/* Top bar control: concise label, illustrated compass, no enclosing border. */
+.topbar-voyage-control{height:62px;min-width:106px;display:flex;flex-direction:row;gap:10px;padding:0 5px;border:0!important;border-radius:0;background:none!important;box-shadow:none!important;animation:none!important}.topbar-voyage-control:before,.topbar-voyage-control:after{display:none!important}.topbar-anchor-art{width:52px;height:56px;display:block!important;margin:0!important}.topbar-anchor-art img{width:52px!important;height:56px!important;object-fit:contain;animation:topbar-anchor-float 6s cubic-bezier(.77,0,.175,1) infinite alternate;filter:drop-shadow(0 3px 8px #0008)}.topbar-menu-label{display:flex!important;flex-direction:column;gap:9px;margin:0!important;font:600 10px/1 Inter,sans-serif!important;letter-spacing:.2em!important;color:#f5deb1!important}.topbar-menu-lines{display:flex!important;flex-direction:column;gap:5px;width:29px;margin:0!important}.topbar-menu-lines i{display:block;height:1px;width:29px;background:#d8ad5d;transition:transform 200ms cubic-bezier(.23,1,.32,1)}.topbar-menu-lines i:last-child{width:19px;align-self:flex-end}
+@keyframes topbar-anchor-float{from{transform:rotate(-5deg) translateY(-1px)}to{transform:rotate(5deg) translateY(2px)}}
+/* A borderless, viewport-sized voyage rather than a framed dialog. */
+#anchor-navigation{position:fixed;inset:0;width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;border:0!important;border-radius:0!important;box-shadow:none;background:#03131f;overflow:hidden}#anchor-navigation::backdrop{background:#03131f}
+.anchor-nav-shell{position:relative;z-index:3;width:100%;height:100%;max-height:100dvh;overflow-y:auto;padding:34px max(6vw,28px) 24px;background:linear-gradient(90deg,#02101a55,#02101ac9 52%,#02101ab5);display:flex;flex-direction:column}
+.anchor-nav-top{border:0!important;padding-bottom:8px;color:#d4bd8b}.anchor-nav-close{border:0!important;background:#03152166;border-radius:50%;font-size:24px;width:48px;height:48px;color:#f5db9e}.anchor-nav-layout{width:min(1120px,100%);margin:auto;flex:1;align-items:center;gap:10vw;grid-template-columns:.85fr 1.15fr;padding:25px 0}.anchor-nav-content h2{font-size:clamp(34px,4vw,58px);line-height:1.15;margin:15px 0 28px}.anchor-nav-content a{background:none!important;border:0!important;border-radius:0;clip-path:none;padding:13px 0;gap:20px}.anchor-nav-content a em{font-size:clamp(18px,1.7vw,25px)}.anchor-nav-content a span{border:0!important;background:none!important;color:#b99a62;font-size:10px}.anchor-nav-content nav:before{display:none}.anchor-nav-content a b{font-size:22px;color:#d7b775}.anchor-nav-kicker{color:#d8b671}.anchor-nav-signoff{border:0!important;position:relative;margin:0;padding:15px 0 0;color:#b29e77}.nav-chart-coordinate{color:#b3a586}.anchor-nav-symbol:before,.anchor-nav-symbol:after{border-color:#d5b16533}.anchor-nav-symbol p{color:#e5c88b}.chart-compass-suspension{height:320px}.chart-compass-suspension .nav-chart-anchor{height:320px;width:320px}
+.chart-living-scene{z-index:1}.menu-sky{position:absolute;inset:-8%;height:116%;width:116%;object-fit:cover;object-position:35% center;opacity:.8;animation:menu-sky-drift 28s cubic-bezier(.77,0,.175,1) infinite alternate;animation-play-state:paused}.menu-sea-veil{position:absolute;inset:0;background:linear-gradient(0deg,#02111c 0%,transparent 45%,#02111c33)}.menu-cloud{position:absolute;width:90%;height:50%;border-radius:50%;background:radial-gradient(ellipse,#b1c5c71c,transparent 66%);opacity:.7;animation:menu-cloud-swim 22s cubic-bezier(.77,0,.175,1) infinite alternate;animation-play-state:paused}.menu-cloud-one{left:-35%;top:9%}.menu-cloud-two{right:-30%;top:36%;animation-delay:-9s;animation-duration:30s}.chart-tide{height:36%;bottom:-9%;opacity:.5;animation-duration:14s}.chart-tide-front{height:27%;bottom:-8%;opacity:.7;animation-duration:9s}.chart-light{background:radial-gradient(ellipse at 23% 40%,#f2ba4b40,transparent 45%)}
+#anchor-navigation[open] .menu-sky,#anchor-navigation[open] .menu-cloud{animation-play-state:running}
+@keyframes menu-sky-drift{from{transform:translate3d(-1.5%,0,0) scale(1)}to{transform:translate3d(1.5%,-1%,0) scale(1.04)}}
+@keyframes menu-cloud-swim{from{transform:translate3d(-8%,0,0) scale(1)}to{transform:translate3d(14%,-5%,0) scale(1.1)}}
+@media(hover:hover) and (pointer:fine){.topbar-voyage-control:hover .topbar-menu-lines i:first-child{transform:translateX(3px)}.topbar-voyage-control:hover .topbar-menu-lines i:last-child{transform:translateX(-5px)}.anchor-nav-content a:hover{color:#ffe3a1}.anchor-nav-close:hover{background:#dfb85722}}
+@media(max-width:650px){.topbar-voyage-control{min-width:90px;height:56px;gap:7px}.topbar-anchor-art,.topbar-anchor-art img{width:43px!important;height:49px!important}.topbar-menu-label{font-size:9px!important}.topbar-menu-lines{width:25px}.topbar-menu-lines i{width:25px}.anchor-nav-shell{padding:20px 27px 22px;background:linear-gradient(180deg,#02101a55,#02101ac9 35%,#02101ad9)}.anchor-nav-layout{display:flex;flex-direction:column;justify-content:center;gap:4px;flex:1;padding:0}.anchor-nav-symbol{width:100%;height:138px;min-height:138px}.chart-compass-suspension{height:128px}.chart-compass-suspension .nav-chart-anchor{height:128px;width:128px}.anchor-nav-symbol:before{width:132px;height:132px;top:0;margin-left:-66px}.anchor-nav-symbol:after{width:148px;height:148px;top:-8px;margin-left:-74px}.anchor-nav-content{width:100%;max-width:420px;padding-top:10px}.anchor-nav-content h2{font-size:32px;margin:10px 0 20px}.anchor-nav-content a{padding:11px 0;gap:17px}.anchor-nav-content a em{font-size:19px}.anchor-nav-content nav{gap:2px}.anchor-nav-signoff{font-size:7px;line-height:1.8;padding-top:15px}.nav-chart-coordinate{top:12px}.menu-sky{object-position:32% center;opacity:.65}.chart-tide{height:24%}.chart-tide-front{height:19%}}
+@media(max-height:700px) and (max-width:650px){.anchor-nav-symbol{height:90px;min-height:90px}.chart-compass-suspension,.chart-compass-suspension .nav-chart-anchor{height:85px;width:85px}.anchor-nav-symbol:before,.anchor-nav-symbol:after{display:none}.anchor-nav-content h2{font-size:27px;margin:7px 0 12px}.anchor-nav-content a{padding:8px 0}.anchor-nav-content a em{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.menu-sky,.menu-cloud,.topbar-anchor-art img{animation:none!important}}
+</style><link rel="stylesheet" href="assets/esc-content.css?v=3"><link rel="stylesheet" href="assets/festival-scenes.css?v=4"><link rel="stylesheet" href="assets/book-pages.css?v=1"></head>
+    <body>
+
+    
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-[#5A4632]/95 backdrop-blur-md shadow-[0_4px_22px_rgba(10,5,2,0.7)] border-b border-[#d49e1e]/60">
+        <div class="w-full px-4 sm:px-6 lg:px-10 py-3 flex items-center justify-between gap-4">
+            <a class="relative flex items-center gap-2.5 sm:gap-3 shrink-0 group" href="index.html"><img src="assets/images/eco-social-club-logo.png" alt="ECO-SOCIAL CLUB — For People. For Planet. For Tomorrow" style="height:64px;width:62px;object-fit:contain;background:white;border-radius:6px;padding:3px;flex-shrink:0" decoding="async"><span style="display:flex;flex-direction:column;justify-content:center;font-family:Cinzel,serif;color:#f5dfac"><span style="font-size:clamp(12px,1.1vw,16px);font-weight:800;letter-spacing:.06em;white-space:nowrap">ECO SOCIAL CLUB</span><span style="font-size:10px;letter-spacing:.32em;margin-top:5px;color:#d9b467">PRESENTS</span></span></a>
+            
+
+            <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                
+                <a href="index.html" aria-label="Return to Grand Voyage Deck"
+                    title="Return to Grand Voyage Deck"
+                    class="relative group flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-full bg-gradient-to-b from-[#341d10] via-[#25150c] to-[#180e09] text-[#f2be71] border-2 border-[#d49e1e] hover:border-[#ffe082] shadow-[0_2px_14px_rgba(212,158,30,0.6)] active:scale-95 transition-all cursor-pointer shrink-0">
+                    <div class="w-6 h-6 sm:w-7 sm:h-7 relative flex items-center justify-center shrink-0">
+                        <svg class="w-full h-full animate-compass-spin" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="47" fill="#1c0f09" stroke="#d49e1e" stroke-width="3"></circle>
+                            <circle cx="50" cy="50" r="42" fill="none" stroke="#8e683e" stroke-width="1.5"
+                                stroke-dasharray="2 3">
+                            </circle>
+                            <circle cx="50" cy="50" r="34" fill="#2a170d" stroke="#d49e1e" stroke-width="1"></circle>
+                            <g stroke="#d49e1e" stroke-width="1.5">
+                                <line x1="50" y1="8" x2="50" y2="16"></line>
+                                <line x1="50" y1="84" x2="50" y2="92"></line>
+                                <line x1="8" y1="50" x2="16" y2="50"></line>
+                                <line x1="84" y1="50" x2="92" y2="50"></line>
+                                <line x1="21" y1="21" x2="27" y2="27"></line>
+                                <line x1="73" y1="73" x2="79" y2="79"></line>
+                                <line x1="79" y1="21" x2="73" y2="27"></line>
+                                <line x1="21" y1="79" x2="27" y2="73"></line>
+                            </g>
+                            <text x="50" y="26" font-size="9" font-weight="bold" fill="#f2be71" text-anchor="middle"
+                                font-family="serif">N</text>
+                            <text x="50" y="80" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle"
+                                font-family="serif">S</text>
+                            <text x="78" y="53" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle"
+                                font-family="serif">E</text>
+                            <text x="22" y="53" font-size="9" font-weight="bold" fill="#d49e1e" text-anchor="middle"
+                                font-family="serif">W</text>
+                        </svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 absolute inset-0 m-auto animate-boat-sway pointer-events-none drop-shadow-[0_0_8px_#fde047]"
+                            viewBox="0 0 60 60">
+                            <polygon points="30,6 36,30 30,26 24,30" fill="#b91c1c" stroke="#fca5a5" stroke-width="0.5">
+                            </polygon>
+                            <polygon points="30,54 36,30 30,26 24,30" fill="#3a2410" stroke="#90bbeb"
+                                stroke-width="0.5"></polygon>
+                            <circle cx="30" cy="30" r="4" fill="#d49e1e" stroke="#ffe082" stroke-width="1.5"></circle>
+                        </svg>
+                    </div>
+                    <span class="absolute -top-1 -right-1 flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fde047] opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-[#eab308]"></span>
+                    </span>
+                </a>
+                
+            <button class="anchor-menu-trigger topbar-voyage-control" aria-label="Open navigation" aria-controls="anchor-navigation" aria-expanded="false" onclick="toggleMobileNav()"><span class="topbar-anchor-art"><img src="assets/images/nav-anchor-control.png" alt="" aria-hidden="true"></span><span class="topbar-menu-label">MENU<span class="topbar-menu-lines" aria-hidden="true"><i></i><i></i></span></span></button></div>
+        </div>
+    </header>
+
+    
+    
+
+        <div class="universe">
+
+            <div class="moon"></div>
+
+            <div class="orbit"></div>
+            <div class="orbit two"></div>
+
+            <div class="ship one">⛵</div>
+            <div class="ship two">⛵</div>
+
+            <div class="bubbles">
+
+                <span class="bubble" style="left:5%;--move:80px;--time:16s;"></span>
+
+                <span class="bubble" style="left:14%;--move:-60px;--time:19s;"></span>
+
+                <span class="bubble" style="left:26%;--move:110px;--time:15s;"></span>
+
+                <span class="bubble" style="left:38%;--move:-80px;--time:20s;"></span>
+
+                <span class="bubble" style="left:52%;--move:100px;--time:17s;"></span>
+
+                <span class="bubble" style="left:65%;--move:-100px;--time:21s;"></span>
+
+                <span class="bubble" style="left:78%;--move:80px;--time:18s;"></span>
+
+                <span class="bubble" style="left:90%;--move:-70px;--time:16s;"></span>
+
+            </div>
+
+            
+
+            <span class="star" style="left:8%;top:18%;"></span>
+            <span class="star" style="left:17%;top:48%;animation-delay:1s"></span>
+            <span class="star" style="left:27%;top:13%;animation-delay:2s"></span>
+            <span class="star" style="left:39%;top:30%;animation-delay:.5s"></span>
+            <span class="star" style="left:61%;top:17%;animation-delay:1.4s"></span>
+            <span class="star" style="left:73%;top:42%;animation-delay:2.5s"></span>
+            <span class="star" style="left:86%;top:20%;animation-delay:1s"></span>
+            <span class="star" style="left:94%;top:64%;animation-delay:3s"></span>
+
+        </div>
+
+
+
+
+        <main class="main" style="min-height:75svh;display:grid;place-content:center;text-align:center;padding:120px 24px"><h1 style="font-family:Cinzel,serif;color:#ffe2a0;font-size:clamp(40px,7vw,88px)">Coming soon</h1><a href="index.html" style="color:#d9b467;margin-top:32px">← Back to Home</a></main>
+
+        <script>
+            function toggleMobileNav() {
+                const drawer = document.getElementById('mobile-nav-drawer');
+                const panel = document.getElementById('mobile-nav-panel');
+                const toggleBtn = document.getElementById('mobile-nav-toggle');
+                const toggleIcon = document.getElementById('mobile-nav-toggle-icon');
+                if (!drawer || !panel) return;
+                const isOpen = !drawer.classList.contains('pointer-events-none');
+                if (isOpen) {
+                    closeMobileNav();
+                } else {
+                    drawer.classList.remove('pointer-events-none', 'opacity-0');
+                    drawer.classList.add('opacity-100');
+                    panel.classList.remove('translate-x-full', 'pointer-events-none');
+                    panel.classList.add('translate-x-0', 'pointer-events-auto');
+                    if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
+                    if (toggleIcon) toggleIcon.textContent = 'close';
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeMobileNav() {
+                const drawer = document.getElementById('mobile-nav-drawer');
+                const panel = document.getElementById('mobile-nav-panel');
+                const toggleBtn = document.getElementById('mobile-nav-toggle');
+                const toggleIcon = document.getElementById('mobile-nav-toggle-icon');
+                if (!drawer || !panel) return;
+                drawer.classList.remove('opacity-100');
+                drawer.classList.add('opacity-0', 'pointer-events-none');
+                panel.classList.remove('translate-x-0', 'pointer-events-auto');
+                panel.classList.add('translate-x-full', 'pointer-events-none');
+                if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+                if (toggleIcon) toggleIcon.textContent = 'menu';
+                document.body.style.overflow = '';
+            }
+        </script>
+
+    <div class="nav-anchor-transition" hidden aria-hidden="true"><div class="nav-transition-rope"></div><img class="nav-transition-image" src="assets/images/nav-anchor-transition.png" alt=""><p class="nav-transition-caption">LOWERING THE ANCHOR</p></div><dialog id="anchor-navigation" aria-labelledby="anchor-nav-title"><div class="chart-living-scene" aria-hidden="true"><img class="menu-sky" src="assets/images/hero-voyage-backdrop.png" alt=""><div class="menu-cloud menu-cloud-one"></div><div class="menu-cloud menu-cloud-two"></div><div class="menu-sea-veil"></div><div class="chart-light"></div><img class="chart-tide chart-tide-back" src="assets/images/footer-foreground-waves.png" alt=""><img class="chart-tide chart-tide-front" src="assets/images/footer-foreground-waves.png" alt=""><span class="chart-ember chart-ember-one"></span><span class="chart-ember chart-ember-two"></span><span class="chart-ember chart-ember-three"></span></div><div class="anchor-nav-shell"><div class="anchor-nav-top"><span>URVION · VOLUME 2</span><button class="anchor-nav-close" aria-label="Close navigation" onclick="closeMobileNav()">✕</button></div><div class="anchor-nav-layout"><div class="anchor-nav-symbol"><div class="nav-chart-coordinate">THE VOYAGE AWAITS</div><div class="chart-compass-suspension"><img src="assets/images/nav-anchor-control.png" alt="" class="nav-chart-anchor"></div><p>THE CAPTAIN’S CHART<br><span>Choose your next expedition.</span></p></div><div class="anchor-nav-content"><p class="anchor-nav-kicker">THE CAPTAIN’S NAVIGATION</p><h2 id="anchor-nav-title">Choose your horizon.</h2><nav aria-label="Main navigation"><a href="index.html"><span>01</span><em>Home</em><b aria-hidden="true">↗</b></a><a href="index.html#esc-about"><span>02</span><em>About</em><b aria-hidden="true">↗</b></a><a href="events.html"><span>03</span><em>Events</em><b aria-hidden="true">↗</b></a><a href="index.html#pillars-of-pyrite-section"><span>04</span><em>Partners</em><b aria-hidden="true">↗</b></a><a href="crew.html"><span>05</span><em>Teams</em><b aria-hidden="true">↗</b></a><a href="index.html#urvion-footer"><span>06</span><em>Contact</em><b aria-hidden="true">↗</b></a></nav></div></div><p class="anchor-nav-signoff">ECO SOCIAL CLUB PRESENTS · WHERE THE ADVENTURE BEGINS</p></div></dialog><script id="anchor-navigation-script">
+(()=>{const d=document.getElementById('anchor-navigation'),overlay=document.querySelector('.nav-anchor-transition'),reduce=matchMedia('(prefers-reduced-motion:reduce)');let previousOverflow='',busy=false,run=0;
+const ease='cubic-bezier(.23,1,.32,1)';
+function reveal(){if(!busy)return;overlay.hidden=true;d.showModal();busy=false;d.animate(reduce.matches?[{opacity:0},{opacity:1}]:[{opacity:0,transform:'perspective(1200px) rotateX(8deg) translateY(32px) scale(.94)'},{opacity:1,transform:'none'}],{duration:reduce.matches?160:650,easing:ease});if(!reduce.matches){d.querySelector('.nav-chart-anchor').animate([{transform:'translateY(-80px) rotate(-12deg)',opacity:0},{transform:'none',opacity:1}],{duration:850,easing:ease});d.querySelector('.anchor-nav-content h2').animate([{opacity:0,transform:'translateY(16px)'},{opacity:1,transform:'none'}],{duration:500,delay:100,easing:ease,fill:'backwards'});d.querySelectorAll('nav a').forEach((el,i)=>el.animate([{opacity:0,transform:'translateY(18px)'},{opacity:1,transform:'none'}],{duration:400,delay:100+i*45,easing:ease,fill:'backwards'}));}}
+window.toggleMobileNav=()=>{if(busy)return;if(d.open){window.closeMobileNav();return}previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';document.querySelectorAll('.anchor-menu-trigger').forEach(b=>b.setAttribute('aria-expanded','true'));busy=true;if(reduce.matches){reveal();return}overlay.hidden=false;overlay.animate([{opacity:0},{opacity:1}],{duration:180,fill:'both'});const a=overlay.querySelector('img').animate([{transform:'translateY(-85vh) rotate(-22deg) scale(.65)',opacity:0},{transform:'translateY(18px) rotate(6deg) scale(1)',opacity:1,offset:.72},{transform:'translateY(0) rotate(0deg) scale(1)',opacity:1}],{duration:1050,easing:ease,fill:'both'});run++;const token=run;a.finished.then(()=>{if(token===run)reveal()}).catch(()=>{});};
+window.closeMobileNav=()=>{run++;busy=false;overlay.hidden=true;if(d.open)d.close();else{document.body.style.overflow=previousOverflow;document.querySelectorAll('.anchor-menu-trigger').forEach(b=>b.setAttribute('aria-expanded','false'))}};
+d.addEventListener('close',()=>{document.body.style.overflow=previousOverflow;document.querySelectorAll('.anchor-menu-trigger').forEach(b=>b.setAttribute('aria-expanded','false'))});d.addEventListener('click',e=>{if(e.target===d)window.closeMobileNav()});d.querySelectorAll('a').forEach(a=>a.addEventListener('click',window.closeMobileNav));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&busy)window.closeMobileNav()});})();
+</script><script id="nautical-menu-visibility">
+(()=>{const control=document.querySelector('.hero-anchor-control');if(!control)return;
+let inView=true;const motion=()=>{const state=inView&&!document.hidden?'running':'paused';control.querySelectorAll('.hero-anchor-hanger,img').forEach(el=>el.style.animationPlayState=state)};
+new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;motion()}).observe(control);document.addEventListener('visibilitychange',motion);
+})();
+</script></body>
 
 </html>
