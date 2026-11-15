@@ -13,6 +13,6 @@
   let frame = 0;
   function render() { frame = 0; const rect = stage.getBoundingClientRect(); const progress = Math.max(0,Math.min(1,-rect.top / Math.max(1,stage.offsetHeight-innerHeight))) * (panels.length-1); const active = Math.max(0,Math.min(panels.length-1,Math.round(progress))); panels.forEach((panel,index) => { panel.classList.toggle('is-active',index===active); panel.classList.toggle('is-before',index<active); panel.classList.toggle('is-after',index>active); }); }
   function schedule() { if (!frame) frame=requestAnimationFrame(render); }
-  new IntersectionObserver(([entry]) => { if(entry.isIntersecting&&!reduced.matches) video.play().catch(()=>{}); else video.pause(); schedule(); },{threshold:.03}).observe(stage);
+  new IntersectionObserver(([entry]) => { stage.classList.toggle('about-video-fixed', entry.isIntersecting); if(entry.isIntersecting&&!reduced.matches) video.play().catch(()=>{}); else video.pause(); schedule(); },{threshold:.03}).observe(stage);
   addEventListener('scroll',schedule,{passive:true}); addEventListener('resize',schedule,{passive:true}); reduced.addEventListener('change',schedule); render();
 })();
