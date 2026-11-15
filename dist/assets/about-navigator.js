@@ -9,12 +9,12 @@
   old.before(stage);
   const video = stage.querySelector('video');
   video.play().catch(() => {});
+  video.addEventListener('loadedmetadata', () => { if (video.currentTime < .15) video.currentTime = 1.2; }, { once:true });
   const panels = [...stage.querySelectorAll('.urvion-about-panel')];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let frame = 0;
   function render() { frame = 0; const rect = stage.getBoundingClientRect(); const progress = Math.max(0,Math.min(1,-rect.top / Math.max(1,stage.offsetHeight-innerHeight))) * (panels.length-1); const active = Math.max(0,Math.min(panels.length-1,Math.round(progress))); panels.forEach((panel,index) => { panel.classList.toggle('is-active',index===active); panel.classList.toggle('is-before',index<active); panel.classList.toggle('is-after',index>active); }); }
   function schedule() { if (!frame) frame=requestAnimationFrame(render); }
   new IntersectionObserver(([entry]) => { if(entry.isIntersecting&&!reduced.matches) video.play().catch(()=>{}); else video.pause(); schedule(); },{threshold:.03}).observe(stage);
-  function pinBackground() { const rect=stage.getBoundingClientRect(); stage.classList.toggle('about-video-fixed',rect.top<=0&&rect.bottom>=innerHeight); }
-  addEventListener('scroll',()=>{schedule();pinBackground()},{passive:true}); addEventListener('resize',()=>{schedule();pinBackground()},{passive:true}); reduced.addEventListener('change',schedule); pinBackground(); render();
+  addEventListener('scroll',schedule,{passive:true}); addEventListener('resize',schedule,{passive:true}); reduced.addEventListener('change',schedule); render();
 })();
