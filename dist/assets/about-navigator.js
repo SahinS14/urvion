@@ -13,7 +13,7 @@
   const panels = [...stage.querySelectorAll('.urvion-about-panel')];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let frame = 0;
-  function render() { frame = 0; const rect = stage.getBoundingClientRect(); const progress = Math.max(0,Math.min(1,-rect.top / Math.max(1,stage.offsetHeight-innerHeight))) * (panels.length-1); const active = Math.max(0,Math.min(panels.length-1,Math.round(progress))); panels.forEach((panel,index) => { panel.classList.toggle('is-active',index===active); panel.classList.toggle('is-before',index<active); panel.classList.toggle('is-after',index>active); }); }
+  function render() { frame = 0; const rect = stage.getBoundingClientRect(); const progress = Math.max(0,Math.min(1,-rect.top / Math.max(1,stage.offsetHeight-innerHeight))) * (panels.length-1); const active = Math.max(0,Math.min(panels.length-1,Math.round(progress))); panels.forEach((panel,index) => { const distance = index-progress; const visibility = Math.max(0, 1-Math.abs(distance)*1.25); panel.style.transform = `translate3d(${distance*18}vw,0,0)`; panel.style.opacity = visibility.toFixed(3); panel.classList.toggle('is-active',index===active); }); }
   function schedule() { if (!frame) frame=requestAnimationFrame(render); }
   new IntersectionObserver(([entry]) => { if(entry.isIntersecting&&!reduced.matches) video.play().catch(()=>{}); else video.pause(); schedule(); },{threshold:.03}).observe(stage);
   addEventListener('scroll',schedule,{passive:true}); addEventListener('resize',schedule,{passive:true}); reduced.addEventListener('change',schedule); render();

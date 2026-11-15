@@ -2,12 +2,11 @@
 #esc-about.urvion-about-stage { position:relative; z-index:10; height:400svh; min-height:0; margin-top:0!important; padding:0; display:block; overflow:visible; background:#02070b; color:#f6f3eb; }
 #urvion-main-hero{height:100svh!important;min-height:100svh!important}
 .urvion-about-media { position:sticky; top:0; left:0; z-index:0; width:100%; height:100vh; height:100dvh; overflow:hidden; background:#06141b url('images/hero-voyage-backdrop.png') center/cover no-repeat; }
-.urvion-about-media video { position:absolute; left:50%; top:50%; width:112dvh; height:112vw; object-fit:cover; opacity:.8; mix-blend-mode:screen; filter:saturate(.95) contrast(1.04) brightness(1.04); transform:translate(-50%,-50%) rotate(-90deg) scale(1.02); }
+.urvion-about-media video { position:absolute; left:50%; top:50%; width:112dvh; height:112vw; object-fit:cover; opacity:.9; filter:saturate(.95) contrast(1.04) brightness(1.04); transform:translate(-50%,-50%) rotate(-90deg) scale(1.02); }
 .urvion-about-media i { position:absolute; inset:0; background:linear-gradient(90deg,#02070b4d 0%,#02070b12 48%,#02070b4d 100%),linear-gradient(0deg,#02070b40 0%,transparent 42%,#02070b26 100%); }
 .urvion-about-sticky { position:absolute; top:0; left:0; z-index:1; box-sizing:border-box; width:100%!important; height:100vh; height:100dvh; overflow:hidden; display:block; }
-.urvion-about-panel { position:absolute; inset:0; width:min(1080px,86vw); height:max-content; margin:auto; padding:0; opacity:0; pointer-events:none; transform:translate3d(14vw,0,0); transition:opacity 480ms cubic-bezier(.23,1,.32,1),transform 780ms cubic-bezier(.23,1,.32,1); will-change:opacity,transform; }
-.urvion-about-panel.is-active { opacity:1; pointer-events:auto; transform:translate3d(0,0,0); }
-.urvion-about-panel.is-before{opacity:0;transform:translate3d(-14vw,0,0)}
+.urvion-about-panel { position:absolute; inset:0; width:min(1080px,86vw); height:max-content; margin:auto; padding:0; opacity:0; pointer-events:none; transform:translate3d(18vw,0,0); will-change:opacity,transform; }
+.urvion-about-panel.is-active { pointer-events:auto; }
 .about-label { margin:0; color:#ede5d4; font:600 11px Inter,sans-serif; letter-spacing:.24em; }.about-label b { display:inline-block; padding:8px 12px; margin-right:16px; border-radius:2px; background:#e8e9e6; color:#071016; }
 .urvion-about-panel h2 { margin:28px 0 0; color:#fff; font:800 clamp(58px,9vw,130px)/.82 'Barlow Condensed',Impact,sans-serif; letter-spacing:-.02em; }.urvion-about-panel h2 em { color:#d8a64d; font-style:normal; }
 .about-logo { position:absolute; right:3%; top:-25px; width:90px; height:100px; object-fit:contain; }
