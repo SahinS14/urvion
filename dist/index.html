@@ -1775,11 +1775,12 @@ let dismissed=false;const mobileIntro=matchMedia('(max-width:1023px)');function 
 const skip=document.createElement('button');skip.type='button';skip.id='intro-skip';skip.textContent='Skip intro ↗';overlay.append(skip);
 function unlock(){document.documentElement.classList.remove('intro-active');document.body.style.removeProperty('overflow');document.documentElement.style.removeProperty('overflow');}
 window.dismissPreloader=()=>{
- if(dismissed)return;dismissed=true;video.pause();overlay.hidden=true;overlay.style.display='none';overlay.setAttribute('aria-hidden','true');unlock();window.scrollTo({top:0,behavior:'instant'});
+ if(dismissed)return;dismissed=true;video.pause();overlay.classList.add('intro-leaving');overlay.setAttribute('aria-hidden','true');unlock();window.scrollTo({top:0,behavior:'instant'});
  try{sessionStorage.setItem('preloaderDismissed','true')}catch(e){}
  window.dispatchEvent(new Event('urvion:intro-dismissed'));window.resumeAmbientWaves?.();
+ const removeOverlay=()=>{overlay.hidden=true;overlay.style.display='none';overlay.removeEventListener('transitionend',removeOverlay)};overlay.addEventListener('transitionend',removeOverlay);setTimeout(removeOverlay,850);
 };
-window.replayPreloader=()=>{if(!mobileIntro.matches)return;loadMobileVideo();window.closeMobileNav?.();dismissed=false;video.pause();video.currentTime=0;overlay.hidden=false;overlay.style.display='flex';overlay.style.opacity='1';overlay.style.pointerEvents='auto';overlay.removeAttribute('aria-hidden');overlay.classList.remove('intro-playing');gate.removeAttribute('aria-hidden');enter.disabled=false;document.documentElement.classList.add('intro-active');enter.focus()};
+window.replayPreloader=()=>{if(!mobileIntro.matches)return;loadMobileVideo();window.closeMobileNav?.();dismissed=false;video.pause();video.currentTime=0;overlay.hidden=false;overlay.style.display='flex';overlay.style.opacity='1';overlay.style.pointerEvents='auto';overlay.removeAttribute('aria-hidden');overlay.classList.remove('intro-playing','intro-leaving');gate.removeAttribute('aria-hidden');enter.disabled=false;document.documentElement.classList.add('intro-active');enter.focus()};
 window.togglePreloaderAudio=()=>{video.muted=!video.muted};
 enter.addEventListener('click',async()=>{enter.disabled=true;video.muted=false;try{await video.play();overlay.classList.add('intro-playing');gate.setAttribute('aria-hidden','true');skip.focus()}catch(e){window.dismissPreloader()}});
 video.addEventListener('ended',window.dismissPreloader);video.addEventListener('error',window.dismissPreloader);skip.addEventListener('click',window.dismissPreloader);
@@ -1866,7 +1867,7 @@ video.autoplay=false;video.pause();if(mobileIntro.matches){loadMobileVideo();doc
                 </button>
                 
                 
-            <button class="anchor-menu-trigger topbar-voyage-control" aria-label="Open navigation" aria-controls="anchor-navigation" aria-expanded="false" onclick="toggleMobileNav()"><span class="topbar-anchor-art"><img src="assets/images/nav-anchor-control.png" alt="" aria-hidden="true"></span><span class="topbar-menu-label">MENU<span class="topbar-menu-lines" aria-hidden="true"><i></i><i></i></span></span></button></div>
+            <button class="anchor-menu-trigger topbar-voyage-control" aria-label="Open navigation" aria-controls="anchor-navigation" aria-expanded="false" onclick="toggleMobileNav()"><span class="topbar-anchor-art"><img src="assets/images/nav-anchor-control.png" alt="" aria-hidden="true"></span></button></div>
         </div>
     </header>
     
