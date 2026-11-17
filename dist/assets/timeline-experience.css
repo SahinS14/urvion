@@ -6,6 +6,7 @@
   padding-block:clamp(68px,8vw,116px)!important;
   background:#b8864d url('images/festival-treasure-map.webp') center/cover!important;
 }
+#voyage-route-timeline:before{background:none!important}
 #voyage-route-timeline:after{content:'';position:absolute;inset:18px;pointer-events:none;border:1px solid #6e461f80;box-shadow:inset 0 0 0 6px #f0d39824;z-index:0}
 #voyage-route-timeline>.max-w-7xl{position:relative;z-index:1}
 #voyage-route-timeline .flex.flex-col.items-center{text-shadow:0 1px #f5db9c}
@@ -14,7 +15,7 @@
 #voyage-route-timeline .inline-flex.flex-wrap.items-center.justify-center.gap-2{padding:6px!important;border:1px solid #765125!important;border-radius:4px!important;background:#2b190ddd!important;box-shadow:0 12px 30px #55300a55!important}
 #voyage-route-timeline button[id^='tab-']{border-radius:2px!important;transition:transform 180ms ease,border-color 180ms ease,background-color 180ms ease!important}
 @media(hover:hover) and (pointer:fine){#voyage-route-timeline button[id^='tab-']:hover{transform:translate3d(0,-2px,0)}}
-#voyage-route-timeline .parchment-card{position:relative!important;padding:clamp(14px,2.2vw,30px)!important;border:1px solid #7e5427!important;border-radius:4px!important;background:linear-gradient(110deg,#e8c98fda,#f5dfacd9 52%,#d8ae6cdb)!important;box-shadow:0 24px 55px #4d2b0a6e,inset 0 0 0 4px #f4d79899!important}
+#voyage-route-timeline .parchment-card{position:relative!important;padding:clamp(14px,2.2vw,30px)!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
 #voyage-route-timeline .parchment-card:before{content:'THE CAPTAIN’S ROUTE';position:absolute;top:13px;left:50%;transform:translateX(-50%);color:#6b431f;font:600 8px Cinzel,serif;letter-spacing:.3em;white-space:nowrap;opacity:.8}
 #voyage-route-timeline .parchment-card>.relative.z-20{padding-top:20px;margin-bottom:18px!important}
 #voyage-route-timeline #map-route-path{stroke:var(--route-ink)!important;stroke-width:3!important;stroke-dasharray:7 10!important;animation:none}

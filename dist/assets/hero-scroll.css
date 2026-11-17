@@ -1,0 +1,6 @@
+#urvion-main-hero .hero-voyage-copy{transform:var(--hero-copy-motion,translate3d(0,0,0))!important;opacity:var(--hero-copy-opacity,1)!important;will-change:transform,opacity}
+#urvion-main-hero .hv-backdrop{transform:var(--hero-backdrop-motion,translate3d(0,0,0))!important;will-change:transform}
+#urvion-main-hero .hv-ship-route{transform:var(--hero-ship-motion,translate3d(0,0,0))!important;will-change:transform}
+#urvion-main-hero .hv-captain{transform:var(--hero-captain-motion,translate3d(0,0,0))!important;will-change:transform}
+#urvion-main-hero .hv-waves{transform:var(--hero-waves-motion,translate3d(0,0,0))!important;will-change:transform}
+@media(prefers-reduced-motion:reduce){#urvion-main-hero .hero-voyage-copy,#urvion-main-hero .hv-backdrop,#urvion-main-hero .hv-ship-route,#urvion-main-hero .hv-captain,#urvion-main-hero .hv-waves{transform:none!important;opacity:1!important;will-change:auto}}
