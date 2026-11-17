@@ -1,28 +1,14 @@
 (() => {
-  const panels=[...document.querySelectorAll('.expedition-entry')];
-  if(panels.length!==4)return;
-  const stage=document.createElement('div');stage.className='event-scroll-stage';
+  const panels=[...document.querySelectorAll('.expedition-entry')];if(!panels.length)return;
+  const stage=document.createElement('section');stage.className='event-scroll-stage event-button-stage';stage.setAttribute('aria-label','Event expeditions');stage.setAttribute('aria-roledescription','carousel');
   const viewport=document.createElement('div');viewport.className='event-scroll-viewport';
   const track=document.createElement('div');track.className='event-scroll-track';
-  const status=document.createElement('div');status.className='event-scroll-status';
-  status.innerHTML='<span class="event-scroll-label">EXPEDITION 01 / 04</span><div class="event-scroll-progress"><span></span></div><span>SCROLL TO EXPLORE ↓</span>';
-  panels[0].before(stage);panels.forEach(panel=>track.append(panel));viewport.append(track,status);stage.append(viewport);
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)');let frame=0,previousTravel=-1,previousActive=-1;
-  const label=status.querySelector('.event-scroll-label'),progressBar=status.querySelector('.event-scroll-progress span');
-  const clamp=x=>Math.max(0,Math.min(1,x));
-  function draw(){frame=0;if(reduce.matches){track.style.transform='none';panels.forEach(p=>{p.inert=false;p.classList.add('is-current');});return;}
-    const range=Math.max(1,stage.offsetHeight-viewport.offsetHeight),progress=clamp(-stage.getBoundingClientRect().top/range);
-    // Each chapter has a reading pause followed by a reversible horizontal transition.
-    const step=progress*4,index=Math.min(3,Math.floor(step)),local=step-index;
-    const travel=index===3?3:index+clamp((local-.55)/.45);
-    if(travel===previousTravel)return;previousTravel=travel;
-    track.style.transform=`translate3d(${-travel*25}%,0,0)`;
-    const active=Math.round(travel);if(active!==previousActive){previousActive=active;panels.forEach((panel,i)=>{const current=i===active;panel.classList.toggle('is-current',current);panel.inert=!current;});label.textContent=`EXPEDITION 0${active+1} / 04`;}
-    progressBar.style.transform=`scaleX(${(travel+1)/4})`;
-  }
-  function schedule(){if(!frame)frame=requestAnimationFrame(draw);}
-  function go(index){const top=scrollY+stage.getBoundingClientRect().top+(stage.offsetHeight-viewport.offsetHeight)*index/4;scrollTo({top,behavior:reduce.matches?'auto':'smooth'});}
-  document.querySelectorAll('.event-index a').forEach((link,i)=>link.addEventListener('click',event=>{if(reduce.matches)return;event.preventDefault();history.replaceState(null,'',link.getAttribute('href'));go(i);}));
-  addEventListener('scroll',schedule,{passive:true});addEventListener('resize',()=>{previousTravel=-1;schedule();},{passive:true});reduce.addEventListener('change',()=>{previousTravel=-1;schedule();});draw();
-  const hashIndex=panels.findIndex(panel=>'#'+panel.id===location.hash);if(hashIndex>=0&&!reduce.matches)requestAnimationFrame(()=>go(hashIndex));
+  const controls=document.createElement('div');controls.className='event-swap-controls';controls.innerHTML='<button type="button" aria-label="Previous event">← Previous event</button><span aria-live="polite"></span><button type="button" aria-label="Next event">Next event →</button>';
+  panels[0].before(stage);panels.forEach(p=>track.append(p));viewport.append(track);stage.append(viewport,controls);
+  const [prev,next]=controls.querySelectorAll('button'),status=controls.querySelector('span');let index=0;
+  function show(value){index=Math.max(0,Math.min(panels.length-1,value));track.style.setProperty('transform',`translate3d(${-25*index}%,0,0)`,'important');panels.forEach((p,i)=>{p.classList.toggle('is-current',i===index);p.inert=i!==index;p.setAttribute('aria-hidden',String(i!==index));});prev.disabled=index===0;next.disabled=index===panels.length-1;status.textContent=`0${index+1} / 0${panels.length}`;}
+  prev.onclick=()=>show(index-1);next.onclick=()=>show(index+1);
+  function go(i){show(i);requestAnimationFrame(()=>scrollTo({top:scrollY+stage.getBoundingClientRect().top,behavior:'instant'}));}
+  document.querySelectorAll('.event-index a').forEach((link,i)=>link.addEventListener('click',e=>{e.preventDefault();history.replaceState(null,'',link.getAttribute('href'));go(i);}));
+  const hashIndex=panels.findIndex(p=>'#'+p.id===location.hash);show(hashIndex<0?0:hashIndex);if(hashIndex>=0){requestAnimationFrame(()=>go(hashIndex));if(document.readyState!=='complete')addEventListener('load',()=>go(hashIndex),{once:true});}
 })();
