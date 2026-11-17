@@ -4,7 +4,10 @@
     const track = rail.querySelector('.sponsor-marquee-track');
     rail.tabIndex = 0;
     let dragging = false, hovered = false, focused = false, visible = false, startX = 0, startLeft = 0, resumeAt = 0, previousTime = 0;
-    const cycle = () => { const cards = track.children; return cards[cards.length / 2].offsetLeft - cards[0].offsetLeft; };
+    let cycleWidth=0, animationFrame=0;
+    const measure=()=>{const cards=track.children;cycleWidth=cards[cards.length/2].offsetLeft-cards[0].offsetLeft;};
+    measure();new ResizeObserver(measure).observe(track);
+    const cycle = () => cycleWidth;
     function wrap() { const width = cycle(); if (!width) return; if (rail.scrollLeft >= width) rail.scrollLeft -= width; if (rail.scrollLeft <= 0) rail.scrollLeft += width; }
     rail.scrollLeft = cycle() / 2;
     rail.addEventListener('pointerenter', e => { if(e.pointerType==='mouse') hovered=true; });
@@ -18,8 +21,9 @@
     rail.addEventListener('pointercancel',release);
     rail.addEventListener('keydown', e => { if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();rail.scrollLeft+=(e.key==='ArrowLeft'?-1:1)*220;resumeAt=performance.now()+1500;wrap();} });
     rail.querySelectorAll('img').forEach(img => img.draggable=false);
-    new IntersectionObserver(entries => visible=entries[0].isIntersecting).observe(rail);
-    function animate(now) { const delta=Math.min(50,now-(previousTime||now));previousTime=now;if(visible&&!document.hidden&&!reduce.matches&&!dragging&&!hovered&&!focused&&now>resumeAt){rail.scrollLeft+=(row===0?-1:1)*delta*.035;wrap();}requestAnimationFrame(animate); }
-    requestAnimationFrame(animate);
+    function sync(){const run=visible&&!document.hidden&&!reduce.matches;if(run&&!animationFrame){previousTime=0;animationFrame=requestAnimationFrame(animate);}else if(!run&&animationFrame){cancelAnimationFrame(animationFrame);animationFrame=0;}}
+    new IntersectionObserver(entries => {visible=entries[0].isIntersecting;sync();}).observe(rail);
+    document.addEventListener('visibilitychange',sync);reduce.addEventListener('change',sync);
+    function animate(now) { animationFrame=0;const delta=Math.min(50,now-(previousTime||now));previousTime=now;if(visible&&!document.hidden&&!reduce.matches){if(!dragging&&!hovered&&!focused&&now>resumeAt){rail.scrollLeft+=(row===0?-1:1)*delta*.035;wrap();}animationFrame=requestAnimationFrame(animate);} }
   });
 })();
