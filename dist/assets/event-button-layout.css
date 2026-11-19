@@ -38,3 +38,14 @@
 @media(max-height:550px) and (min-width:560px) and (max-width:760px){.event-button-stage{padding-top:16px}.event-button-stage .expedition-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1fr);gap:24px;align-items:center}.event-button-stage .event-poster img{height:calc(100svh - 160px)}.event-button-stage .event-copy h2{font-size:28px}.event-button-stage .event-category{font-size:7px}.event-button-stage .event-description{font-size:10px}.event-button-stage .event-actions a,.event-button-stage .event-actions button{font-size:8px;padding:8px 5px}}
 @media(max-height:550px) and (min-width:761px){.event-button-stage{padding-top:16px}.event-button-stage .event-copy h2{font-size:38px;margin:8px 0}.event-button-stage .event-description{font-size:12px}.event-button-stage .event-actions{margin-top:12px}.event-button-stage .event-poster img{height:calc(100svh - 160px)}}
 @media(prefers-reduced-motion:reduce){.event-swap-controls button{transition:none}}
+/* Each selected expedition occupies the visible screen; controls have their own row. */
+.event-button-stage{height:100dvh!important;min-height:0;display:flex;flex-direction:column;padding:0;isolation:isolate}
+.event-button-stage .event-scroll-viewport{flex:1;min-height:0;height:auto}
+.event-button-stage .event-scroll-track{height:100%}
+.event-button-stage .expedition-entry{height:100%!important;min-height:0;padding:20px 6vw;align-items:center}
+.event-button-stage .expedition-layout{margin:auto}
+.event-button-stage .event-poster img{height:calc(100dvh - 116px);max-height:680px}
+.event-button-stage .event-swap-controls{flex:none;width:100%;max-width:none;box-sizing:border-box;margin:0;padding:12px 6vw max(16px,env(safe-area-inset-bottom,0px));background:#031018;border-top:1px solid #d7b57233}
+body.event-page.event-card-view>header{visibility:hidden;pointer-events:none}
+@media(max-width:760px){.event-button-stage .expedition-entry{padding:14px 20px;align-items:center}.event-button-stage .event-poster img{height:min(48dvh,calc(100dvh - 285px));max-height:420px}.event-button-stage .event-swap-controls{padding:10px 20px max(14px,env(safe-area-inset-bottom,0px))}}
+@media(max-height:550px) and (min-width:560px){.event-button-stage .expedition-entry{padding:10px 5vw}.event-button-stage .event-poster img{height:calc(100dvh - 100px)}}
