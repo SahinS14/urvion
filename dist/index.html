@@ -1771,7 +1771,7 @@ html,body{max-width:100%;overflow-x:clip}
 <script id="manual-intro-controller">
 (()=>{
 const overlay=document.getElementById('video-preloader'),video=document.getElementById('preloader-video'),gate=document.getElementById('intro-entry-screen'),enter=document.getElementById('intro-enter-button');
-let dismissed=false;const mobileIntro=matchMedia('(max-width:1023px)');function loadMobileVideo(){if(!mobileIntro.matches)return;const source=video.querySelector('source');if(!source.src){source.src=source.dataset.src;video.load();}}
+let dismissed=false;const mobileIntro=matchMedia('(max-width:1023px)');let introSeen=false;try{introSeen=sessionStorage.getItem('preloaderDismissed')==='true'}catch(e){}function loadMobileVideo(){if(!mobileIntro.matches)return;const source=video.querySelector('source');if(!source.src){source.src=source.dataset.src;video.load();}}
 const skip=document.createElement('button');skip.type='button';skip.id='intro-skip';skip.textContent='Skip intro ↗';overlay.append(skip);
 function unlock(){document.documentElement.classList.remove('intro-active');document.body.style.removeProperty('overflow');document.documentElement.style.removeProperty('overflow');}
 window.dismissPreloader=()=>{
@@ -1785,7 +1785,7 @@ window.togglePreloaderAudio=()=>{video.muted=!video.muted};
 enter.addEventListener('click',async()=>{enter.disabled=true;video.muted=false;try{await video.play();overlay.classList.add('intro-playing');gate.setAttribute('aria-hidden','true');skip.focus()}catch(e){window.dismissPreloader()}});
 video.addEventListener('ended',window.dismissPreloader);video.addEventListener('error',window.dismissPreloader);skip.addEventListener('click',window.dismissPreloader);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dismissed)window.dismissPreloader()});
-video.autoplay=false;video.pause();if(mobileIntro.matches){loadMobileVideo();document.documentElement.classList.add('intro-active');}else{overlay.hidden=true;overlay.style.display='none';unlock();document.addEventListener('DOMContentLoaded',window.dismissPreloader,{once:true});}mobileIntro.addEventListener('change',()=>{if(!mobileIntro.matches)window.dismissPreloader()});
+video.autoplay=false;video.pause();if(mobileIntro.matches&&!introSeen&&!location.hash){loadMobileVideo();document.documentElement.classList.add('intro-active');}else{dismissed=true;overlay.hidden=true;overlay.style.display='none';overlay.setAttribute('aria-hidden','true');unlock();try{sessionStorage.setItem('preloaderDismissed','true')}catch(e){}document.addEventListener('DOMContentLoaded',()=>{window.dispatchEvent(new Event('urvion:intro-dismissed'));window.resumeAmbientWaves?.()},{once:true});}mobileIntro.addEventListener('change',()=>{if(!mobileIntro.matches)window.dismissPreloader()});
 })();
 </script>
 
